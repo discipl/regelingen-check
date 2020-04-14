@@ -12,7 +12,7 @@ class App extends Component {
       actors: ["RVO", "onderneming"],
       activeActors: ["onderneming"],
       factFunctionSpec: {
-        "[RVO]": "RVO",
+        "[Minister van Economische Zaken en Klimaat]": "RVO",
         "[onderneming]": "onderneming",
       },
     };
