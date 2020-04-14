@@ -4,7 +4,7 @@ class FactPrompt extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      factValue: props.factValue,
+      factValue: props.factValue || "",
       final: props.final || false,
     };
   }

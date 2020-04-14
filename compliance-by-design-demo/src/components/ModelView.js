@@ -115,12 +115,13 @@ class ModelView extends Component {
       const color = colors.shift();
       result.push(
         <ActorView
-          lawReg={this.lawReg}
           actors={this.state.actors}
-          colorCode={color}
           caseLink={this.state.caseLink}
-          name={actor}
+          colorCode={color}
           derivedFacts={this.state.derivedFacts}
+          key={actor}
+          lawReg={this.lawReg}
+          name={actor}
         />
       );
     }
@@ -146,11 +147,7 @@ class ModelView extends Component {
 
     if (!this.state.derivedFacts) {
       return (
-        <div>
-          <KvkForm
-            handleDerivedFacts={this.handleDerivedFacts.bind(this)}
-          ></KvkForm>
-        </div>
+        <KvkForm handleDerivedFacts={this.handleDerivedFacts.bind(this)} />
       );
     }
     return <div className="grid-container">{this.renderActorViews()}</div>;

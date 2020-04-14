@@ -1,13 +1,12 @@
 import React, { Component } from "react";
 import ModelView from "./components/ModelView";
-import { HashRouter, Route } from "react-router-dom";
 import model from "./model/tegemoetkoming-schade-covid19.flint";
 
-import * as log from "loglevel";
+import log from "loglevel";
 
 class App extends Component {
   render() {
-    log.getLogger("disciplLawReg").setLevel("warn");
+    log.getLogger("disciplLawReg").setLevel("debug");
 
     const config = {
       actors: ["RVO", "onderneming"],
@@ -19,19 +18,7 @@ class App extends Component {
     };
 
     console.log("Using config", config);
-    return (
-      <HashRouter>
-        <div>
-          <Route
-            path="/"
-            exact
-            render={(props) => (
-              <ModelView {...props} model={model} config={config} />
-            )}
-          />
-        </div>
-      </HashRouter>
-    );
+    return <ModelView model={model} config={config} />;
   }
 }
 

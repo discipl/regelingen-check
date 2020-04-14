@@ -228,9 +228,9 @@ class ActorView extends Component {
     return acts.map((act, index) => {
       console.log("ActionDetails available", act.details);
       return (
-        <div class="available">
+        <div key={act.act} className="available">
           <button
-            class="actButton"
+            className="actButton"
             onClick={this.takeAction.bind(
               this,
               act.act,
@@ -265,6 +265,7 @@ class ActorView extends Component {
       return this.state.factPrompts.map((factPromptState) => {
         return (
           <FactPrompt
+            key={factPromptState.fact}
             handleResult={factPromptState.resultCallback}
             final={factPromptState.final}
             factValue={factPromptState.factValue}
@@ -287,9 +288,9 @@ class ActorView extends Component {
     return acts.map((act, index) => {
       console.log("ActionDetails potential", act.details);
       return (
-        <div class="potential">
+        <div key={act.act} className="potential">
           <button
-            class="actButton"
+            className="actButton"
             onClick={this.takeAction.bind(
               this,
               act.act,
