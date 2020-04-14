@@ -11,6 +11,7 @@ class ActorView extends Component {
       duties: [],
       loading: true,
       name: this.props.name,
+      enteredFacts: {}
     };
   }
 
@@ -172,6 +173,10 @@ class ActorView extends Component {
     ) {
       return this.props.derivedFacts[fact];
     }
+
+    if (this.state.enteredFacts && this.state.enteredFacts.hasOwnProperty(fact)) {
+      return this.state.enteredFacts[fact]
+    }
     const resultPromise = new Promise((resolve, reject) => {
       const handleAskFactResult = (result, possibleCreatingActions) => {
         let realResult = result || false;
@@ -190,8 +195,13 @@ class ActorView extends Component {
             final: true,
           };
 
+          const newEnteredFacts = state.enteredFacts || [];
+
+          newEnteredFacts[fact] = realResult
+
           return {
             factPrompts: newFactPrompts,
+            enteredFacts: newEnteredFacts
           };
         });
 
