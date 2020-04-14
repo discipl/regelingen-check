@@ -1,5 +1,8 @@
 import React, { Component } from "react";
 
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
+
 class KvkForm extends Component {
   constructor(props) {
     super(props);
@@ -87,20 +90,30 @@ class KvkForm extends Component {
       return (
         <div>
           <p>{JSON.stringify(this.state.derivedFacts)}</p>
-          <button onClick={this.returnDerivedFacts.bind(this)}>Confirm</button>
+          <Button
+            variant="primary"
+            onClick={this.returnDerivedFacts.bind(this)}
+          >
+            Confirm
+          </Button>
         </div>
       );
     }
     return (
-      <form onSubmit={this.query.bind(this)}>
-        <input
-          type="text"
-          placeholder="KVK nummer"
-          onChange={this.handleChange.bind(this)}
-          value={this.state.kvkNumber}
-        ></input>
-        <input type="submit" value="Gegevens opsturen" />
-      </form>
+      <Form onSubmit={this.query.bind(this)}>
+        <Form.Group controlId="kvkNummer">
+          <Form.Label>KvK Nummer</Form.Label>
+          <Form.Control
+            type="number"
+            placeholder="Vul uw KVK Nummer in"
+            value={this.state.kvkNumber}
+            onChange={this.handleChange.bind(this)}
+          ></Form.Control>
+        </Form.Group>
+        <Button variant="primary" type="submit">
+          Gegevens opsturen
+        </Button>
+      </Form>
     );
   }
 }
