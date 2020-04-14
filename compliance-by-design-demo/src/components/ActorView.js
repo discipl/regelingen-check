@@ -133,6 +133,10 @@ class ActorView extends Component {
         act,
         this.askFact.bind(this)
       );
+      this.setState({
+        'factPrompts': [],
+        'activeAct': undefined
+      })
       if (this.props.onCaseChange) {
         this.props.onCaseChange(caseLink);
       }
@@ -231,6 +235,7 @@ class ActorView extends Component {
         <div key={act.act} className="available">
           <button
             className="actButton"
+            disabled={!this.state.activeAct}
             onClick={this.takeAction.bind(
               this,
               act.act,
@@ -291,6 +296,7 @@ class ActorView extends Component {
         <div key={act.act} className="potential">
           <button
             className="actButton"
+            disabled={this.state.activeAct}
             onClick={this.takeAction.bind(
               this,
               act.act,
