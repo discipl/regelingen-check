@@ -1,9 +1,9 @@
 .ActorView {
-    display: block;
+  display: block;
 }
 
 .actorHeader {
-  color: #FFF;
+  color: #fff;
   top: 70px;
   height: 70px;
   width: 100%;
@@ -18,7 +18,6 @@
   margin: auto;
   text-align: center;
 }
-
 
 .acts {
   word-wrap: inherit;
@@ -48,7 +47,6 @@
   word-wrap: inherit;
   word-break: break-all;
 }
-
 
 .wallet {
   background-color: #ddd;
@@ -84,4 +82,3 @@
 .actButton {
   margin: 15px;
 }
-
