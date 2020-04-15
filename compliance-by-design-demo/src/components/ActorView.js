@@ -262,6 +262,8 @@ class ActorView extends Component {
       "with active Act",
       this.state.activeAct
     );
+    let factIndex = 1;
+
     if (
       this.state.activeAct &&
       this.state.activeAct.index === actIndex &&
@@ -272,6 +274,7 @@ class ActorView extends Component {
       return this.state.factPrompts.map((factPromptState) => {
         return (
           <FactPrompt
+            factIndex={factIndex++}
             key={factPromptState.fact}
             handleResult={factPromptState.resultCallback}
             final={factPromptState.final}
