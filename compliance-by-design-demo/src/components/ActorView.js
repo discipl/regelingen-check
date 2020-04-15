@@ -41,12 +41,26 @@ class ActorView extends Component {
     console.log("ComputeRenderDataState", this.state);
     console.log("ComputeRenderData", this.props);
     try {
-      let availableActLinks = await this.props.lawReg.getAvailableActs(
+      const factResolver = (fact) => {
+        if (
+          this.props.derivedFacts &&
+          this.props.derivedFacts.hasOwnProperty(fact)
+        ) {
+          return this.props.derivedFacts[fact];
+        }
+    
+        if (this.state.enteredFacts && this.state.enteredFacts.hasOwnProperty(fact)) {
+          return this.state.enteredFacts[fact]
+        }
+      }
+
+      let availableActLinks = await this.props.lawReg.getAvailableActsWithResolver(
         this.props.caseLink,
         this.props.actors[this.state.name],
-        [],
-        []
+        factResolver
       );
+
+      
       console.log("Got available act links");
       let availableActs = await Promise.all(
         availableActLinks.map(async (act) => {
@@ -57,14 +71,14 @@ class ActorView extends Component {
           return { ...act, details: details };
         })
       );
+      console.log("Computed available acts", availableActs)
       console.log("Computing potential acts");
       let potentialActs = await Promise.all(
         (
-          await this.props.lawReg.getPotentialActs(
+          await this.props.lawReg.getPotentialActsWithResolver(
             this.props.caseLink,
             this.props.actors[this.state.name],
-            [],
-            []
+            factResolver
           )
         ).map(async (act) => {
           const details = await this.props.lawReg.getActDetails(
@@ -78,8 +92,6 @@ class ActorView extends Component {
       this.setState({
         availableActs: availableActs,
         potentialActs: potentialActs,
-        previousActs: enrichedPreviousActs,
-        duties: duties,
         loading: false,
         activeAct: undefined,
         factPrompts: [],
@@ -127,6 +139,8 @@ class ActorView extends Component {
         throw e;
       }
     } finally {
+      console.log("Computing data after taking act")
+      await this.computeRenderData()
       if (this.props.onEndAct) {
         this.props.onEndAct();
       }
