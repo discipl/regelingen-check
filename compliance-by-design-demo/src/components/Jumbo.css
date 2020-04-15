@@ -1,8 +1,14 @@
 .jumbo-header {
-  background-color: rgb(119, 0, 119);
+  background: rgba(148, 72, 234, 1);
+  background: linear-gradient(
+    to bottom,
+    rgba(148, 72, 234, 1) 0%,
+    rgba(133, 31, 229, 1) 100%
+  );
   border-radius: 0;
 }
 
 .jumbo-header h1 {
   color: white;
+  text-shadow: 0px 1px 2px rgba(64, 15, 110, 0.5);
 }
