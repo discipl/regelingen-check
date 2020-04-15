@@ -79,6 +79,16 @@
   border-color: #9994;
 }
 
+.impossible {
+  padding-left: 30px;
+  padding-right: 30px;
+  background-color: lightcoral;
+  border-style: solid;
+  border-radius: 5px;
+  border-width: 2px;
+  border-color:lightcoral;
+}
+
 .actButton {
   margin: 15px;
 }

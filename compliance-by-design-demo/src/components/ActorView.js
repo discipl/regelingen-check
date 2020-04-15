@@ -286,6 +286,25 @@ class ActorView extends Component {
     return [];
   }
 
+  renderImpossibleActs() {
+    const possibleActs = (this.state.potentialActs || [])
+      .concat(this.state.availableActs || [])
+      .map((act) => act.act);
+    const impossibleActs = this.props.acts.filter(
+      (act) => !possibleActs.includes(act.act)
+    );
+
+    return impossibleActs.map((act) => {
+      return (
+        <div key={act.act} className="impossible">
+          <button className="actButton" disabled>
+            {act.act}
+          </button>
+        </div>
+      );
+    });
+  }
+
   renderPotentialActs() {
     let acts = this.state.potentialActs;
     if (!acts) {
@@ -343,6 +362,7 @@ class ActorView extends Component {
         <div className="acts">
           {this.renderAvailableActs()}
           {this.renderPotentialActs()}
+          {this.renderImpossibleActs()}
         </div>
       </div>
     );
