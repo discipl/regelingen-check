@@ -74,34 +74,7 @@ class ActorView extends Component {
           return { ...act, details: details };
         })
       );
-      console.log("Getting actions");
-      let previousActs = await this.props.lawReg.getActions(
-        this.props.caseLink,
-        this.props.actors[this.state.name]
-      );
-      const core = this.props.lawReg.getAbundanceService().getCoreAPI();
-      const enrichedPreviousActs = await Promise.all(
-        previousActs.map(async (prevAct) => {
-          let claim = await core.get(
-            prevAct.link,
-            this.props.actors[this.state.name]
-          );
-          console.log("claim", claim);
-          prevAct.facts = claim.data["DISCIPL_FLINT_FACTS_SUPPLIED"];
-          return prevAct;
-        })
-      );
-      let duties;
-      try {
-        console.log("Getting duties");
-        duties = await this.props.lawReg.getActiveDuties(
-          this.props.caseLink,
-          this.props.actors[this.state.name]
-        );
-      } catch (e) {
-        console.log("Error", e, " while determining duties");
-        duties = [];
-      }
+      
       this.setState({
         availableActs: availableActs,
         potentialActs: potentialActs,
