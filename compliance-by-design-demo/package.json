@@ -8,15 +8,19 @@
   "dependencies": {
     "@discipl/core-ephemeral": "^0.11.0",
     "@discipl/law-reg": "^0.5.4",
+    "express": "^4.17.1",
     "loglevel": "^1.6.3",
+    "node-fetch": "^2.6.0",
     "papaparse": "^5.0.0",
     "read-excel-file": "^4.0.1"
   },
   "scripts": {
     "start": "react-scripts start",
+    "build": "react-scripts build",
     "prepack": "./scripts/build-non-split.js",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "server": "node server/app.js"
   },
   "eslintConfig": {
     "extends": [
@@ -53,5 +57,5 @@
     "react-scripts": "^3.3.0",
     "rewire": "^4.0.1"
   },
-  "proxy": "https://api.kvk.nl"
+  "proxy": "http://localhost:3001"
 }
