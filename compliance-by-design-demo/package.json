@@ -17,7 +17,9 @@
     "start": "react-scripts start",
     "prepack": "./scripts/build-non-split.js",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "lint": "prettier -c .",
+    "lint-fix": "prettier --write ."
   },
   "eslintConfig": {
     "extends": [
