@@ -1,5 +1,9 @@
 import React, { Component } from "react";
 import "./FactPrompt.css";
+
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
+
 class FactPrompt extends Component {
   constructor(props) {
     super(props);
@@ -8,6 +12,7 @@ class FactPrompt extends Component {
       final: props.final || false,
     };
   }
+
   handleAffirm() {
     const result = this.state.factValue || true;
     this.setState({
@@ -48,7 +53,7 @@ class FactPrompt extends Component {
     return this.props.possibleCreatingActions.map((possibleCreatingAction) => {
       const numberCandidates = this.props.previousActs
         .map((prevAct, index) => {
-          return { index: index, ...prevAct };
+          return { index, ...prevAct };
         })
         .filter((prevAct) => prevAct.link === possibleCreatingAction);
       const number =
@@ -65,19 +70,21 @@ class FactPrompt extends Component {
       this.props.possibleCreatingActions.length > 0
     ) {
       return (
-        <select
+        <Form.Control
+          as="select"
           className="value"
           onChange={this.handleInput.bind(this)}
           value={this.state.factValue}
           disabled={this.state.final}
           hidden={this.isFinalBoolean()}
+          custom
         >
           {this.renderOptions()}
-        </select>
+        </Form.Control>
       );
     } else {
       return (
-        <input
+        <Form.Control
           className="value"
           placeholder="Waarde van feit"
           onChange={this.handleInput.bind(this)}
@@ -89,32 +96,40 @@ class FactPrompt extends Component {
     }
   }
 
+  formatFact() {
+    let title = "";
+    if (this.props.title) {
+      title = this.props.title;
+    } else {
+      /** @type {string} */
+      const fact = this.props.fact.replace(/^\[/, "").replace(/\]$/, "");
+      title = `${fact.substr(0, 1).toLocaleUpperCase()}${fact.substr(1)}`;
+    }
+    return `${this.props.factIndex}. ${title}`;
+  }
+
   render() {
     return (
-      <div className="modal-container">
-        <section className="modal-main">
-          <span>Is {this.props.fact} van toepassing?</span>
-          {this.renderInput()}
-          <span className="buttons">
-            <button
-              className="affirm"
-              hidden={this.hideTrue()}
-              disabled={this.state.final}
-              onClick={this.handleAffirm.bind(this)}
-            >
-              Yes
-            </button>
-            <button
-              className="deny"
-              hidden={this.hideFalse()}
-              disabled={this.state.factValue || this.state.final}
-              onClick={this.handleDeny.bind(this)}
-            >
-              No
-            </button>
-          </span>
-        </section>
-      </div>
+      <Form className="factPromptForm text-center">
+        <h2>{this.formatFact()}</h2>
+        <Form.Group>{this.renderInput()}</Form.Group>
+        <Button
+          variant="primary"
+          hidden={this.hideTrue()}
+          disabled={this.state.final}
+          onClick={this.handleAffirm.bind(this)}
+        >
+          Ja
+        </Button>{" "}
+        <Button
+          variant="secondary"
+          hidden={this.hideFalse()}
+          disabled={this.state.factValue || this.state.final}
+          onClick={this.handleDeny.bind(this)}
+        >
+          Nee
+        </Button>
+      </Form>
     );
   }
 }
