@@ -24,7 +24,9 @@ class KvkForm extends Component {
 
     const derivedFacts = {};
     // Default facts
-    derivedFacts["[verzoek tegemoetkoming in de schade geleden door de maatregelen ter bestrijding van de verdere verspreiding van COVID-19]"] = true;
+    derivedFacts[
+      "[verzoek tegemoetkoming in de schade geleden door de maatregelen ter bestrijding van de verdere verspreiding van COVID-19]"
+    ] = true;
 
     derivedFacts[
       "[datum van inschrijving van onderneming in het KVK Handelsregister]"
@@ -32,8 +34,9 @@ class KvkForm extends Component {
     derivedFacts["[datum van oprichting van onderneming]"] =
       companyInfo.foundationDate;
 
-    derivedFacts["[aantal personen dat werkt bij onderneming blijkend uit de inschrijving in het handelsregister op 15 maart 2020]"] =
-      companyInfo.employees;
+    derivedFacts[
+      "[aantal personen dat werkt bij onderneming blijkend uit de inschrijving in het handelsregister op 15 maart 2020]"
+    ] = companyInfo.employees;
 
     // TODO: Check there is exactly one main activity SBI code
     const mainSbi = companyInfo.businessActivities

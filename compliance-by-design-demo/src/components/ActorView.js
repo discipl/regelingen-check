@@ -11,7 +11,7 @@ class ActorView extends Component {
       duties: [],
       loading: true,
       name: this.props.name,
-      enteredFacts: {}
+      enteredFacts: {},
     };
   }
 
@@ -48,11 +48,14 @@ class ActorView extends Component {
         ) {
           return this.props.derivedFacts[fact];
         }
-    
-        if (this.state.enteredFacts && this.state.enteredFacts.hasOwnProperty(fact)) {
-          return this.state.enteredFacts[fact]
+
+        if (
+          this.state.enteredFacts &&
+          this.state.enteredFacts.hasOwnProperty(fact)
+        ) {
+          return this.state.enteredFacts[fact];
         }
-      }
+      };
 
       let availableActLinks = await this.props.lawReg.getAvailableActsWithResolver(
         this.props.caseLink,
@@ -60,7 +63,6 @@ class ActorView extends Component {
         factResolver
       );
 
-      
       console.log("Got available act links");
       let availableActs = await Promise.all(
         availableActLinks.map(async (act) => {
@@ -71,7 +73,7 @@ class ActorView extends Component {
           return { ...act, details: details };
         })
       );
-      console.log("Computed available acts", availableActs)
+      console.log("Computed available acts", availableActs);
       console.log("Computing potential acts");
       let potentialActs = await Promise.all(
         (
@@ -88,7 +90,7 @@ class ActorView extends Component {
           return { ...act, details: details };
         })
       );
-      
+
       this.setState({
         availableActs: availableActs,
         potentialActs: potentialActs,
@@ -120,9 +122,9 @@ class ActorView extends Component {
         this.askFact.bind(this)
       );
       this.setState({
-        'factPrompts': [],
-        'activeAct': undefined
-      })
+        factPrompts: [],
+        activeAct: undefined,
+      });
       if (this.props.onCaseChange) {
         this.props.onCaseChange(caseLink);
       }
@@ -139,8 +141,8 @@ class ActorView extends Component {
         throw e;
       }
     } finally {
-      console.log("Computing data after taking act")
-      await this.computeRenderData()
+      console.log("Computing data after taking act");
+      await this.computeRenderData();
       if (this.props.onEndAct) {
         this.props.onEndAct();
       }
@@ -161,8 +163,11 @@ class ActorView extends Component {
       return this.props.derivedFacts[fact];
     }
 
-    if (this.state.enteredFacts && this.state.enteredFacts.hasOwnProperty(fact)) {
-      return this.state.enteredFacts[fact]
+    if (
+      this.state.enteredFacts &&
+      this.state.enteredFacts.hasOwnProperty(fact)
+    ) {
+      return this.state.enteredFacts[fact];
     }
     const resultPromise = new Promise((resolve, reject) => {
       const handleAskFactResult = (result, possibleCreatingActions) => {
@@ -184,11 +189,11 @@ class ActorView extends Component {
 
           const newEnteredFacts = state.enteredFacts || [];
 
-          newEnteredFacts[fact] = realResult
+          newEnteredFacts[fact] = realResult;
 
           return {
             factPrompts: newFactPrompts,
-            enteredFacts: newEnteredFacts
+            enteredFacts: newEnteredFacts,
           };
         });
 
