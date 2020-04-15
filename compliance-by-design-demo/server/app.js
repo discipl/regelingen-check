@@ -27,7 +27,7 @@ if (api_key_name) {
         api_key = fs.readFileSync('/run/secrets/' + api_key_name, 'utf8');
         console.log('API key succesfully loaded');
     } catch(e) {
-        console.err('API key not found');
+        console.error('API key not found');
     }
 }
 
@@ -37,7 +37,7 @@ async function fetchApi (endpoint, api_key) {
         headers = {"apikey": api_key}
     }
     return fetch("https://" + endpoint, {headers: headers})
-        .catch(err => { console.log('caught', err.message); return {"error": 1} })
+        .catch(err => { console.error('caught', err.message); return {"error": 1} })
         .then(data => data.json())
 }
 
@@ -45,7 +45,15 @@ function productionCheck(req, res, next) {
     if (process.env.NODE_ENV='production') {
         next()
     } else {
-        res.status(404)
+        res.sendStatus(404)
+    }
+}
+
+function numberCheck(req, res, next) {
+    if (Number.isInteger(req.params.kvknr)) {
+        next()
+    } else {
+        res.sendStatus(400)
     }
 }
 
@@ -54,11 +62,9 @@ app.disable('x-powered-by');
 app.use('/', productionCheck, express.static(__dirname + '/../build'))
 
 app.get('/api/companies/:kvknr', async (req, res) => {
-    // TODO: req.params.kvknr validation
     const kvknr = req.params.kvknr
     const cacheval = await redis_kvk_cache.get(kvknr)
     if (cacheval) {
-        console.log('Cache hit: ' + kvknr);
         res.json(JSON.parse(cacheval))
     } else {
         console.log('Cache miss: ' + kvknr);
