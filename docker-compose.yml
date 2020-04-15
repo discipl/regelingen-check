@@ -1,0 +1,35 @@
+version: "3.7"
+services:
+  redis-kvk-cache:
+    image: redis:5.0.8
+    container_name: redis-kvk-cache
+    ports:
+      - 6379:6379
+
+  web-server:
+    depends_on:
+      - redis-kvk-cache
+    build:
+      context: .
+      dockerfile: Dockerfile
+    env_file:
+      - prod.env
+    ports:
+      - 3001:3001
+    secrets:
+      - kvk_prod_key
+    stdin_open: true
+    labels:
+      - "traefik.http.routers.regelingen-check.rule=Host(`$HOST`)"
+      - "traefik.http.routers.regelingen-check.tls=true"
+      - "traefik.http.routers.regelingen-check.tls.certresolver=myresolver"
+      - "traefik.http.services.web-server-regelingencheck.loadbalancer.server.port=3001"
+
+secrets:
+  kvk_prod_key:
+    file: /secrets/kvk_prod_key.txt
+
+networks:
+  default:
+    external:
+      name: proxy
