@@ -2,12 +2,12 @@ const fetch = require("node-fetch")
 
 const express = require('express')
 const app = express()
-const port = 3001
+const port = process.env.API_PORT || 3001
 
 const redis = require("async-redis");
 const redis_kvk_cache = redis.createClient(
-    process.env.REDIS_KVK_CACHE_PORT,
-    process.env.REDIS_KVK_CACHE_HOST
+    process.env.REDIS_KVK_CACHE_PORT || 6379,
+    process.env.REDIS_KVK_CACHE_HOST || "localhost"
 );
 
 redis_kvk_cache.on('connect', function() {
@@ -17,8 +17,9 @@ redis_kvk_cache.on("error", function(error) {
     console.error(error);
 });
 
-const url = "api.kvk.nl"
-const endpoint = "/api/v2/testprofile/companies"
+const url = process.env.KVK_API_URL || "api.kvk.nl"
+const endpoint = process.env.KVK_API_ENDPOINT || "/api/v2/testprofile/companies"
+const api_key_name = process.env.KVK_API_KEY
 
 async function fetchApi (endpoint) {
     return fetch("https://" + endpoint)
