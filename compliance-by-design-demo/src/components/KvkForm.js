@@ -100,7 +100,9 @@ class KvkForm extends Component {
     };
   }
 
-  returnDerivedFacts() {
+  returnDerivedFacts(event) {
+    event.preventDefault();
+
     if (this.props.handleDerivedFacts) {
       this.props.handleDerivedFacts(this.state.derivedFacts);
     }
@@ -129,6 +131,41 @@ class KvkForm extends Component {
                 ).bind(this)}
               ></DateControl>
             </Form.Group>
+
+            <Form.Group controlId="datumInschrijving">
+              <Form.Label>
+                Uw bedrijf is ingeschreven bij de Kamer van Koophandel op
+              </Form.Label>
+              <DateControl
+                value={
+                  this.state.derivedFacts[
+                    "[datum van inschrijving van onderneming in het KVK Handelsregister]"
+                  ]
+                }
+                onChange={this.handleFactUpdate(
+                  "[datum van inschrijving van onderneming in het KVK Handelsregister]"
+                ).bind(this)}
+              ></DateControl>
+            </Form.Group>
+
+            <Form.Group controlId="aantalWerknemers">
+              <Form.Label>
+                Op 15 maart 2020 waren het volgende aantal mensen werkzaam bij
+                uw onderneming
+              </Form.Label>
+              <Form.Control
+                type="number"
+                value={
+                  this.state.derivedFacts[
+                    "[aantal personen dat werkt bij onderneming blijkend uit de inschrijving in het handelsregister op 15 maart 2020]"
+                  ]
+                }
+                onChange={this.handleFactUpdate(
+                  "[aantal personen dat werkt bij onderneming blijkend uit de inschrijving in het handelsregister op 15 maart 2020]"
+                ).bind(this)}
+              ></Form.Control>
+            </Form.Group>
+
             <Button variant="primary" type="sumbit">
               Deze gegevens zijn correct
             </Button>
