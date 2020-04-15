@@ -21,9 +21,9 @@ const url = "api.kvk.nl"
 const endpoint = "/api/v2/testprofile/companies"
 
 async function fetchApi (endpoint) {
-    return await fetch("https://" + endpoint)
-        .catch(err => { console.log('caught', err.message); return {"error":"error"} })
-    .then(r => r.json())
+    return fetch("https://" + endpoint)
+        .catch(err => { console.log('caught', err.message); return {"error": 1} })
+        .then(data => data.json())
 }
 
 app.get('/api/companies/:kvknr', async (req, res) => {
@@ -36,8 +36,6 @@ app.get('/api/companies/:kvknr', async (req, res) => {
     } else {
         console.log('Cache miss: ' + kvknr);
         const data = await fetchApi(url + endpoint + "?kvkNumber=" + kvknr)
-            .catch(err => { console.log('caught', err.message); return {"error":"error"} })
-            .then(data => data);
         await redis_kvk_cache.set(kvknr, JSON.stringify(data))
         res.json(data)
     }
