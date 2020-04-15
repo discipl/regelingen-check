@@ -11,9 +11,8 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.dev
-      args:
-        - proxy=web-server:3001
     environment:
+      - HTTP_PROXY=localhost:3001
       - REDIS_KVK_CACHE_HOST=redis-kvk-cache
       - REDIS_KVK_CACHE_PORT=6379
     ports:
