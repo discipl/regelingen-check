@@ -1,0 +1,8 @@
+.jumbo-header {
+  background-color: rgb(119, 0, 119);
+  border-radius: 0;
+}
+
+.jumbo-header h1 {
+  color: white;
+}
