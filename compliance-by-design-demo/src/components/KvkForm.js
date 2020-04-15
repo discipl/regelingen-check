@@ -11,7 +11,7 @@ class KvkForm extends Component {
 
   async query() {
     const result = await fetch(
-      "/api/v2/testprofile/companies?kvkNumber=" + this.state.kvkNumber
+      "/api/companies/" + this.state.kvkNumber
     );
     const data = await result.json();
     console.log(data);

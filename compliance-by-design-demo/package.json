@@ -15,7 +15,7 @@
     "read-excel-file": "^4.0.1"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "concurrently --names 'SERVER,CLIENT' --prefix-colors 'yellow,blue' --kill-others 'node server/app.js' 'react-scripts start'",
     "build": "react-scripts build",
     "prepack": "./scripts/build-non-split.js",
     "test": "react-scripts test",
@@ -47,6 +47,7 @@
     ]
   },
   "devDependencies": {
+    "concurrently": "^5.1.0",
     "cypress": "^3.4.1",
     "eslint": "^6.8.0",
     "eslint-config-prettier": "^6.10.1",
