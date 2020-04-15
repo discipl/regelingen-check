@@ -12,7 +12,8 @@ class KvkForm extends Component {
     };
   }
 
-  async query() {
+  async query(event) {
+    event.preventDefault();
     const result = await fetch(
       "/api/v2/testprofile/companies?kvkNumber=" + this.state.kvkNumber
     );
