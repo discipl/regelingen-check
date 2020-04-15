@@ -8,6 +8,7 @@
   "dependencies": {
     "@discipl/core-ephemeral": "^0.11.0",
     "@discipl/law-reg": "^0.5.4",
+    "async-redis": "^1.1.7",
     "express": "^4.17.1",
     "loglevel": "^1.6.3",
     "node-fetch": "^2.6.0",

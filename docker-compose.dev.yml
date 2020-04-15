@@ -1,0 +1,23 @@
+version: "3"
+services:
+  redis-kvk-cache:
+    image: redis:latest
+    ports:
+      - 6379:6379
+
+  web-server:
+    depends_on:
+      - redis-kvk-cache
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+      args:
+        - proxy=web-server:3001
+    environment:
+      - REDIS_KVK_CACHE_HOST=redis-kvk-cache
+      - REDIS_KVK_CACHE_PORT=6379
+    ports:
+      - 3000:3000
+      - 3001:3001
+    stdin_open: true
+
