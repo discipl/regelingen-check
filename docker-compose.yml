@@ -3,10 +3,16 @@ services:
   redis-kvk-cache:
     image: redis:5.0.8
     container_name: redis-kvk-cache
+    volumes:
+      - ./config/redis.conf:/redis.conf
+    command: [ "redis-server", "/redis.conf" ]
 
   redis-rate-limit:
     image: redis:5.0.8
     container_name: redis-rate-limit
+    volumes:
+      - ./config/redis.conf:/redis.conf
+    command: [ "redis-server", "/redis.conf" ]
 
   api-server:
     depends_on:
