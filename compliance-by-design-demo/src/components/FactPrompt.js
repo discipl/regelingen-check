@@ -19,12 +19,20 @@ class FactPrompt extends Component {
   }
 
   static defaultProps = {
-    affirmPropt: "Ja",
+    affirmPrompt: "Ja",
+    affirmVariant: "primary",
+    notAffirmedVariant: "outline-primary",
+    denyVariant: "secondary",
+    notDeniedVariant: "outline-secondary",
     denyPrompt: "Nee",
   };
 
   static propTypes = {
+    affirmVariant: PropTypes.string,
+    notAffirmedVariant: PropTypes.string,
     affirmPrompt: PropTypes.string,
+    denyVariant: PropTypes.string,
+    notDeniedVariant: PropTypes.string,
     denyPrompt: PropTypes.string,
     fact: PropTypes.string,
     factValue: PropTypes.any,
@@ -70,6 +78,24 @@ class FactPrompt extends Component {
 
   hideFalse() {
     return this.state.final && this.state.factValue !== false;
+  }
+
+  affirmVariant() {
+    if (!this.state.final) {
+      return this.props.affirmVariant;
+    }
+    return this.state.final && this.state.factValue !== true
+      ? this.props.notAffirmedVariant
+      : this.props.affirmVariant;
+  }
+
+  denyVariant() {
+    if (!this.state.final) {
+      return this.props.denyVariant;
+    }
+    return this.state.final && this.state.factValue !== false
+      ? this.props.notDeniedVariant
+      : this.props.denyVariant;
   }
 
   renderOptions() {
@@ -137,17 +163,13 @@ class FactPrompt extends Component {
         <h3>{this.formatFact()}</h3>
         <Form.Group>{this.renderInput()}</Form.Group>
         <Button
-          variant="primary"
-          hidden={this.hideTrue()}
-          disabled={this.state.final}
+          variant={this.affirmVariant()}
           onClick={this.handleAffirm.bind(this)}
         >
-          {this.props.affirmPropt}
+          {this.props.affirmPrompt}
         </Button>{" "}
         <Button
-          variant="secondary"
-          hidden={this.hideFalse()}
-          disabled={this.state.factValue || this.state.final}
+          variant={this.denyVariant()}
           onClick={this.handleDeny.bind(this)}
         >
           {this.props.denyPrompt}
