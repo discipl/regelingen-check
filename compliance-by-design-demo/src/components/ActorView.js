@@ -1,21 +1,18 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 
 import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
 
 import "./ActorView.css";
 import FactPrompt from "./FactPrompt";
+import ActButton from "./ActButton";
 import { ActNotAllowedAlert } from "./ActNotAllowedAlert";
 
-const SUBSIDY_TITLES = {
-  "<<indienen aanvraag tegemoetkoming in de schade geleden door de maatregelen ter bestrijding van de verdere verspreiding van COVID-19>>":
-    "Tegemoedkoming geleden schade ten gevolge van de Coronamaatregelen",
-  "<<indienen verzoek om aanvullende uitkering voor levensonderhoud op grond van de Tozo>>":
-    "Aanvullende uitkering voor levensonderhoud op grond van de Tozo",
-  "<<indienen verzoek om lening voor bedrijfskapitaal op grond van de Tozo>>":
-    "Lening voor bedrijfskapitaal op grond van de Tozo",
-};
-
+/**
+ * ActView Component
+ * @augments {Component<Props, State>}
+ */
 class ActorView extends Component {
   constructor(props) {
     super(props);
@@ -27,6 +24,18 @@ class ActorView extends Component {
       enteredFacts: {},
     };
   }
+
+  static propTypes = {
+    actors: PropTypes.object,
+    acts: PropTypes.array,
+    caseLink: PropTypes.string,
+    derivedFacts: PropTypes.object,
+    lawReg: PropTypes.any,
+    name: PropTypes.string,
+    onCaseChange: PropTypes.func,
+    onEndAct: PropTypes.func,
+    onStartAct: PropTypes.func,
+  };
 
   async componentDidMount() {
     await this.computeRenderData([], []);
@@ -182,7 +191,7 @@ class ActorView extends Component {
     ) {
       return this.state.enteredFacts[fact];
     }
-    const resultPromise = new Promise((resolve, reject) => {
+    const resultPromise = new Promise((resolve) => {
       const handleAskFactResult = (result, possibleCreatingActions) => {
         let realResult = result || false;
         if (typeof result === "boolean") {
@@ -247,8 +256,9 @@ class ActorView extends Component {
     return acts.map((act, index) => {
       console.log("ActionDetails available", act.details);
       return (
-        <div key={act.act} className="available">
-          <Button
+        <div key={act.act}>
+          <ActButton
+            act={act.act}
             variant="primary"
             disabled={!this.state.activeAct}
             onClick={this.takeAction.bind(
@@ -257,9 +267,7 @@ class ActorView extends Component {
               index,
               "availableActs"
             )}
-          >
-            {SUBSIDY_TITLES[act.act]}
-          </Button>
+          ></ActButton>
           {this.renderFactPrompts(act, index, "availableActs")}
         </div>
       );
@@ -312,10 +320,8 @@ class ActorView extends Component {
 
     return impossibleActs.map((act) => {
       return (
-        <div key={act.act} className="impossible">
-          <button className="actButton" disabled>
-            {act.act}
-          </button>
+        <div key={act.act}>
+          <ActButton act={act.act} disabled></ActButton>
         </div>
       );
     });
@@ -330,9 +336,9 @@ class ActorView extends Component {
     return acts.map((act, index) => {
       console.log("ActionDetails potential", act.details);
       return (
-        <div key={act.act} className="potential">
-          <button
-            className="actButton"
+        <div key={act.act}>
+          <ActButton
+            act={act.act}
             disabled={this.state.activeAct}
             onClick={this.takeAction.bind(
               this,
@@ -340,9 +346,7 @@ class ActorView extends Component {
               index,
               "potentialActs"
             )}
-          >
-            {act.act}
-          </button>
+          ></ActButton>
           {this.renderFactPrompts(act, index, "potentialActs")}
         </div>
       );
@@ -370,10 +374,6 @@ class ActorView extends Component {
     console.log("Props when actorview rendering", this.props);
     return (
       <Container>
-        <ActNotAllowedAlert
-          act={this.state.notAllowedAct}
-          handleClose={this.hideNotAllowedAlert.bind(this)}
-        ></ActNotAllowedAlert>
         <h2>Kies een subsidieregeling</h2>
         <p>
           Aan de hand van uw KvK gegevens komt u mogelijk in aanmerking voor de
