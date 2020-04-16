@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./ActorView.css";
 import FactPrompt from "./FactPrompt";
 import { ActNotAllowedAlert } from "./ActNotAllowedAlert";
+import FactsView from "./FactsView";
 
 class ActorView extends Component {
   constructor(props) {
@@ -363,6 +364,9 @@ class ActorView extends Component {
           {this.renderAvailableActs()}
           {this.renderPotentialActs()}
           {this.renderImpossibleActs()}
+        </div>
+        <div className="facts">
+          <FactsView facts={this.state.enteredFacts}></FactsView>
         </div>
       </div>
     );
