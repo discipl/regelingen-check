@@ -96,6 +96,7 @@ class ModelView extends Component {
     this.setState({
       ...this.state,
       actors: actors,
+      acts: model.acts,
       caseLink: this.needLink,
       loading: false,
     });
@@ -116,6 +117,7 @@ class ModelView extends Component {
       result.push(
         <ActorView
           actors={this.state.actors}
+          acts={this.state.acts}
           caseLink={this.state.caseLink}
           colorCode={color}
           derivedFacts={this.state.derivedFacts}
