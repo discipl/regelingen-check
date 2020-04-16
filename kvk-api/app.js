@@ -50,7 +50,7 @@ function productionCheck(req, res, next) {
 }
 
 function numberCheck(req, res, next) {
-    if (Number.isInteger(req.params.kvknr)) {
+    if (/^\d{8}$/.test(req.params.kvknr)) {
         next()
     } else {
         res.sendStatus(400)
@@ -59,9 +59,9 @@ function numberCheck(req, res, next) {
 
 app.disable('x-powered-by');
 
-app.use('/', productionCheck, express.static(__dirname + '/../build'))
+app.use('/', productionCheck, express.static('public'))
 
-app.get('/api/companies/:kvknr', async (req, res) => {
+app.get('/api/companies/:kvknr', numberCheck, async (req, res) => {
     const kvknr = req.params.kvknr
     const cacheval = await redis_kvk_cache.get(kvknr)
     if (cacheval) {

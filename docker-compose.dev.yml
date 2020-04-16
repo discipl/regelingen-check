@@ -6,16 +6,25 @@ services:
     ports:
       - 6379:6379
 
-  web-server:
-    depends_on:
-      - redis-kvk-cache
+  react-dev-server:
     build:
-      context: .
+      context: compliance-by-design-demo
       dockerfile: Dockerfile.dev
     env_file:
       - dev.env
     ports:
       - 3000:3000
+    stdin_open: true
+
+  api-server:
+    depends_on:
+      - redis-kvk-cache
+    build:
+      context: kvk-api
+      dockerfile: Dockerfile.dev
+    env_file:
+      - dev.env
+    ports:
       - 3001:3001
     stdin_open: true
 

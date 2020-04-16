@@ -8,10 +8,7 @@
   "dependencies": {
     "@discipl/core-ephemeral": "^0.11.0",
     "@discipl/law-reg": "^0.5.4",
-    "async-redis": "^1.1.7",
-    "express": "^4.17.1",
     "loglevel": "^1.6.3",
-    "node-fetch": "^2.6.0",
     "papaparse": "^5.0.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
@@ -20,12 +17,11 @@
     "read-excel-file": "^4.0.1"
   },
   "scripts": {
-    "start": "concurrently --names 'SERVER,CLIENT' --prefix-colors 'yellow,blue' --kill-others 'node server/app.js' 'react-scripts start'",
+    "start": "react-scripts start",
     "build": "react-scripts build",
     "prepack": "./scripts/build-non-split.js",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "server": "node server/app.js"
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": [
@@ -52,12 +48,11 @@
     ]
   },
   "devDependencies": {
-    "concurrently": "^5.1.0",
     "cypress": "^3.4.1",
     "eslint": "^6.8.0",
     "eslint-config-prettier": "^6.10.1",
     "prettier": "^2.0.4",
     "rewire": "^4.0.1"
   },
-  "proxy": "http://localhost:3001"
+  "proxy": "http://api-server:3001"
 }

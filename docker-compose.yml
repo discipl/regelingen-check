@@ -6,7 +6,7 @@ services:
     ports:
       - 6379:6379
 
-  web-server:
+  api-server:
     depends_on:
       - redis-kvk-cache
     build:

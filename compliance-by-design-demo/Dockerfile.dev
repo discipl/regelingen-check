@@ -2,10 +2,10 @@ FROM node:latest
 
 RUN mkdir -p /app/node_modules && chown -R node:node /app
 WORKDIR /app
-COPY compliance-by-design-demo/package*.json ./
+COPY package*.json ./
 USER node
 RUN npm install
-COPY --chown=node:node compliance-by-design-demo/ ./
+COPY --chown=node:node . ./
 
-EXPOSE 3000 3001
+EXPOSE 3000
 CMD [ "npm", "start" ]
