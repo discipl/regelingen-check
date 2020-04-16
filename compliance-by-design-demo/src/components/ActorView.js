@@ -1,7 +1,20 @@
 import React, { Component } from "react";
+
+import Container from "react-bootstrap/Container";
+import Button from "react-bootstrap/Button";
+
 import "./ActorView.css";
 import FactPrompt from "./FactPrompt";
 import { ActNotAllowedAlert } from "./ActNotAllowedAlert";
+
+const SUBSIDY_TITLES = {
+  "<<indienen aanvraag tegemoetkoming in de schade geleden door de maatregelen ter bestrijding van de verdere verspreiding van COVID-19>>":
+    "Tegemoedkoming geleden schade ten gevolge van de Coronamaatregelen",
+  "<<indienen verzoek om aanvullende uitkering voor levensonderhoud op grond van de Tozo>>":
+    "Aanvullende uitkering voor levensonderhoud op grond van de Tozo",
+  "<<indienen verzoek om lening voor bedrijfskapitaal op grond van de Tozo>>":
+    "Lening voor bedrijfskapitaal op grond van de Tozo",
+};
 
 class ActorView extends Component {
   constructor(props) {
@@ -235,8 +248,8 @@ class ActorView extends Component {
       console.log("ActionDetails available", act.details);
       return (
         <div key={act.act} className="available">
-          <button
-            className="actButton"
+          <Button
+            variant="primary"
             disabled={!this.state.activeAct}
             onClick={this.takeAction.bind(
               this,
@@ -245,8 +258,8 @@ class ActorView extends Component {
               "availableActs"
             )}
           >
-            {act.act}
-          </button>
+            {SUBSIDY_TITLES[act.act]}
+          </Button>
           {this.renderFactPrompts(act, index, "availableActs")}
         </div>
       );
@@ -348,26 +361,32 @@ class ActorView extends Component {
     if (this.state.loading === true) {
       console.log("ActorView render loading true");
       return (
-        <div className="container">
-          <div className="acts">
-            <p>Loading...</p>
-          </div>
-        </div>
+        <Container>
+          <h2>Gegevens aan het verwerken</h2>
+          <p>Een moment geduld alstublieft&hellip;</p>
+        </Container>
       );
     }
     console.log("Props when actorview rendering", this.props);
     return (
-      <div className="container">
+      <Container>
         <ActNotAllowedAlert
           act={this.state.notAllowedAct}
           handleClose={this.hideNotAllowedAlert.bind(this)}
         ></ActNotAllowedAlert>
-        <div className="acts">
-          {this.renderAvailableActs()}
-          {this.renderPotentialActs()}
-          {this.renderImpossibleActs()}
-        </div>
-      </div>
+        <h2>Kies een subsidieregeling</h2>
+        <p>
+          Aan de hand van uw KvK gegevens komt u mogelijk in aanmerking voor de
+          volgende subsidieregelingen.
+        </p>
+        <p>
+          Om te bepalen of u daadwerkelijk gebruik kan maken van de
+          verschillende regelingen, moet u een aantal vragen beantwoorden.
+        </p>
+        {this.renderAvailableActs()}
+        {this.renderPotentialActs()}
+        {this.renderImpossibleActs()}
+      </Container>
     );
   }
 }
