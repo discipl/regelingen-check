@@ -51,14 +51,6 @@ async function fetchApi(endpoint, api_key) {
     .then(data => data.json())
 }
 
-function productionCheck(req, res, next) {
-  if (process.env.NODE_ENV = 'production') {
-    next()
-  } else {
-    res.sendStatus(404)
-  }
-}
-
 function numberCheck(req, res, next) {
   if (/^\d{8}$/.test(req.params.kvknr)) {
     next()
@@ -79,7 +71,7 @@ async function redisFetch(req, res, next) {
 
 app.disable('x-powered-by');
 
-app.use('/', productionCheck, express.static('public'))
+app.use('/', express.static('public'))
 
 app.get('/api/companies/:kvknr', numberCheck, apiRateLimiter, redisFetch, async (req, res) => {
   const kvknr = req.params.kvknr
