@@ -153,7 +153,7 @@ class KvkForm extends Component {
             <h2>Controleer uw gegevens</h2>
             <p>
               We hebben de volgende gegevens voor uw bedrijf opgehaald.
-              Controlleer ze goed en pas aan wat niet klopt.
+              Controleer ze goed en pas aan wat niet klopt.
             </p>
             <Form.Group controlId="datumOprichting">
               <Form.Label>Uw bedrijf is opgericht op</Form.Label>
