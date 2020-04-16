@@ -3,19 +3,20 @@ services:
   redis-kvk-cache:
     image: redis:5.0.8
     container_name: redis-kvk-cache
-    ports:
-      - 6379:6379
+
+  redis-rate-limit:
+    image: redis:5.0.8
+    container_name: redis-rate-limit
 
   api-server:
     depends_on:
       - redis-kvk-cache
+      - redis-rate-limit
     build:
       context: .
       dockerfile: Dockerfile
     env_file:
       - prod.env
-    ports:
-      - 3001:3001
     secrets:
       - kvk_prod_key
     stdin_open: true
