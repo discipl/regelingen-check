@@ -155,9 +155,7 @@ class ModelView extends Component {
         <KvkForm handleDerivedFacts={this.handleDerivedFacts.bind(this)} />
       );
     } else {
-      children.push(
-        <div className="grid-container">{this.renderActorViews()}</div>
-      );
+      children.push(this.renderActorViews());
     }
 
     return children;
