@@ -1,17 +1,20 @@
 FROM node:latest
 
-RUN mkdir -p /app/node_modules && chown -R node:node /app
-
-WORKDIR /app
-
+WORKDIR /build
 COPY compliance-by-design-demo/package*.json ./
+RUN npm install --production
+COPY compliance-by-design-demo/ ./
+RUN npm run build && \
+  mkdir -p /app/public && \
+  cp -r build/* /app/public && \
+  chown -R node:node /app && \
+  rm -rf /build
 
 USER node
+WORKDIR /app
+COPY kvk-api/package*.json ./
+RUN npm install --production
+COPY --chown=node:node kvk-api/ ./
 
-RUN npm install
-
-COPY --chown=node:node compliance-by-design-demo/ ./
-
-EXPOSE 3000
-
-CMD [ "npm", "start" ]
+EXPOSE 3001
+CMD [ "node", "app.js" ]

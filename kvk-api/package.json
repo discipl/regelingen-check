@@ -1,0 +1,15 @@
+{
+  "name": "kvk-api",
+  "version": "0.1.0",
+  "description": "KvK API Middleware",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "async-redis": "^1.1.7",
+    "express": "^4.17.1",
+    "moment": "^2.24.0",
+    "node-fetch": "^2.6.0"
+  }
+}
