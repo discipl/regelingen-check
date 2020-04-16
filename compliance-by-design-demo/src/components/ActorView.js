@@ -2,11 +2,12 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 
 import Container from "react-bootstrap/Container";
-import Button from "react-bootstrap/Button";
 
 import "./ActorView.css";
+
 import FactPrompt from "./FactPrompt";
-import ActButton from "./ActButton";
+import ActButton, { STATUS_ICONS } from "./ActButton";
+import ActView from "./ActView";
 import { ActNotAllowedAlert } from "./ActNotAllowedAlert";
 
 /**
@@ -22,6 +23,7 @@ class ActorView extends Component {
       loading: true,
       name: this.props.name,
       enteredFacts: {},
+      impossibleActs: [],
     };
   }
 
@@ -85,15 +87,17 @@ class ActorView extends Component {
         factResolver
       );
 
-      console.log("Got available act links");
+      const getActDetails = async (act) => {
+        const details = await this.props.lawReg.getActDetails(
+          act.link,
+          this.props.actors[this.state.name]
+        );
+        return { ...act, details: details };
+      };
+
+      console.log("Got available act links", availableActLinks);
       let availableActs = await Promise.all(
-        availableActLinks.map(async (act) => {
-          const details = await this.props.lawReg.getActDetails(
-            act.link,
-            this.props.actors[this.state.name]
-          );
-          return { ...act, details: details };
-        })
+        availableActLinks.map(getActDetails)
       );
       console.log("Computed available acts", availableActs);
       console.log("Computing potential acts");
@@ -104,14 +108,9 @@ class ActorView extends Component {
             this.props.actors[this.state.name],
             factResolver
           )
-        ).map(async (act) => {
-          const details = await this.props.lawReg.getActDetails(
-            act.link,
-            this.props.actors[this.state.name]
-          );
-          return { ...act, details: details };
-        })
+        ).map(getActDetails)
       );
+      console.log("Computed potential acts", potentialActs);
 
       this.setState({
         availableActs: availableActs,
@@ -137,12 +136,15 @@ class ActorView extends Component {
       if (this.props.onStartAct) {
         this.props.onStartAct();
       }
+      console.log("Getting case link");
       let caseLink = await this.props.lawReg.take(
         this.props.actors[this.state.name],
         this.props.caseLink,
         act,
         this.askFact.bind(this)
       );
+      console.log("Got case link", caseLink);
+
       this.setState({
         factPrompts: [],
         activeAct: undefined,
@@ -151,6 +153,7 @@ class ActorView extends Component {
         this.props.onCaseChange(caseLink);
       }
     } catch (e) {
+      console.log("Error from lawReg", e);
       if (e.message.includes("is not allowed")) {
         const act = e.message.substring(
           e.message.indexOf("<<"),
@@ -178,6 +181,7 @@ class ActorView extends Component {
     _listIndices,
     possibleCreatingActions
   ) {
+    console.log("in askFact");
     if (
       this.props.derivedFacts &&
       this.props.derivedFacts.hasOwnProperty(fact)
@@ -192,6 +196,7 @@ class ActorView extends Component {
       return this.state.enteredFacts[fact];
     }
     const resultPromise = new Promise((resolve) => {
+      console.log("In resultPromise");
       const handleAskFactResult = (result, possibleCreatingActions) => {
         let realResult = result || false;
         if (typeof result === "boolean") {
@@ -223,6 +228,7 @@ class ActorView extends Component {
       };
 
       this.setState((state) => {
+        /** @type {Array} */
         const prevFactPrompts = state.factPrompts || [];
         const newFactPrompts = prevFactPrompts.concat({
           fact: fact,
@@ -256,10 +262,10 @@ class ActorView extends Component {
     return acts.map((act, index) => {
       console.log("ActionDetails available", act.details);
       return (
-        <div key={act.act}>
+        <div className="text-center mb-4" key={act.act}>
           <ActButton
             act={act.act}
-            variant="primary"
+            status="available"
             disabled={!this.state.activeAct}
             onClick={this.takeAction.bind(
               this,
@@ -268,7 +274,6 @@ class ActorView extends Component {
               "availableActs"
             )}
           ></ActButton>
-          {this.renderFactPrompts(act, index, "availableActs")}
         </div>
       );
     });
@@ -276,14 +281,13 @@ class ActorView extends Component {
 
   renderFactPrompts(act, actIndex, actType) {
     console.log(
-      "Maybe rendering factPrompt",
+      "Maybe rendering factPrompts",
       act,
       actIndex,
       actType,
       "with active Act",
       this.state.activeAct
     );
-    let factIndex = 1;
 
     if (
       this.state.activeAct &&
@@ -291,11 +295,14 @@ class ActorView extends Component {
       this.state.activeAct.type === actType &&
       this.state.factPrompts
     ) {
-      console.log("Really rendering factPrompts", this.state.factPrompts);
-      return this.state.factPrompts.map((factPromptState) => {
+      console.log(
+        `Really rendering ${this.state.factPrompts.length} factPrompts`,
+        this.state.factPrompts
+      );
+      return this.state.factPrompts.map((factPromptState, idx) => {
         return (
           <FactPrompt
-            factIndex={factIndex++}
+            factIndex={idx + 1}
             key={factPromptState.fact}
             handleResult={factPromptState.resultCallback}
             final={factPromptState.final}
@@ -320,8 +327,8 @@ class ActorView extends Component {
 
     return impossibleActs.map((act) => {
       return (
-        <div key={act.act}>
-          <ActButton act={act.act} disabled></ActButton>
+        <div className="text-center mb-4" key={act.act}>
+          <ActButton status="impossible" act={act.act} disabled></ActButton>
         </div>
       );
     });
@@ -336,10 +343,10 @@ class ActorView extends Component {
     return acts.map((act, index) => {
       console.log("ActionDetails potential", act.details);
       return (
-        <div key={act.act}>
+        <div className="text-center mb-4" key={act.act}>
           <ActButton
             act={act.act}
-            disabled={this.state.activeAct}
+            disabled={this.state.actiDGAveAct}
             onClick={this.takeAction.bind(
               this,
               act.act,
@@ -372,6 +379,17 @@ class ActorView extends Component {
       );
     }
     console.log("Props when actorview rendering", this.props);
+
+    if (this.state.activeAct) {
+      return (
+        <ActView
+          act={this.state.activeAct}
+          factPrompts={this.state.factPrompts}
+          previousActs={this.state.previousActs}
+        ></ActView>
+      );
+    }
+
     return (
       <Container>
         <h2>Kies een subsidieregeling</h2>
@@ -383,9 +401,26 @@ class ActorView extends Component {
           Om te bepalen of u daadwerkelijk gebruik kan maken van de
           verschillende regelingen, moet u een aantal vragen beantwoorden.
         </p>
-        {this.renderAvailableActs()}
-        {this.renderPotentialActs()}
-        {this.renderImpossibleActs()}
+
+        <div className="mt-5 mb-5">
+          {this.renderAvailableActs()}
+          {this.renderPotentialActs()}
+          {this.renderImpossibleActs()}
+        </div>
+
+        <h4>Legenda</h4>
+        <p className="text-primary">
+          {STATUS_ICONS.potential} Nog onvoldoende gegevens om te bepalen of u
+          voor deze regeling in aanmerking komt.
+        </p>
+        <p className="text-success">
+          {STATUS_ICONS.available} Op basis van de ingevoerde gegevens komt u
+          voor deze regeling in aanmerking.
+        </p>
+        <p className="text-danger">
+          {STATUS_ICONS.impossible} Op basis van de ingevoerde gegevens komt u{" "}
+          <strong>niet</strong> voor deze regeling in aanmerking.
+        </p>
       </Container>
     );
   }
