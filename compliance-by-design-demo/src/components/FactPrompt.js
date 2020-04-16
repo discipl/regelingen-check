@@ -1,9 +1,14 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 import "./FactPrompt.css";
 
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 
+/**
+ * FactPrompt Component
+ * @augments {Component<Props, State>}
+ */
 class FactPrompt extends Component {
   constructor(props) {
     super(props);
@@ -12,6 +17,24 @@ class FactPrompt extends Component {
       final: props.final || false,
     };
   }
+
+  static defaultProps = {
+    affirmPropt: "Ja",
+    denyPrompt: "Nee",
+  };
+
+  static propTypes = {
+    affirmPrompt: PropTypes.string,
+    denyPrompt: PropTypes.string,
+    fact: PropTypes.string,
+    factValue: PropTypes.any,
+    final: PropTypes.bool,
+    factIndex: PropTypes.number,
+    title: PropTypes.string,
+    handleResult: PropTypes.func,
+    possibleCreatingActions: PropTypes.array,
+    previousActs: PropTypes.array,
+  };
 
   handleAffirm() {
     const result = this.state.factValue || true;
@@ -105,13 +128,13 @@ class FactPrompt extends Component {
       const fact = this.props.fact.replace(/^\[/, "").replace(/\]$/, "");
       title = `${fact.substr(0, 1).toLocaleUpperCase()}${fact.substr(1)}`;
     }
-    return `${this.props.factIndex}. ${title}`;
+    return `${this.props.factIndex || 0}. ${title}`;
   }
 
   render() {
     return (
       <Form className="factPromptForm text-center">
-        <h2>{this.formatFact()}</h2>
+        <h3>{this.formatFact()}</h3>
         <Form.Group>{this.renderInput()}</Form.Group>
         <Button
           variant="primary"
@@ -119,7 +142,7 @@ class FactPrompt extends Component {
           disabled={this.state.final}
           onClick={this.handleAffirm.bind(this)}
         >
-          Ja
+          {this.props.affirmPropt}
         </Button>{" "}
         <Button
           variant="secondary"
@@ -127,7 +150,7 @@ class FactPrompt extends Component {
           disabled={this.state.factValue || this.state.final}
           onClick={this.handleDeny.bind(this)}
         >
-          Nee
+          {this.props.denyPrompt}
         </Button>
       </Form>
     );
