@@ -20,6 +20,44 @@
             "expression": "NOT",
             "operand": "[onderneming is een overheidsbedrijf]"
           },
+          "[in Nederland gevestigde onderneming als bedoeld in artikel 5 van de Handelsregisterwet 2007]",
+          "[onderneming die op 15 maart 2020 in het handelsregister stond ingeschreven die op 15 maart 2020 in het handelsregister stond ingeschreven onder een hoofdactiviteit die in bijlage 1 is opgenomen, met de daarbij behorende code van de Standaard Bedrijfsindeling]",
+          "[onderneming waar ten hoogste 250 personen werkzaam zijn, blijkend uit de inschrijving in het handelsregister op 15 maart 2020]",
+          {
+            "expression": "OR",
+            "operands": [
+              {
+                "expression": "AND",
+                "operands": [
+                  "[gedupeerde onderneming is een horecaonderneming]",
+                  {
+                    "expression": "OR",
+                    "operands": [
+                      "[gedupeerde onderneming huurt ten minste één horecagelegenheid]",
+                      "[gedupeerde onderneming pacht ten minste één horecagelegenheid]",
+                      "[gedupeerde onderneming heeft ten minste één horecagelegenheid in eigendom]"
+                    ]
+                  }
+                ]
+              },
+              {
+                "expression": "AND",
+                "operands": [
+                  {
+                    "expression": "NOT",
+                    "operand": "[gedupeerde onderneming is een horecaonderneming]"
+                  },
+                  {
+                    "expression": "OR",
+                    "operands": [
+                      "[gedupeerde onderneming heeft ten minste één vestiging met een ander adres dan het privéadres van de eigenaar van de onderneming]",
+                      "[gedupeerde onderneming heeft ten minste één vestiging met een ander adres dan het privéadres van de eigenaren van de onderneming]"
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
           "[tegemoetkoming kan worden verstrekt op grond van de algemene de-minimisverordening]",
           "[gedupeerde onderneming verwacht in de periode van 16 maart 2020 tot en met 15 juni 2020 ten minste € 4000,- aan omzetverlies te lijden als gevolg van de maatregelen ter bestrijding van de verdere verspreiding van COVID-19]",
           "[gedupeerde onderneming verwacht ten minste € 4.000,- aan vaste lasten te hebben, ook na gebruik van andere door de overheid beschikbaar gestelde steunmaatregelen in het kader van de bestrijding van de verdere verspreiding van COVID-19]",
@@ -65,7 +103,7 @@
       },
       "create": [
         "[aanvraag aanvullende uitkering voor levensonderhoud op grond van de Tozo]",
-        "<inlichtingenplicht op grond van art. 17 Participatiewet>"
+        "<zelfstandige heeft inlichtingenplicht op grond van art. 17 Participatiewet>"
       ],
       "terminate": [],
       "sources": [
@@ -107,6 +145,18 @@
   ],
   "facts": [
     {
+      "fact": "[verzoek tegemoetkoming in de schade geleden door de maatregelen ter bestrijding van de verdere verspreiding van COVID-19]",
+      "function": "[]",
+      "sources": [],
+      "explanation": ""
+    },
+    {
+      "fact": "[verzoek om aanvullende uitkering voor levensonderhoud op grond van de Tozo]",
+      "function": "[]",
+      "sources": [],
+      "explanation": ""
+    },
+    {
       "fact": "[zelfstandige]",
       "function": {
         "expression": "OR",
@@ -127,6 +177,36 @@
       "explanation": ""
     },
     {
+      "fact": "[eenmansbedrijf]",
+      "function": "[]",
+      "sources": [],
+      "explanation": ""
+    },
+    {
+      "fact": "[directeur-grootaandeelhouder (DGA) van een besloten vennootschap]",
+      "function": "[]",
+      "sources": [],
+      "explanation": ""
+    },
+    {
+      "fact": "[er moet sprake zijn van volledige zeggenschap over de besloten vennootschap]",
+      "function": "[]",
+      "sources": [],
+      "explanation": ""
+    },
+    {
+      "fact": "[er moet sprake zijn van het van dragen van de financiële risico’s]",
+      "function": "[]",
+      "sources": [],
+      "explanation": ""
+    },
+    {
+      "fact": "[de DGA heeft naar waarheid verklaard en aannemelijk gemaakt dat zijn/haar B.V. nu geen salaris kan uitbetalen]",
+      "function": "[]",
+      "sources": [],
+      "explanation": ""
+    },
+    {
       "fact": "[Minister van Economische Zaken en Klimaat]",
       "function": "[]",
       "sources": [],
@@ -134,27 +214,7 @@
     },
     {
       "fact": "[gedupeerde onderneming]",
-      "function": {
-        "expression": "AND",
-        "operands": [
-          "[in Nederland gevestigde onderneming als bedoeld in artikel 5 van de Handelsregisterwet 2007]",
-          "[onderneming die op 15 maart 2020 in het handelsregister stond ingeschreven die op 15 maart 2020 in het handelsregister stond ingeschreven onder een hoofdactiviteit die in bijlage 1 is opgenomen, met de daarbij behorende code van de Standaard Bedrijfsindeling]",
-          "[onderneming waar ten hoogste 250 personen werkzaam zijn, blijkend uit de inschrijving in het handelsregister op 15 maart 2020]",
-          {
-            "expression": "OR",
-            "operands": [
-              {
-                "expression": "AND",
-                "operands": [
-                  "[onderneming die op 15 maart 2020 stond ingeschreven in het handelsregister onder de code 56.10.1, 56.10.2 of 56.30 van de Standaard Bedrijfsindeling]",
-                  "[horecaonderneming die ten minste één horecagelegenheid huurt, pacht of in eigendom heeft]"
-                ]
-              },
-              "[onderneming heeft ten minste één vestiging met een ander adres dan het privéadres van de eigenaar of eigenaren van de onderneming]"
-            ]
-          }
-        ]
-      },
+      "function": "[]",
       "sources": [
         {
           "validFrom": "27-03-2020",
@@ -372,7 +432,7 @@
         "operands": [
           "[naam contactpersoon bij de gedupeerde onderneming]",
           "[telefoonnummer contactpersoon bij de gedupeerde onderneming]",
-          "[e-,mailadres contactpersoon bij de gedupeerde onderneming]"
+          "[e-mailadres contactpersoon bij de gedupeerde onderneming]"
         ]
       },
       "sources": [
@@ -415,7 +475,7 @@
       "explanation": ""
     },
     {
-      "fact": "[e-,mailadres contactpersoon bij de gedupeerde onderneming]",
+      "fact": "[e-mailadres contactpersoon bij de gedupeerde onderneming]",
       "function": "[]",
       "sources": [
         {
@@ -472,6 +532,114 @@
     },
     {
       "fact": "[onderneming was op peildatum 15 maart 2020 ingeschreven in het handelsregister]",
+      "function": "[]",
+      "sources": [],
+      "explanation": ""
+    },
+    {
+      "fact": "[zelfstandige moet in Nederland woonachtig zijn]",
+      "function": "[]",
+      "sources": [],
+      "explanation": ""
+    },
+    {
+      "fact": "[bedrijf van zelfstandige is in Nederland gevestigd]",
+      "function": "[]",
+      "sources": [],
+      "explanation": ""
+    },
+    {
+      "fact": "[de hoofdzakelijke werkzaamheden van zelfstandige vinden plaats in Nederland]",
+      "function": "[]",
+      "sources": [],
+      "explanation": ""
+    },
+    {
+      "fact": "[zelfstandige voldoet aan het urencriterium]",
+      "function": "[]",
+      "sources": [],
+      "explanation": ""
+    },
+    {
+      "fact": "[zelfstandige is bedrijfsmatig actief geweest, waaronder ingeschreven zijn bij de Kamer van Koophandel, voordat deze regeling is aangekondigd, dus voor 17 maart 2020]",
+      "function": "[]",
+      "sources": [],
+      "explanation": ""
+    },
+    {
+      "fact": "[zelfstandige heeft naar waarheid verklaard dat het inkomen naar verwachting in de periode van ondersteuning minder zal bedragen dan het toepasselijke sociaal minimum als gevolg van de coronacrisis]",
+      "function": "[]",
+      "sources": [],
+      "explanation": ""
+    },
+    {
+      "fact": "[aanvraag aanvullende uitkering voor levensonderhoud op grond van de Tozo]",
+      "function": "[]",
+      "sources": [],
+      "explanation": ""
+    },
+    {
+      "fact": "[verzoek om lening voor bedrijfskapitaal op grond van de Tozo]",
+      "function": "[]",
+      "sources": [],
+      "explanation": ""
+    },
+    {
+      "fact": "[zelfstandige heeft naar waarheid te verklaard en aannemelijk gemaakt dat er sprake is van liquiditeitsprobleem als gevolg van de coronacrisis]",
+      "function": "[]",
+      "sources": [],
+      "explanation": ""
+    },
+    {
+      "fact": "[aanvraag lening voor bedrijfskapitaal op grond van de Tozo]",
+      "function": "[]",
+      "sources": [],
+      "explanation": ""
+    },
+    {
+      "fact": "[in Nederland gevestigde onderneming als bedoeld in artikel 5 van de Handelsregisterwet 2007]",
+      "function": "[]",
+      "sources": [],
+      "explanation": ""
+    },
+    {
+      "fact": "[gedupeerde onderneming is een horecaonderneming]",
+      "function": "[]",
+      "sources": [],
+      "explanation": ""
+    },
+    {
+      "fact": "[gedupeerde onderneming heeft ten minste één vestiging met een ander adres dan het privéadres van de eigenaar van de onderneming]",
+      "function": "[]",
+      "sources": [],
+      "explanation": ""
+    },
+    {
+      "fact": "[gedupeerde onderneming heeft ten minste één vestiging met een ander adres dan het privéadres van de eigenaren van de onderneming]",
+      "function": "[]",
+      "sources": [],
+      "explanation": ""
+    },
+    {
+      "fact": "[gedupeerde onderneming huurt ten minste één horecagelegenheid huurt, pacht of in eigendom heeft]",
+      "function": "[]",
+      "sources": [],
+      "explanation": ""
+    },
+    {
+      "fact": "[gedupeerde onderneming pacht ten minste één horecagelegenheid huurt, pacht of in eigendom heeft]",
+      "function": "[]",
+      "sources": [],
+      "explanation": ""
+    },
+    {
+      "fact": "[gedupeerde onderneming heeft ten minste één horecagelegenheid in eigendom]",
+      "function": "[]",
+      "sources": [],
+      "explanation": ""
+    },
+    {
+      "fact": "[horecaonderneming die ten minste één horecagelegenheid huurt, pacht of in eigendom heeft]",
       "function": "[]",
       "sources": [],
       "explanation": ""
@@ -3819,5 +3987,36 @@
       "explanation": ""
     }
   ],
-  "duties": []
+  "duties": [
+    {
+      "duty": "<zelfstandige heeft inlichtingenplicht op grond van art. 17 Participatiewet>",
+      "duty-components": "",
+      "duty-holder": "[zelfstandige]",
+      "claimant": "[gemeente]",
+      "create": "<<indienen verzoek om aanvullende uitkering voor levensonderhoud op grond van de Tozo>>",
+      "terminate": "<<>>",
+      "sources": [],
+      "explanation": "Deze duty wordt ook gecreëerd door <<indienen verzoek om lening voor bedrijfskapitaal op grond van de Tozo>>, het is nu niet mogelijk meer dan één creating acts te registreren."
+    },
+    {
+      "duty": "<zelfstandige kan bij gemeente een lening afsluiten van maximaal € 10.157 tegen een rente van 2%>",
+      "duty-components": "",
+      "duty-holder": "[gemeente]",
+      "claimant": "[zelfstandige]",
+      "create": "<<indienen verzoek om lening voor bedrijfskapitaal op grond van de Tozo>>",
+      "terminate": "<<>>",
+      "sources": [],
+      "explanation": ""
+    },
+    {
+      "duty": "<zelfstandige hoeft tot 1 januari niet af te lossen>",
+      "duty-components": "",
+      "duty-holder": "[gemeente]",
+      "claimant": "[zelfstandige]",
+      "create": "<<indienen verzoek om lening voor bedrijfskapitaal op grond van de Tozo>>",
+      "terminate": "<<>>",
+      "sources": [],
+      "explanation": ""
+    }
+  ]
 }
