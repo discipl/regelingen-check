@@ -5,7 +5,7 @@ import Button from "react-bootstrap/Button";
 
 export const SUBSIDY_TITLES = {
   "<<indienen aanvraag tegemoetkoming in de schade geleden door de maatregelen ter bestrijding van de verdere verspreiding van COVID-19>>":
-    "Tegemoedkoming geleden schade ten gevolge van de Coronamaatregelen",
+    "Tegemoetkoming geleden schade ten gevolge van de Coronamaatregelen",
   "<<indienen verzoek om aanvullende uitkering voor levensonderhoud op grond van de Tozo>>":
     "Aanvullende uitkering voor levensonderhoud op grond van de Tozo",
   "<<indienen verzoek om lening voor bedrijfskapitaal op grond van de Tozo>>":
