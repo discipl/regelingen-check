@@ -20,6 +20,9 @@
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
+    "ignorePatterns": [
+      "node_modules/"
+    ],
     "extends": [
       "react-app",
       "prettier",
@@ -47,6 +50,7 @@
     "cypress": "^3.4.1",
     "eslint": "^6.8.0",
     "eslint-config-prettier": "^6.10.1",
+    "eslint-plugin-cypress": "^2.10.3",
     "prettier": "^2.0.4",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
