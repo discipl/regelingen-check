@@ -50,7 +50,9 @@ class FactPrompt extends Component {
       factValue: result,
       final: true,
     });
-    this.props.handleResult(result, this.props.possibleCreatingActions);
+    if (this.props.handleResult) {
+      this.props.handleResult(result, this.props.possibleCreatingActions);
+    }
   }
 
   handleDeny() {
@@ -58,7 +60,9 @@ class FactPrompt extends Component {
       factValue: false,
       final: true,
     });
-    this.props.handleResult(false, this.props.possibleCreatingActions);
+    if (this.props.handleResult) {
+      this.props.handleResult(false, this.props.possibleCreatingActions);
+    }
   }
 
   handleInput(event) {
@@ -164,12 +168,14 @@ class FactPrompt extends Component {
         <Form.Group>{this.renderInput()}</Form.Group>
         <Button
           variant={this.affirmVariant()}
+          disabled={this.state.final}
           onClick={this.handleAffirm.bind(this)}
         >
           {this.props.affirmPrompt}
         </Button>{" "}
         <Button
           variant={this.denyVariant()}
+          disabled={this.state.final}
           onClick={this.handleDeny.bind(this)}
         >
           {this.props.denyPrompt}

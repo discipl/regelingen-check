@@ -8,7 +8,6 @@ import "./ActorView.css";
 import FactPrompt from "./FactPrompt";
 import ActButton, { STATUS_ICONS } from "./ActButton";
 import ActView from "./ActView";
-import { ActNotAllowedAlert } from "./ActNotAllowedAlert";
 
 /**
  * ActView Component
