@@ -11,6 +11,7 @@ class ActorView extends Component {
       duties: [],
       loading: true,
       name: this.props.name,
+      enteredFacts: {},
     };
   }
 
@@ -40,12 +41,28 @@ class ActorView extends Component {
     console.log("ComputeRenderDataState", this.state);
     console.log("ComputeRenderData", this.props);
     try {
-      let availableActLinks = await this.props.lawReg.getAvailableActs(
+      const factResolver = (fact) => {
+        if (
+          this.props.derivedFacts &&
+          this.props.derivedFacts.hasOwnProperty(fact)
+        ) {
+          return this.props.derivedFacts[fact];
+        }
+
+        if (
+          this.state.enteredFacts &&
+          this.state.enteredFacts.hasOwnProperty(fact)
+        ) {
+          return this.state.enteredFacts[fact];
+        }
+      };
+
+      let availableActLinks = await this.props.lawReg.getAvailableActsWithResolver(
         this.props.caseLink,
         this.props.actors[this.state.name],
-        [],
-        []
+        factResolver
       );
+
       console.log("Got available act links");
       let availableActs = await Promise.all(
         availableActLinks.map(async (act) => {
@@ -56,14 +73,14 @@ class ActorView extends Component {
           return { ...act, details: details };
         })
       );
+      console.log("Computed available acts", availableActs);
       console.log("Computing potential acts");
       let potentialActs = await Promise.all(
         (
-          await this.props.lawReg.getPotentialActs(
+          await this.props.lawReg.getPotentialActsWithResolver(
             this.props.caseLink,
             this.props.actors[this.state.name],
-            [],
-            []
+            factResolver
           )
         ).map(async (act) => {
           const details = await this.props.lawReg.getActDetails(
@@ -73,39 +90,10 @@ class ActorView extends Component {
           return { ...act, details: details };
         })
       );
-      console.log("Getting actions");
-      let previousActs = await this.props.lawReg.getActions(
-        this.props.caseLink,
-        this.props.actors[this.state.name]
-      );
-      const core = this.props.lawReg.getAbundanceService().getCoreAPI();
-      const enrichedPreviousActs = await Promise.all(
-        previousActs.map(async (prevAct) => {
-          let claim = await core.get(
-            prevAct.link,
-            this.props.actors[this.state.name]
-          );
-          console.log("claim", claim);
-          prevAct.facts = claim.data["DISCIPL_FLINT_FACTS_SUPPLIED"];
-          return prevAct;
-        })
-      );
-      let duties;
-      try {
-        console.log("Getting duties");
-        duties = await this.props.lawReg.getActiveDuties(
-          this.props.caseLink,
-          this.props.actors[this.state.name]
-        );
-      } catch (e) {
-        console.log("Error", e, " while determining duties");
-        duties = [];
-      }
+
       this.setState({
         availableActs: availableActs,
         potentialActs: potentialActs,
-        previousActs: enrichedPreviousActs,
-        duties: duties,
         loading: false,
         activeAct: undefined,
         factPrompts: [],
@@ -133,6 +121,10 @@ class ActorView extends Component {
         act,
         this.askFact.bind(this)
       );
+      this.setState({
+        factPrompts: [],
+        activeAct: undefined,
+      });
       if (this.props.onCaseChange) {
         this.props.onCaseChange(caseLink);
       }
@@ -149,6 +141,8 @@ class ActorView extends Component {
         throw e;
       }
     } finally {
+      console.log("Computing data after taking act");
+      await this.computeRenderData();
       if (this.props.onEndAct) {
         this.props.onEndAct();
       }
@@ -168,6 +162,13 @@ class ActorView extends Component {
     ) {
       return this.props.derivedFacts[fact];
     }
+
+    if (
+      this.state.enteredFacts &&
+      this.state.enteredFacts.hasOwnProperty(fact)
+    ) {
+      return this.state.enteredFacts[fact];
+    }
     const resultPromise = new Promise((resolve, reject) => {
       const handleAskFactResult = (result, possibleCreatingActions) => {
         let realResult = result || false;
@@ -186,8 +187,13 @@ class ActorView extends Component {
             final: true,
           };
 
+          const newEnteredFacts = state.enteredFacts || [];
+
+          newEnteredFacts[fact] = realResult;
+
           return {
             factPrompts: newFactPrompts,
+            enteredFacts: newEnteredFacts,
           };
         });
 
@@ -228,9 +234,10 @@ class ActorView extends Component {
     return acts.map((act, index) => {
       console.log("ActionDetails available", act.details);
       return (
-        <div class="available">
+        <div key={act.act} className="available">
           <button
-            class="actButton"
+            className="actButton"
+            disabled={!this.state.activeAct}
             onClick={this.takeAction.bind(
               this,
               act.act,
@@ -265,6 +272,7 @@ class ActorView extends Component {
       return this.state.factPrompts.map((factPromptState) => {
         return (
           <FactPrompt
+            key={factPromptState.fact}
             handleResult={factPromptState.resultCallback}
             final={factPromptState.final}
             factValue={factPromptState.factValue}
@@ -278,6 +286,25 @@ class ActorView extends Component {
     return [];
   }
 
+  renderImpossibleActs() {
+    const possibleActs = (this.state.potentialActs || [])
+      .concat(this.state.availableActs || [])
+      .map((act) => act.act);
+    const impossibleActs = this.props.acts.filter(
+      (act) => !possibleActs.includes(act.act)
+    );
+
+    return impossibleActs.map((act) => {
+      return (
+        <div key={act.act} className="impossible">
+          <button className="actButton" disabled>
+            {act.act}
+          </button>
+        </div>
+      );
+    });
+  }
+
   renderPotentialActs() {
     let acts = this.state.potentialActs;
     if (!acts) {
@@ -287,9 +314,10 @@ class ActorView extends Component {
     return acts.map((act, index) => {
       console.log("ActionDetails potential", act.details);
       return (
-        <div class="potential">
+        <div key={act.act} className="potential">
           <button
-            class="actButton"
+            className="actButton"
+            disabled={this.state.activeAct}
             onClick={this.takeAction.bind(
               this,
               act.act,
@@ -334,6 +362,7 @@ class ActorView extends Component {
         <div className="acts">
           {this.renderAvailableActs()}
           {this.renderPotentialActs()}
+          {this.renderImpossibleActs()}
         </div>
       </div>
     );
