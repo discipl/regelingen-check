@@ -16,7 +16,7 @@ services:
       context: .
       dockerfile: Dockerfile
     env_file:
-      - prod.env
+      - .env.prod
     secrets:
       - kvk_prod_key
     stdin_open: true
