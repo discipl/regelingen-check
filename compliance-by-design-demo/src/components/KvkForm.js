@@ -66,7 +66,7 @@ class KvkForm extends Component {
       });
 
     // TODO: Remove hardcoded, because sample in API doesn't have right sbi code
-    derivedFacts["[SBI-code hoofdactiviteit onderneming]"] = "47.19.2";
+    derivedFacts["[SBI-code hoofdactiviteit onderneming]"] = "47192";
 
     const locatedInTheNetherlands =
       companyInfo.addresses.filter(
@@ -100,7 +100,7 @@ class KvkForm extends Component {
       "[aantal personen dat werkt bij onderneming blijkend uit de inschrijving in het handelsregister op 15 maart 2020]"
     ] = 0;
 
-    derivedFacts["[SBI-code hoofdactiviteit onderneming]"] = "47.19.2";
+    derivedFacts["[SBI-code hoofdactiviteit onderneming]"] = "";
     derivedFacts[
       "[in Nederland gevestigde onderneming als bedoeld in artikel 5 van de Handelsregisterwet 2007]"
     ] = false;
@@ -203,7 +203,7 @@ class KvkForm extends Component {
               ></Form.Control>
             </Form.Group>
 
-            <Form.Group controlId="aantalWerknemers">
+            <Form.Group controlId="sbiCode">
               <Form.Label>
                 SBI-code van de hoofdactiviteit van uw onderneming
               </Form.Label>
@@ -244,6 +244,7 @@ class KvkForm extends Component {
     return (
       <Container>
         <Form onSubmit={this.fetchFactsFromApi.bind(this)}>
+          <h2>KvK gegevens van uw bedrijf</h2>
           <p>
             We hebben een aantal gegevens nodig over uw bedrijf om te kijken of
             u in aanmerking komt voor een van de steunregelingen van de
