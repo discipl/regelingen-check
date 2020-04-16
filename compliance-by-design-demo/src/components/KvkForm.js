@@ -11,11 +11,12 @@ class KvkForm extends Component {
     super(props);
     this.state = {
       kvkNumber: "69599084",
+      kvkNumberEntered: false,
       derivedFacts: null,
     };
   }
 
-  async query(event) {
+  async fetchFactsFromApi(event) {
     event.preventDefault();
     const result = await fetch(
       "/api/v2/testprofile/companies?kvkNumber=" + this.state.kvkNumber
@@ -78,7 +79,35 @@ class KvkForm extends Component {
     ] = locatedInTheNetherlands;
 
     this.setState({
-      derivedFacts: derivedFacts,
+      kvkNumberEntered: true,
+      derivedFacts,
+    });
+  }
+
+  dontFetchFromApi() {
+    const derivedFacts = {};
+    // Default facts
+    derivedFacts[
+      "[verzoek tegemoetkoming in de schade geleden door de maatregelen ter bestrijding van de verdere verspreiding van COVID-19]"
+    ] = true;
+
+    derivedFacts[
+      "[datum van inschrijving van onderneming in het KVK Handelsregister]"
+    ] = "";
+    derivedFacts["[datum van oprichting van onderneming]"] = "";
+
+    derivedFacts[
+      "[aantal personen dat werkt bij onderneming blijkend uit de inschrijving in het handelsregister op 15 maart 2020]"
+    ] = 0;
+
+    derivedFacts["[SBI-code hoofdactiviteit onderneming]"] = "47.19.2";
+    derivedFacts[
+      "[in Nederland gevestigde onderneming als bedoeld in artikel 5 van de Handelsregisterwet 2007]"
+    ] = false;
+
+    this.setState({
+      kvkNumberEntered: true,
+      derivedFacts,
     });
   }
 
@@ -88,6 +117,7 @@ class KvkForm extends Component {
 
   handleFactUpdate(fact) {
     return function (event) {
+      console.log(event.target);
       const newState = { derivedFacts: this.state.derivedFacts };
       const newValue = event.hasOwnProperty("target")
         ? event.target.value
@@ -100,6 +130,13 @@ class KvkForm extends Component {
     };
   }
 
+  handleCheckUpdate(fact) {
+    const handleUpdate = this.handleFactUpdate(fact).bind(this);
+    return function (event) {
+      handleUpdate(event.target.checked);
+    };
+  }
+
   returnDerivedFacts(event) {
     event.preventDefault();
 
@@ -109,15 +146,15 @@ class KvkForm extends Component {
   }
 
   render() {
-    if (this.state.derivedFacts) {
+    if (this.state.kvkNumberEntered) {
       return (
         <Container>
           <Form onSubmit={this.returnDerivedFacts.bind(this)}>
+            <h2>Controleer uw gegevens</h2>
             <p>
               We hebben de volgende gegevens voor uw bedrijf opgehaald.
               Controlleer ze goed en pas aan wat niet klopt.
             </p>
-            <p>{JSON.stringify(this.state.derivedFacts)}</p>
             <Form.Group controlId="datumOprichting">
               <Form.Label>Uw bedrijf is opgericht op</Form.Label>
               <DateControl
@@ -166,6 +203,37 @@ class KvkForm extends Component {
               ></Form.Control>
             </Form.Group>
 
+            <Form.Group controlId="aantalWerknemers">
+              <Form.Label>
+                SBI-code van de hoofdactiviteit van uw onderneming
+              </Form.Label>
+              <Form.Control
+                value={
+                  this.state.derivedFacts[
+                    "[SBI-code hoofdactiviteit onderneming]"
+                  ]
+                }
+                onChange={this.handleFactUpdate(
+                  "[SBI-code hoofdactiviteit onderneming]"
+                ).bind(this)}
+              ></Form.Control>
+            </Form.Group>
+
+            <Form.Group controlId="gevestigdInNederland">
+              <Form.Check
+                type="checkbox"
+                label="Uw onderneming is gevestigd in Nederland"
+                checked={
+                  this.state.derivedFacts[
+                    "[in Nederland gevestigde onderneming als bedoeld in artikel 5 van de Handelsregisterwet 2007]"
+                  ]
+                }
+                onChange={this.handleCheckUpdate(
+                  "[in Nederland gevestigde onderneming als bedoeld in artikel 5 van de Handelsregisterwet 2007]"
+                ).bind(this)}
+              />
+            </Form.Group>
+
             <Button variant="primary" type="sumbit">
               Deze gegevens zijn correct
             </Button>
@@ -175,7 +243,7 @@ class KvkForm extends Component {
     }
     return (
       <Container>
-        <Form onSubmit={this.query.bind(this)}>
+        <Form onSubmit={this.fetchFactsFromApi.bind(this)}>
           <p>
             We hebben een aantal gegevens nodig over uw bedrijf om te kijken of
             u in aanmerking komt voor een van de steunregelingen van de
@@ -197,7 +265,12 @@ class KvkForm extends Component {
           <Button variant="primary" type="submit">
             Gegevens ophalen
           </Button>{" "}
-          <Button variant="outline-secondary">Zelf gegevens invullen</Button>
+          <Button
+            variant="outline-secondary"
+            onClick={this.dontFetchFromApi.bind(this)}
+          >
+            Zelf gegevens invullen
+          </Button>
         </Form>
       </Container>
     );
