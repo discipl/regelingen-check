@@ -42,27 +42,11 @@ class KvkForm extends Component {
     const mainSbi = companyInfo.businessActivities
       .filter((activity) => activity.isMainSbi)
       .map((activity) => {
-        const sbiWithoutDots = activity.sbiCode;
-        if (sbiWithoutDots.length > 4) {
-          return (
-            sbiWithoutDots.substring(0, 2) +
-            "." +
-            sbiWithoutDots.substring(2, 4) +
-            "." +
-            sbiWithoutDots.substring(4)
-          );
-        }
-        if (sbiWithoutDots.length > 2) {
-          return (
-            sbiWithoutDots.substring(0, 2) + "." + sbiWithoutDots.substring(2)
-          );
-        }
-
-        return sbiWithoutDots;
+        return activity.sbiCode;
       });
 
     // TODO: Remove hardcoded, because sample in API doesn't have right sbi code
-    derivedFacts["[SBI-code hoofdactiviteit onderneming]"] = "47.19.2";
+    derivedFacts["[SBI-code hoofdactiviteit onderneming]"] = "47192";
 
     const locatedInTheNetherlands =
       companyInfo.addresses.filter(
