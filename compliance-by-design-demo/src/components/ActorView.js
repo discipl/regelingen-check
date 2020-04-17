@@ -61,15 +61,17 @@ class ActorView extends Component {
     }
   }
 
-  async computeRenderData(additionalFactName = null, additionalFactValue = null) {
+  async computeRenderData(
+    additionalFactName = null,
+    additionalFactValue = null
+  ) {
     this.setState({ loading: true });
     console.log("ComputeRenderDataState", this.state);
     console.log("ComputeRenderData", this.props);
     try {
       const factResolver = (fact) => {
-
         if (additionalFactName === fact) {
-          return additionalFactValue
+          return additionalFactValue;
         }
 
         if (
@@ -85,7 +87,6 @@ class ActorView extends Component {
         ) {
           return this.state.enteredFacts[fact];
         }
-
       };
 
       let availableActLinks = await this.props.lawReg.getAvailableActsWithResolver(
@@ -375,15 +376,15 @@ class ActorView extends Component {
   }
 
   onChangeFact(factName, factValue) {
-    console.log("onChangeFact", factName, factValue)
+    console.log("onChangeFact", factName, factValue);
     this.setState((state) => {
-      const newEnteredFacts = {...state.enteredFacts, [factName]: factValue}
-      console.log(newEnteredFacts)
+      const newEnteredFacts = { ...state.enteredFacts, [factName]: factValue };
+      console.log(newEnteredFacts);
       this.computeRenderData(factName, factValue);
       return {
-        'enteredFacts': newEnteredFacts
-      }
-    })
+        enteredFacts: newEnteredFacts,
+      };
+    });
   }
 
   render() {
@@ -427,9 +428,11 @@ class ActorView extends Component {
           {this.renderImpossibleActs()}
         </div>
         <div className="m5-5 mb-5">
-          <FactsView facts={this.state.enteredFacts} onChangeFact={this.onChangeFact.bind(this)}></FactsView>
+          <FactsView
+            facts={this.state.enteredFacts}
+            onChangeFact={this.onChangeFact.bind(this)}
+          ></FactsView>
         </div>
-
 
         <h4>Legenda</h4>
         <p className="text-primary">
@@ -445,7 +448,6 @@ class ActorView extends Component {
           <strong>niet</strong> voor deze regeling in aanmerking.
         </p>
       </Container>
-
     );
   }
 }

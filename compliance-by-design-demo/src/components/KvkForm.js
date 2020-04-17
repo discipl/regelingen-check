@@ -18,9 +18,7 @@ class KvkForm extends Component {
 
   async fetchFactsFromApi(event) {
     event.preventDefault();
-    const result = await fetch(
-      "/api/companies/" + this.state.kvkNumber
-    );
+    const result = await fetch("/api/companies/" + this.state.kvkNumber);
     const data = await result.json();
     console.log(data);
 
@@ -51,7 +49,6 @@ class KvkForm extends Component {
     if (mainSbi.length > 0) {
       derivedFacts["[SBI-code hoofdactiviteit onderneming]"] = mainSbi[0];
     }
-    
 
     const locatedInTheNetherlands =
       companyInfo.addresses.filter(
