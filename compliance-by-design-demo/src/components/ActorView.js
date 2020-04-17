@@ -408,7 +408,7 @@ class ActorView extends Component {
           {this.renderPotentialActs()}
           {this.renderImpossibleActs()}
         </div>
-        <div className="facts">
+        <div className="m5-5 mb-5">
           <FactsView facts={this.state.enteredFacts}></FactsView>
         </div>
 
