@@ -10,7 +10,7 @@ class KvkForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      kvkNumber: "69599084",
+      kvkNumber: "",
       kvkNumberEntered: false,
       derivedFacts: null,
     };
