@@ -27,10 +27,11 @@ services:
       - kvk_prod_key
     stdin_open: true
     labels:
+      - "traefik.enable=true"
       - "traefik.http.routers.regelingen-check.rule=Host(`$HOST`)"
       - "traefik.http.routers.regelingen-check.tls=true"
+      - "traefik.http.routers.regelingen-check.tls.options=default"
       - "traefik.http.routers.regelingen-check.tls.certresolver=myresolver"
-      - "traefik.http.services.web-server-regelingencheck.loadbalancer.server.port=3001"
 
 secrets:
   kvk_prod_key:
