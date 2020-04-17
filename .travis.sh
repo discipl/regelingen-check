@@ -5,5 +5,4 @@ set -e
 
 cd compliance-by-design-demo
 npm install
-npm start &
-cypress run
+npm run lint
