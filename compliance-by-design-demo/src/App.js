@@ -6,7 +6,7 @@ import log from "loglevel";
 
 class App extends Component {
   render() {
-    log.getLogger("disciplLawReg").setLevel("debug");
+    log.getLogger("disciplLawReg").setLevel("warn");
 
     const config = {
       actors: ["RVO", "onderneming"],

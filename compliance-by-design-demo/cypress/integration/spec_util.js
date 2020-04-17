@@ -52,7 +52,6 @@ const performNonOrderedScenario = (acts, facts) => {
     performAct(act.act);
     for (let i = 0; i < act.numQuestions; i++) {
       console.log("Answering question number", i);
-      const modal = cy.get("section.modal-main");
       cy.get("section.modal-main")
         .last()
         .find("span")

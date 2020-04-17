@@ -7,6 +7,7 @@ import Util from "@discipl/law-reg/dist/util";
 import EphemeralConnector from "@discipl/core-ephemeral/dist/EphemeralConnector";
 
 import KvkForm from "./KvkForm";
+import Jumbo from "./Jumbo";
 
 const timeoutPromise = (timeoutMillis) => {
   return new Promise(function (resolve, reject) {
@@ -147,12 +148,17 @@ class ModelView extends Component {
       );
     }
 
+    const children = [<Jumbo />];
+
     if (!this.state.derivedFacts) {
-      return (
+      children.push(
         <KvkForm handleDerivedFacts={this.handleDerivedFacts.bind(this)} />
       );
+    } else {
+      children.push(this.renderActorViews());
     }
-    return <div className="grid-container">{this.renderActorViews()}</div>;
+
+    return children;
   }
 }
 
