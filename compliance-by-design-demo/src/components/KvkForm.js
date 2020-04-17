@@ -21,7 +21,7 @@ class KvkForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      kvkNumber: undefined,
+      kvkNumber: "",
       kvkNumberEntered: false,
       derivedFacts: null,
     };
