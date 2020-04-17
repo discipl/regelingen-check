@@ -1,6 +1,7 @@
 const fs = require('fs');
 const fetch = require('node-fetch')
 const apiRateLimiter = require('./rateLimiter.js');
+const proxyAgent = require('./proxyAgent.js');
 
 const express = require('express')
 const app = express()
@@ -40,7 +41,8 @@ async function fetchApi(endpoint, api_key) {
     }
   }
   return fetch('https://' + endpoint, {
-      headers: headers
+      headers: headers,
+      agent: proxyAgent
     })
     .catch(err => {
       console.error('caught', err.message);
