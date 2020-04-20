@@ -15,6 +15,7 @@ class FactPrompt extends Component {
     this.state = {
       factValue: props.factValue || "",
       final: props.final || false,
+      hasError: props.hasError || false,
     };
   }
 
@@ -57,6 +58,19 @@ class FactPrompt extends Component {
     });
     if (this.props.handleResult) {
       this.props.handleResult(result, this.props.possibleCreatingActions);
+    }
+  }
+
+  handleSubmit() {
+    if (!this.state.factValue) {
+      this.setState({
+        hasError: true,
+      });
+    } else {
+      this.setState({
+        hasError: false,
+      });
+      this.handleAffirm();
     }
   }
 
@@ -141,13 +155,20 @@ class FactPrompt extends Component {
       );
     } else {
       return (
-        <Form.Control
-          className="value"
-          onChange={this.handleInput.bind(this)}
-          value={this.state.factValue}
-          disabled={this.state.final}
-          {...this.props.controlOptions}
-        />
+        <>
+          <Form.Control
+            className="value"
+            onChange={this.handleInput.bind(this)}
+            value={this.state.factValue}
+            disabled={this.state.final}
+            {...this.props.controlOptions}
+            required
+            isInvalid={this.state.hasError}
+          />
+          <Form.Control.Feedback type="invalid">
+            Dit veld is verplicht
+          </Form.Control.Feedback>
+        </>
       );
     }
   }
@@ -191,10 +212,10 @@ class FactPrompt extends Component {
           <Button
             variant={this.affirmVariant()}
             disabled={this.state.final}
-            onClick={this.handleAffirm.bind(this)}
+            onClick={this.handleSubmit.bind(this)}
           >
             {this.props.submitPrompt}
-          </Button>
+          </Button>{" "}
           <Button
             variant={this.denyVariant()}
             disabled={this.state.final}
