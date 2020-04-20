@@ -10,6 +10,7 @@ import FactPrompt from "./FactPrompt";
 import FactsView from "./FactsView";
 import ActButton, { STATUS_ICONS } from "./ActButton";
 import ActView from "./ActView";
+import Explanation from "./Explanation";
 
 /**
  * ActView Component
@@ -120,9 +121,20 @@ class ActorView extends Component {
       );
       console.log("Computed potential acts", potentialActs);
 
+      const explanationArray = await Promise.all(this.props.acts.map(act => this.props.lawReg.explain(this.props.actors[this.state.name],
+        this.props.caseLink,
+        act.act,
+        factResolver)))
+
+      const explanations = this.props.acts.map((act, index) => { return {'act':act.act, 'explanation': explanationArray[index]}}).reduce((map, obj) => {
+        map[obj.act] = obj.explanation;
+        return map;
+    }, {})
+
       this.setState({
         availableActs: availableActs,
         potentialActs: potentialActs,
+        explanations: explanations,
         loading: false,
         activeAct: undefined,
         factPrompts: [],
@@ -325,6 +337,12 @@ class ActorView extends Component {
     return [];
   }
 
+  renderExplanation(act) {
+    if (this.state.explanations && this.state.explanations.hasOwnProperty(act)) {
+      return <Explanation title="Uitleg" explanation={this.state.explanations[act].operandExplanations[3]}/>
+    }
+  } 
+
   renderImpossibleActs() {
     const possibleActs = (this.state.potentialActs || [])
       .concat(this.state.availableActs || [])
@@ -337,6 +355,7 @@ class ActorView extends Component {
       return (
         <div className="text-center mb-4" key={act.act}>
           <ActButton status="impossible" act={act.act} disabled></ActButton>
+          {this.renderExplanation(act.act)}
         </div>
       );
     });
@@ -354,7 +373,7 @@ class ActorView extends Component {
         <div className="text-center mb-4" key={act.act}>
           <ActButton
             act={act.act}
-            disabled={this.state.actiDGAveAct}
+            disabled={this.state.activeAct}
             onClick={this.takeAction.bind(
               this,
               act.act,
