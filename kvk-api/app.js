@@ -65,14 +65,18 @@ function transformData(kvkData) {
     registrationDate,
     foundationDate,
     employees,
+    legalForm,
     businessActivities,
     addresses,
+    tradeNames: { businessName },
   } = kvkData.data.items[0];
 
   const data = {
     registrationDate,
     foundationDate,
     employees,
+    legalForm,
+    businessName,
   };
 
   // TODO: Check there is exactly one main activity SBI code

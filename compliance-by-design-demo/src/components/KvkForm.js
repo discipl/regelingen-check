@@ -21,8 +21,9 @@ class KvkForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      kvkNumber: "",
       kvkNumberEntered: false,
+      kvkNumber: "",
+      businessName: "",
       derivedFacts: null,
     };
   }
@@ -47,6 +48,7 @@ class KvkForm extends Component {
 
     this.setState({
       kvkNumberEntered: true,
+      businessName: data.businessName,
       derivedFacts,
     });
   }
@@ -93,6 +95,10 @@ class KvkForm extends Component {
     };
   }
 
+  handleBusinessNameUpdate(event) {
+    this.setState({ businessName: event.target.value });
+  }
+
   returnDerivedFacts(event) {
     event.preventDefault();
 
@@ -111,6 +117,14 @@ class KvkForm extends Component {
               We hebben de volgende gegevens voor uw bedrijf opgehaald.
               Controleer ze goed en pas aan wat niet klopt.
             </p>
+            <Form.Group controlId="bedrijfsNaam">
+              <Form.Label>Naam van uw bedrijf</Form.Label>
+              <Form.Control
+                value={this.state.businessName}
+                onChange={this.handleBusinessNameUpdate.bind(this)}
+              ></Form.Control>
+            </Form.Group>
+
             <Form.Group controlId="datumOprichting">
               <Form.Label>Uw bedrijf is opgericht op</Form.Label>
               <DateControl
