@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
+import Alert from "react-bootstrap/Alert";
 
 import DateControl from "./DateControl";
 
@@ -20,6 +21,7 @@ class KvkForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      kvkApiError: false,
       kvkNumberEntered: false,
       kvkNumber: "",
       businessName: "",
@@ -29,8 +31,23 @@ class KvkForm extends Component {
 
   async fetchFactsFromApi(event) {
     event.preventDefault();
-    const result = await fetch("/api/companies/" + this.state.kvkNumber);
-    const data = await result.json();
+    let data,
+      result,
+      success = true;
+
+    try {
+      result = await fetch("/api/companies/" + this.state.kvkNumber);
+      data = await result.json();
+    } catch {
+      success = false;
+    }
+
+    if (!success || !result.ok) {
+      this.dontFetchFromApi();
+      this.setState({ kvkApiError: true });
+      return;
+    }
+
     console.log(data);
 
     const derivedFacts = {
@@ -106,15 +123,35 @@ class KvkForm extends Component {
     }
   }
 
+  dismissNotice() {
+    this.setState({ kvkApiError: false });
+  }
+
+  renderNotice() {
+    if (this.state.kvkApiError) {
+      return (
+        <Alert
+          variant="warning"
+          onClose={this.dismissNotice.bind(this)}
+          dismissible
+        >
+          We kunnen de gegevens van uw bedrijf op dit moment niet ophalen. Vul
+          ze a.u.b. zelf in.
+        </Alert>
+      );
+    }
+  }
+
   render() {
     if (this.state.kvkNumberEntered) {
       return (
         <Container>
           <Form onSubmit={this.returnDerivedFacts.bind(this)}>
+            {this.renderNotice()}
             <h2>Controleer uw gegevens</h2>
             <p>
               We hebben de volgende gegevens voor uw bedrijf opgehaald.
-              Controleer ze goed en pas aan wat niet klopt.
+              Controleer ze goed en pas aan waar nodig.
             </p>
             <Form.Group controlId="bedrijfsNaam">
               <Form.Label>Naam van uw bedrijf</Form.Label>
