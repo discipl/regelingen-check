@@ -6,9 +6,8 @@ const redis_rate_limit = redis.createClient(
   process.env.REDIS_RATE_LIMIT_HOST || "localhost"
 );
 
-const WINDOW_SIZE_IN_HOURS = 1 / 12;
+const WINDOW_SIZE_IN_MINUTES = 5;
 const MAX_WINDOW_REQUEST_COUNT = 5;
-const WINDOW_LOG_INTERVAL_IN_HOURS = 1;
 
 module.exports = function (req, res, next) {
   try {
@@ -37,7 +36,7 @@ module.exports = function (req, res, next) {
       // if record is found, parse it's value and calculate number of requests users has made within the last window
       let data = JSON.parse(record);
       let windowStartTimestamp = moment()
-        .subtract(WINDOW_SIZE_IN_HOURS, "hours")
+        .subtract(WINDOW_SIZE_IN_MINUTES, "minutes")
         .unix();
       var requestsWithinWindow = data.filter((entry) => {
         return entry.requestTimeStamp > windowStartTimestamp;
@@ -59,12 +58,7 @@ module.exports = function (req, res, next) {
       // if number of requests made is greater than or equal to the desired maximum, return error
       if (totalWindowRequestsCount >= MAX_WINDOW_REQUEST_COUNT) {
         res.status(429).json({
-          error:
-            "You have exceeded the " +
-            MAX_WINDOW_REQUEST_COUNT +
-            " requests in " +
-            WINDOW_SIZE_IN_HOURS +
-            " hrs limit!",
+          error: `You have exceeded the ${MAX_WINDOW_REQUEST_COUNT} requests in ${WINDOW_SIZE_IN_MINUTES} mns limit!`,
         });
       } else {
         let requestLog = {
