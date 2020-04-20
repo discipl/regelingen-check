@@ -19,6 +19,8 @@ class FactPrompt extends Component {
   }
 
   static defaultProps = {
+    type: "boolean",
+    confirmPrompt: "Indienen",
     affirmPrompt: "Ja",
     affirmVariant: "primary",
     notAffirmedVariant: "outline-primary",
@@ -34,11 +36,13 @@ class FactPrompt extends Component {
     denyVariant: PropTypes.string,
     notDeniedVariant: PropTypes.string,
     denyPrompt: PropTypes.string,
+    type: PropTypes.string,
+    question: PropTypes.string,
+    controlOptions: PropTypes.object,
     fact: PropTypes.string,
     factValue: PropTypes.any,
     final: PropTypes.bool,
     factIndex: PropTypes.number,
-    title: PropTypes.string,
     handleResult: PropTypes.func,
     possibleCreatingActions: PropTypes.array,
     previousActs: PropTypes.array,
@@ -125,12 +129,11 @@ class FactPrompt extends Component {
       return (
         <Form.Control
           as="select"
-          className="value"
           onChange={this.handleInput.bind(this)}
           value={this.state.factValue}
           disabled={this.state.final}
-          hidden={this.isFinalBoolean()}
           custom
+          {...this.props.controlOptions}
         >
           {this.renderOptions()}
         </Form.Control>
@@ -139,11 +142,10 @@ class FactPrompt extends Component {
       return (
         <Form.Control
           className="value"
-          placeholder="Waarde van feit"
           onChange={this.handleInput.bind(this)}
           value={this.state.factValue}
           disabled={this.state.final}
-          hidden={this.isFinalBoolean()}
+          {...this.props.controlOptions}
         />
       );
     }
@@ -151,8 +153,8 @@ class FactPrompt extends Component {
 
   formatFact() {
     let title = "";
-    if (this.props.title) {
-      title = this.props.title;
+    if (this.props.question) {
+      title = this.props.question;
     } else {
       /** @type {string} */
       const fact = this.props.fact.replace(/^\[/, "").replace(/\]$/, "");
@@ -161,25 +163,47 @@ class FactPrompt extends Component {
     return `${this.props.factIndex || 0}. ${title}`;
   }
 
+  renderPrompt() {
+    if (this.props.type === "boolean") {
+      return (
+        <>
+          <Button
+            variant={this.affirmVariant()}
+            disabled={this.state.final}
+            onClick={this.handleAffirm.bind(this)}
+          >
+            {this.props.affirmPrompt}
+          </Button>{" "}
+          <Button
+            variant={this.denyVariant()}
+            disabled={this.state.final}
+            onClick={this.handleDeny.bind(this)}
+          >
+            {this.props.denyPrompt}
+          </Button>
+        </>
+      );
+    } else {
+      return (
+        <>
+          <Form.Group>{this.renderInput()}</Form.Group>
+          <Button
+            variant={this.affirmVariant()}
+            disabled={this.state.final}
+            onClick={this.handleAffirm.bind(this)}
+          >
+            {this.props.confirmPrompt}
+          </Button>
+        </>
+      );
+    }
+  }
+
   render() {
     return (
       <Form className="factPromptForm text-center">
         <h3>{this.formatFact()}</h3>
-        <Form.Group>{this.renderInput()}</Form.Group>
-        <Button
-          variant={this.affirmVariant()}
-          disabled={this.state.final}
-          onClick={this.handleAffirm.bind(this)}
-        >
-          {this.props.affirmPrompt}
-        </Button>{" "}
-        <Button
-          variant={this.denyVariant()}
-          disabled={this.state.final}
-          onClick={this.handleDeny.bind(this)}
-        >
-          {this.props.denyPrompt}
-        </Button>
+        {this.renderPrompt()}
       </Form>
     );
   }

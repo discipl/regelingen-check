@@ -6,6 +6,8 @@ import Table from "react-bootstrap/Table";
 
 import FactChangeModal from "./FactChangeModal";
 
+import QuestionMap from "../model/questionMapping";
+
 class FactsView extends Component {
   constructor(props) {
     super(props);
@@ -42,8 +44,17 @@ class FactsView extends Component {
 
   renderFacts() {
     return Object.entries(this.props.facts).map((keyValue) => {
-      const factName = keyValue[0];
+      let factName = QuestionMap[keyValue[0]]
+        ? QuestionMap[keyValue[0]].question
+        : null;
       const factValue = keyValue[1];
+
+      if (!factName) {
+        factName = this.props.fact.replace(/^\[/, "").replace(/\]$/, "");
+        factName = `${factName
+          .substr(0, 1)
+          .toLocaleUpperCase()}${factName.substr(1)}`;
+      }
 
       const displayValue =
         typeof factValue === "boolean"
