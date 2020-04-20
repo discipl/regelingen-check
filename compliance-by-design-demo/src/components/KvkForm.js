@@ -10,7 +10,7 @@ class KvkForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      kvkNumber: "69599084",
+      kvkNumber: "",
       kvkNumberEntered: false,
       derivedFacts: null,
     };
@@ -45,28 +45,13 @@ class KvkForm extends Component {
     // TODO: Check there is exactly one main activity SBI code
     const mainSbi = companyInfo.businessActivities
       .filter((activity) => activity.isMainSbi)
-      .map((activity) => {
-        const sbiWithoutDots = activity.sbiCode;
-        if (sbiWithoutDots.length > 4) {
-          return (
-            sbiWithoutDots.substring(0, 2) +
-            "." +
-            sbiWithoutDots.substring(2, 4) +
-            "." +
-            sbiWithoutDots.substring(4)
-          );
-        }
-        if (sbiWithoutDots.length > 2) {
-          return (
-            sbiWithoutDots.substring(0, 2) + "." + sbiWithoutDots.substring(2)
-          );
-        }
-
-        return sbiWithoutDots;
-      });
+      .map((activity) => activity.sbiCode);
 
     // TODO: Remove hardcoded, because sample in API doesn't have right sbi code
-    derivedFacts["[SBI-code hoofdactiviteit onderneming]"] = "47192";
+    if (mainSbi.length > 0) {
+      derivedFacts["[SBI-code hoofdactiviteit onderneming]"] = mainSbi[0];
+    }
+    
 
     const locatedInTheNetherlands =
       companyInfo.addresses.filter(
