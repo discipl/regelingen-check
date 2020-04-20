@@ -13,7 +13,6 @@ const INITIAL_FACTS = {
   "[gedupeerde onderneming]": true,
   "[Minister van Economische Zaken en Klimaat]": true,
   "[verzoek om aanvullende uitkering voor levensonderhoud op grond van de Tozo]": true,
-  "[zelfstandige]": true,
   "[verzoek om lening voor bedrijfskapitaal op grond van de Tozo]": true,
 };
 
