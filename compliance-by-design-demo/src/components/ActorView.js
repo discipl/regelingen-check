@@ -6,6 +6,8 @@ import Container from "react-bootstrap/Container";
 import "./ActorView.css";
 
 import FactPrompt from "./FactPrompt";
+
+import FactsView from "./FactsView";
 import ActButton, { STATUS_ICONS } from "./ActButton";
 import ActView from "./ActView";
 
@@ -59,12 +61,19 @@ class ActorView extends Component {
     }
   }
 
-  async computeRenderData() {
+  async computeRenderData(
+    additionalFactName = null,
+    additionalFactValue = null
+  ) {
     this.setState({ loading: true });
     console.log("ComputeRenderDataState", this.state);
     console.log("ComputeRenderData", this.props);
     try {
       const factResolver = (fact) => {
+        if (additionalFactName === fact) {
+          return additionalFactValue;
+        }
+
         if (
           this.props.derivedFacts &&
           this.props.derivedFacts.hasOwnProperty(fact)
@@ -366,6 +375,18 @@ class ActorView extends Component {
     });
   }
 
+  onChangeFact(factName, factValue) {
+    console.log("onChangeFact", factName, factValue);
+    this.setState((state) => {
+      const newEnteredFacts = { ...state.enteredFacts, [factName]: factValue };
+      console.log(newEnteredFacts);
+      this.computeRenderData(factName, factValue);
+      return {
+        enteredFacts: newEnteredFacts,
+      };
+    });
+  }
+
   render() {
     console.log("ActorView render with state", this.state);
     if (this.state.loading === true) {
@@ -405,6 +426,12 @@ class ActorView extends Component {
           {this.renderAvailableActs()}
           {this.renderPotentialActs()}
           {this.renderImpossibleActs()}
+        </div>
+        <div className="m5-5 mb-5">
+          <FactsView
+            facts={this.state.enteredFacts}
+            onChangeFact={this.onChangeFact.bind(this)}
+          ></FactsView>
         </div>
 
         <h4>Legenda</h4>
