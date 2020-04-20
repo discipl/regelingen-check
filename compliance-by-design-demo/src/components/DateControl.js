@@ -11,7 +11,7 @@ function convertToValue(string) {
       2
     )}`;
   }
-  return null;
+  return "";
 }
 
 /**
@@ -21,7 +21,7 @@ function convertFromValue(string) {
   if (string) {
     return `${string.substr(0, 4)}${string.substr(5, 2)}${string.substr(8, 2)}`;
   }
-  return null;
+  return "";
 }
 
 export default class DateControl extends Component {
