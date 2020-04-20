@@ -25,6 +25,7 @@ export default class FactChangeModal extends Component {
       if (typeof this.props.oldValue === "number") {
         this.props.handleSave(this.props.factName, Number(this.state.value));
       } else {
+        this.props.handleSave(this.props.factName, this.state.value);
       }
     }
   }
@@ -32,7 +33,7 @@ export default class FactChangeModal extends Component {
     return (
       <Modal show={this.props.factName != null} onHide={this.props.handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Change {this.props.factName}</Modal.Title>
+          <Modal.Title>Wijzig {this.props.factName}</Modal.Title>
         </Modal.Header>
         <InputGroup>
           <Modal.Body>
