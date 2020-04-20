@@ -20,7 +20,8 @@ class FactPrompt extends Component {
 
   static defaultProps = {
     type: "boolean",
-    confirmPrompt: "Indienen",
+    submitPrompt: "Indienen",
+    cancelPrompt: "Niet van toepassing",
     affirmPrompt: "Ja",
     affirmVariant: "primary",
     notAffirmedVariant: "outline-primary",
@@ -192,7 +193,14 @@ class FactPrompt extends Component {
             disabled={this.state.final}
             onClick={this.handleAffirm.bind(this)}
           >
-            {this.props.confirmPrompt}
+            {this.props.submitPrompt}
+          </Button>
+          <Button
+            variant={this.denyVariant()}
+            disabled={this.state.final}
+            onClick={this.handleDeny.bind(this)}
+          >
+            {this.props.cancelPrompt}
           </Button>
         </>
       );
