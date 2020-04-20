@@ -267,6 +267,7 @@ class KvkForm extends Component {
               placeholder="Vul uw KVK Nummer in"
               value={this.state.kvkNumber}
               onChange={this.handleChange.bind(this)}
+              required
             ></Form.Control>
           </Form.Group>
           <Button variant="primary" type="submit">
