@@ -65,7 +65,7 @@ export default {
     type: "string",
   },
   "[bedrijf van zelfstandige is in Nederland gevestigd]": {
-    question: "Is bedrijf is gevestigd in Nederland?",
+    question: "Is uw bedrijf gevestigd in Nederland?",
   },
   "[bij de rechtbank is een verzoek tot verlening van surseance van betaling aan de gedupeerde onderneming ingediend]": {
     question:
