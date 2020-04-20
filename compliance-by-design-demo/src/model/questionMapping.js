@@ -53,7 +53,7 @@ export default {
   },
   "[aanvraag omvat het rekeningnummer dat op naam van de gedupeerde onderneming staat]": {
     question:
-      "Wat is het rekeningnummer op naam staan van uw onderneming, waarop u de tegemoetkoming wilt ontvangen?",
+      "Wat is het rekeningnummer, dat op naam van uw onderneming moet staan, waarop u de tegemoetkoming wilt ontvangen?",
     type: "string",
   },
   "[aanvraag tegemoetkoming in de schade geleden door de maatregelen ter bestrijding van de verdere verspreiding van COVID-19]": {
