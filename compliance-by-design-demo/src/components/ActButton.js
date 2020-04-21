@@ -3,14 +3,9 @@ import PropTypes from "prop-types";
 
 import Button from "react-bootstrap/Button";
 
-export const SUBSIDY_TITLES = {
-  "<<indienen aanvraag tegemoetkoming in de schade geleden door de maatregelen ter bestrijding van de verdere verspreiding van COVID-19>>":
-    "Tegemoetkoming geleden schade ten gevolge van de Coronamaatregelen",
-  "<<indienen verzoek om aanvullende uitkering voor levensonderhoud op grond van de Tozo>>":
-    "Aanvullende uitkering voor levensonderhoud op grond van de Tozo",
-  "<<indienen verzoek om lening voor bedrijfskapitaal op grond van de Tozo>>":
-    "Lening voor bedrijfskapitaal op grond van de Tozo",
-};
+import { ActData } from "../model/modelMetaData";
+
+import "./ActButton.css";
 
 const STATUS_VARIANTS = {
   potential: "primary",
@@ -95,14 +90,30 @@ export default class ActButton extends Component {
   }
 
   title() {
-    return SUBSIDY_TITLES[this.props.act] || this.props.act;
+    const data = ActData[this.props.act];
+    return data ? data.title : this.props.act;
+  }
+
+  renderDate() {
+    const data = ActData[this.props.act];
+    if (data) {
+      const date = data.date.toLocaleDateString("nl-NL");
+      return (
+        <p className="text-muted actButtonDate">
+          De gegevens van deze regeling zijn geraadpleegd op {date}.
+        </p>
+      );
+    }
   }
 
   render() {
     return (
-      <Button className="actButton" {...this.props} variant={this.variant()}>
-        {this.title()} {this.icon()}
-      </Button>
+      <>
+        <Button className="actButton" {...this.props} variant={this.variant()}>
+          {this.title()} {this.icon()}
+        </Button>
+        {this.renderDate()}
+      </>
     );
   }
 }

@@ -6,7 +6,7 @@ import Container from "react-bootstrap/Container";
 import { SUBSIDY_TITLES } from "./ActButton";
 import FactPrompt from "./FactPrompt";
 
-import QuestionMap from "../model/questionMapping";
+import { ActData, FactData } from "../model/modelMetaData";
 
 /**
  * ActView Component
@@ -20,7 +20,9 @@ export default class ActView extends Component {
   };
 
   title() {
-    return SUBSIDY_TITLES[this.props.act.act] || this.props.act.act;
+    return ActData[this.props.act.act]
+      ? ActData[this.props.act.act].title
+      : this.props.act.act;
   }
 
   renderFactPrompts() {
@@ -35,7 +37,7 @@ export default class ActView extends Component {
           fact={factPromptState.fact}
           possibleCreatingActions={factPromptState.possibleCreatingActions}
           previousActs={this.props.previousActs}
-          {...QuestionMap[factPromptState.fact]}
+          {...FactData[factPromptState.fact]}
         />
       );
     });
