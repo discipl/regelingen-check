@@ -33,7 +33,9 @@ export default class FactChangeModal extends Component {
     return (
       <Modal show={this.props.factName != null} onHide={this.props.handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Wijzig {this.props.factName}</Modal.Title>
+          <Modal.Title>
+            Wijzig <em>{this.props.factName}</em>
+          </Modal.Title>
         </Modal.Header>
         <InputGroup>
           <Modal.Body>

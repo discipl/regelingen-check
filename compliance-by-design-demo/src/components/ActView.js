@@ -6,6 +6,8 @@ import Container from "react-bootstrap/Container";
 import { SUBSIDY_TITLES } from "./ActButton";
 import FactPrompt from "./FactPrompt";
 
+import QuestionMap from "../model/questionMapping";
+
 /**
  * ActView Component
  * @augments {Component<Props, State>}
@@ -33,6 +35,7 @@ export default class ActView extends Component {
           fact={factPromptState.fact}
           possibleCreatingActions={factPromptState.possibleCreatingActions}
           previousActs={this.props.previousActs}
+          {...QuestionMap[factPromptState.fact]}
         />
       );
     });
