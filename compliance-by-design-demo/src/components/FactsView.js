@@ -6,7 +6,7 @@ import Table from "react-bootstrap/Table";
 
 import FactChangeModal from "./FactChangeModal";
 
-import QuestionMap from "../model/questionMapping";
+import { FactData } from "../model/modelMetaData";
 
 class FactsView extends Component {
   constructor(props) {
@@ -44,8 +44,8 @@ class FactsView extends Component {
 
   renderFacts() {
     return Object.entries(this.props.facts).map((keyValue) => {
-      let factName = QuestionMap[keyValue[0]]
-        ? QuestionMap[keyValue[0]].question
+      let factName = FactData[keyValue[0]]
+        ? FactData[keyValue[0]].question
         : null;
       const factValue = keyValue[1];
 
