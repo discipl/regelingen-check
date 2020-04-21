@@ -2,14 +2,20 @@ export const ActData = {
   "<<indienen aanvraag tegemoetkoming in de schade geleden door de maatregelen ter bestrijding van de verdere verspreiding van COVID-19>>": {
     date: new Date("2020-04-21"),
     title: "Tegemoetkoming geleden schade ten gevolge van de Coronamaatregelen",
+    requestUrl:
+      "https://www.rvo.nl/subsidie-en-financieringswijzer/tegemoetkoming-schade-covid-19/aanvraagproces/aanvraagprocedure",
   },
   "<<indienen verzoek om aanvullende uitkering voor levensonderhoud op grond van de Tozo>>": {
     date: new Date("2020-04-21"),
     title: "Aanvullende uitkering voor levensonderhoud op grond van de Tozo",
+    requestInfo:
+      "De aanvullende uitkering kunt u aanvragen bij uw woongemeente. Kijk op de website van uw gemeente voor meer informatie over de Tozo.",
   },
   "<<indienen verzoek om lening voor bedrijfskapitaal op grond van de Tozo>>": {
     date: new Date("2020-04-21"),
     title: "Lening voor bedrijfskapitaal op grond van de Tozo",
+    requestInfo:
+      "De lening kunt u aanvragen bij uw woongemeente. Kijk op de website van uw gemeente voor meer informatie over de Tozo.",
   },
 };
 

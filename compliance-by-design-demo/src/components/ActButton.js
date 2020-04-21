@@ -94,6 +94,27 @@ export default class ActButton extends Component {
     return data ? data.title : this.props.act;
   }
 
+  renderRequestInfo() {
+    const data = ActData[this.props.act];
+
+    if (this.props.status !== "available" || !data) {
+      return;
+    }
+
+    if (data.requestUrl) {
+      return (
+        <p>
+          U kunt een aanvraag indienen voor deze regeling{" "}
+          <a href={data.requestUrl}>via deze link</a>.
+        </p>
+      );
+    }
+
+    if (data.requestInfo) {
+      return <p>{data.requestInfo}</p>;
+    }
+  }
+
   renderDate() {
     const data = ActData[this.props.act];
     if (data) {
@@ -108,12 +129,13 @@ export default class ActButton extends Component {
 
   render() {
     return (
-      <>
-        <Button className="actButton" {...this.props} variant={this.variant()}>
+      <div className="actButton">
+        <Button {...this.props} variant={this.variant()}>
           {this.title()} {this.icon()}
         </Button>
         {this.renderDate()}
-      </>
+        {this.renderRequestInfo()}
+      </div>
     );
   }
 }
