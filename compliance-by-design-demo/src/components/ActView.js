@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 
 import Container from "react-bootstrap/Container";
 
-import { SUBSIDY_TITLES } from "./ActButton";
 import FactPrompt from "./FactPrompt";
 
 import { ActData, FactData } from "../model/modelMetaData";
