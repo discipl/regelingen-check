@@ -18,13 +18,20 @@ class FactsView extends Component {
 
   changeFact(factName) {
     if (this.props.onChangeFact) {
-      if (typeof this.props.facts[factName] === "boolean") {
-        this.props.onChangeFact(factName, !this.props.facts[factName]);
-      } else {
+      const isNonboolean =
+        FactData[factName] &&
+        FactData[factName].type &&
+        FactData[factName].type !== "boolean";
+
+      console.log(`${factName} is nonboolean: ${isNonboolean}`);
+
+      if (isNonboolean) {
         this.setState({
           changingFact: factName,
           oldValue: this.props.facts[factName],
         });
+      } else {
+        this.props.onChangeFact(factName, !this.props.facts[factName]);
       }
     }
   }
@@ -43,28 +50,25 @@ class FactsView extends Component {
   }
 
   renderFacts() {
-    return Object.entries(this.props.facts).map((keyValue) => {
-      let factName = FactData[keyValue[0]]
-        ? FactData[keyValue[0]].question
-        : null;
-      const factValue = keyValue[1];
+    return Object.entries(this.props.facts).map(([factName, factValue]) => {
+      let factTitle = FactData[factName] && FactData[factName].question;
 
-      if (!factName) {
-        factName = this.props.fact.replace(/^\[/, "").replace(/\]$/, "");
-        factName = `${factName
+      if (!factTitle) {
+        factTitle = factName.replace(/^\[/, "").replace(/\]$/, "");
+        factTitle = `${factTitle
           .substr(0, 1)
-          .toLocaleUpperCase()}${factName.substr(1)}`;
+          .toLocaleUpperCase()}${factTitle.substr(1)}`;
       }
 
       const displayValue =
         typeof factValue === "boolean"
           ? factValue
             ? "Ja"
-            : "Nee"
+            : "Nee / n.v.t."
           : JSON.stringify(factValue);
       return (
         <tr>
-          <td>{factName}</td>
+          <td>{factTitle}</td>
           <td>{displayValue}</td>
           <td>
             <button
