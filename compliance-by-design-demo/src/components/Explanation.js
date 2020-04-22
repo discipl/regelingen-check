@@ -7,37 +7,46 @@ import Collapse from "react-bootstrap/Collapse";
 
 import { FactData } from "../model/modelMetaData";
 
+function valueDefined(value, negated = false) {
+  if (value) {
+    return !negated ? "true" : "false";
+  } else if (value === false) {
+    return !negated ? "false" : "true";
+  }
+
+  return "undefined";
+}
+
+const EXPLANATION_COLORS = {
+  true: "text-success",
+  false: "text-danger",
+  undefined: "",
+};
+
 const EXPRESSIONS = {
   NOT: {
-    title: () => "Het onderstaande feit moet NIET gelden:",
+    title: () => "Het onderstaande feit moet NIET gelden",
+    negate: true,
   },
   AND: {
-    title: ({ value }) => {
-      let info;
-      if (value === true) {
-        info = "voldaan";
-      } else if (value === false) {
-        info = "niet voldaan";
-      } else {
-        info = "meer informatie nodig";
-      }
-
-      return `Alle onderstaande feiten moeten gelden (${info}):`;
+    title: () => {
+      return `Alle onderstaande feiten moeten gelden`;
     },
   },
   EQUAL: {
-    title: () => "Onderstaande feiten moeten gelijk zijn:",
+    title: () => "Onderstaande feiten moeten gelijk zijn",
   },
   OR: {
-    title: () => "Ten minste een van de onderstaande feiten moet gelden:",
+    title: () => "Ten minste een van de onderstaande feiten moet gelden",
   },
-  LITERAL: { title: ({ value }) => value },
+  LITERAL: { title: ({ value }) => JSON.stringify(value), renderValue: false },
   LESS_THAN: { title: () => "Onderstaande feit moet kleiner zijn dan" },
 };
 
 export default class Explanation extends Component {
   static defaultProps = {
     root: true,
+    negated: false,
   };
 
   constructor(props) {
@@ -45,6 +54,15 @@ export default class Explanation extends Component {
     this.state = {
       open: false,
     };
+  }
+
+  willNegate() {
+    return (
+      this.props.explanation &&
+      this.props.explanation.expression &&
+      EXPRESSIONS[this.props.explanation.expression] &&
+      EXPRESSIONS[this.props.explanation.expression].negate
+    );
   }
 
   toggleOpen() {
@@ -73,7 +91,7 @@ export default class Explanation extends Component {
           FactData[this.props.explanation.fact].question) ||
         this.props.explanation.fact;
       return (
-        <p onClick={this.toggleOpen.bind(this)}>
+        <p onClick={this.toggleOpen.bind(this)} className={this.color()}>
           {this.renderChevron()} <em>{title}</em> ({this.renderValue()})
         </p>
       );
@@ -94,18 +112,19 @@ export default class Explanation extends Component {
 
   renderExpression() {
     if (this.props.explanation.expression) {
-      const options = EXPRESSIONS[this.props.explanation.expression];
-      if (options && options.title) {
-        return (
-          <p onClick={this.toggleOpen.bind(this)}>
-            {this.renderChevron()} {options.title(this.props.explanation)}
-          </p>
-        );
-      }
+      const options = EXPRESSIONS[this.props.explanation.expression] || {};
+      const title = options.title
+        ? options.title(this.props.explanation)
+        : `Expressie: ${this.props.explanation.expression}`;
+
+      const value =
+        options.renderValue === false ? null : ` (${this.renderValue()})`;
 
       return (
-        <p onClick={this.toggleOpen.bind(this)}>
-          {this.renderChevron()} Expressie: {this.props.explanation.expression}
+        <p onClick={this.toggleOpen.bind(this)} className={this.color()}>
+          {this.renderChevron()}
+          {title}
+          {value}
         </p>
       );
     }
@@ -133,6 +152,14 @@ export default class Explanation extends Component {
     );
   }
 
+  color() {
+    if (this.props.explanation) {
+      return EXPLANATION_COLORS[
+        valueDefined(this.props.explanation.value, this.props.negated)
+      ];
+    }
+  }
+
   renderSubExplanations() {
     const children = this.filteredOperands().map(
       (operandExplanation, index) => (
@@ -141,6 +168,9 @@ export default class Explanation extends Component {
             explanation={operandExplanation}
             title={this.renderTitle(operandExplanation, index)}
             root={false}
+            negated={
+              this.willNegate() ? !this.props.negated : this.props.negated
+            }
           />
         </li>
       )
@@ -159,7 +189,7 @@ export default class Explanation extends Component {
 
   renderExplanation() {
     return (
-      <div className="explanation">
+      <div className="factExplanation">
         {this.renderFact()}
         {this.renderExpression()}
         {this.renderSubExplanations()}
@@ -174,7 +204,7 @@ export default class Explanation extends Component {
 
     if (this.props.root) {
       return (
-        <Accordion>
+        <Accordion className="explanation">
           <Card>
             <Card.Header className="text-center">
               <Accordion.Toggle as={Button} variant="link" eventKey="0">
