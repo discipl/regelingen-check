@@ -3,12 +3,12 @@ import React, { Component } from "react";
 import Accordion from "react-bootstrap/Accordion";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
+import Collapse from "react-bootstrap/Collapse";
 
 import { FactData } from "../model/modelMetaData";
 
 const EXPRESSIONS = {
   NOT: {
-    negation: true,
     title: () => "Het onderstaande feit moet NIET gelden:",
   },
   AND: {
@@ -38,8 +38,33 @@ const EXPRESSIONS = {
 export default class Explanation extends Component {
   static defaultProps = {
     root: true,
-    negation: false,
   };
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      open: false,
+    };
+  }
+
+  toggleOpen() {
+    console.log("In click handler");
+    this.setState({
+      open: !this.state.open,
+    });
+  }
+
+  hasChildren() {
+    return this.filteredOperands().length > 0;
+  }
+
+  renderChevron() {
+    if (this.hasChildren()) {
+      return this.state.open ? "▲ " : "▼ ";
+    }
+
+    return "";
+  }
 
   renderFact() {
     if (this.props.explanation.fact) {
@@ -48,8 +73,8 @@ export default class Explanation extends Component {
           FactData[this.props.explanation.fact].question) ||
         this.props.explanation.fact;
       return (
-        <p>
-          <em>{title}</em> ({this.renderValue()})
+        <p onClick={this.toggleOpen.bind(this)}>
+          {this.renderChevron()} <em>{title}</em> ({this.renderValue()})
         </p>
       );
     }
@@ -71,10 +96,18 @@ export default class Explanation extends Component {
     if (this.props.explanation.expression) {
       const options = EXPRESSIONS[this.props.explanation.expression];
       if (options && options.title) {
-        return <p>{options.title(this.props.explanation)}</p>;
+        return (
+          <p onClick={this.toggleOpen.bind(this)}>
+            {this.renderChevron()} {options.title(this.props.explanation)}
+          </p>
+        );
       }
 
-      return <p>Expressie: {this.props.explanation.expression}</p>;
+      return (
+        <p onClick={this.toggleOpen.bind(this)}>
+          {this.renderChevron()} Expressie: {this.props.explanation.expression}
+        </p>
+      );
     }
   }
 
@@ -88,26 +121,40 @@ export default class Explanation extends Component {
     }
   }
 
-  renderSubExplanations() {
-    if (this.props.explanation.operandExplanations) {
-      const children = this.props.explanation.operandExplanations
-        // .filter(
-        //   (operandExplanation) =>
-        //     (operandExplanation.fact && operandExplanation.value !== null) ||
-        //     operandExplanation.expression
-        // )
-        .map((operandExplanation, index) => (
-          <li key={operandExplanation.fact}>
-            <Explanation
-              explanation={operandExplanation}
-              title={this.renderTitle(operandExplanation, index)}
-              root={false}
-            />
-          </li>
-        ));
-
-      return <ul>{children}</ul>;
+  filteredOperands() {
+    if (!this.props.explanation.operandExplanations) {
+      return [];
     }
+
+    return this.props.explanation.operandExplanations.filter(
+      (operandExplanation) =>
+        (operandExplanation.fact && operandExplanation.fact !== "[]") ||
+        operandExplanation.expression
+    );
+  }
+
+  renderSubExplanations() {
+    const children = this.filteredOperands().map(
+      (operandExplanation, index) => (
+        <li key={operandExplanation.fact}>
+          <Explanation
+            explanation={operandExplanation}
+            title={this.renderTitle(operandExplanation, index)}
+            root={false}
+          />
+        </li>
+      )
+    );
+
+    if (children.length > 0) {
+      return (
+        <Collapse in={this.state.open}>
+          <ul>{children}</ul>
+        </Collapse>
+      );
+    }
+
+    return null;
   }
 
   renderExplanation() {
