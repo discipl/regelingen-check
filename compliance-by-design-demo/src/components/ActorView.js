@@ -121,15 +121,25 @@ class ActorView extends Component {
       );
       console.log("Computed potential acts", potentialActs);
 
-      const explanationArray = await Promise.all(this.props.acts.map(act => this.props.lawReg.explain(this.props.actors[this.state.name],
-        this.props.caseLink,
-        act.act,
-        factResolver)))
+      const explanationArray = await Promise.all(
+        this.props.acts.map((act) =>
+          this.props.lawReg.explain(
+            this.props.actors[this.state.name],
+            this.props.caseLink,
+            act.act,
+            factResolver
+          )
+        )
+      );
 
-      const explanations = this.props.acts.map((act, index) => { return {'act':act.act, 'explanation': explanationArray[index]}}).reduce((map, obj) => {
-        map[obj.act] = obj.explanation;
-        return map;
-    }, {})
+      const explanations = this.props.acts
+        .map((act, index) => {
+          return { act: act.act, explanation: explanationArray[index] };
+        })
+        .reduce((map, { act, explanation }) => {
+          map[act] = explanation;
+          return map;
+        }, {});
 
       this.setState({
         availableActs: availableActs,
@@ -338,10 +348,26 @@ class ActorView extends Component {
   }
 
   renderExplanation(act) {
-    if (this.state.explanations && this.state.explanations.hasOwnProperty(act)) {
-      return <Explanation title="Uitleg" explanation={this.state.explanations[act].operandExplanations[3]}/>
+    if (
+      this.state.explanations &&
+      this.state.explanations.hasOwnProperty(act)
+    ) {
+      console.log(
+        this.state.explanations[act],
+        this.state.explanations[act].operandExplanations[3]
+      );
+
+      let explanation;
+
+      if (this.state.explanations[act].operandExplanations.length === 4) {
+        explanation = this.state.explanations[act].operandExplanations[3];
+      } else {
+        explanation = this.state.explanations[act].operandExplanations[0];
+      }
+
+      return <Explanation title="Uitleg" explanation={explanation} />;
     }
-  } 
+  }
 
   renderImpossibleActs() {
     const possibleActs = (this.state.potentialActs || [])

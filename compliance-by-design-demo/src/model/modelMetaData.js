@@ -290,5 +290,5 @@ export const FactData = {
   "[zelfstandige voldoet aan het urencriterium]": {
     question: "Voldoet u aan het urencriterium?",
   },
-  "[zelfstandige]": { question: "U, de zelfstandige" },
+  "[zelfstandige]": { question: "U bent zelfstandige" },
 };
