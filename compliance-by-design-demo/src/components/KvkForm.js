@@ -3,89 +3,81 @@ import React, { Component } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
+import Alert from "react-bootstrap/Alert";
 
 import DateControl from "./DateControl";
+
+// Facts that are always assumed to be true.
+const INITIAL_FACTS = {
+  "[verzoek tegemoetkoming in de schade geleden door de maatregelen ter bestrijding van de verdere verspreiding van COVID-19]": true,
+  "[gemeente]": true,
+  "[gedupeerde onderneming]": true,
+  "[Minister van Economische Zaken en Klimaat]": true,
+  "[verzoek om aanvullende uitkering voor levensonderhoud op grond van de Tozo]": true,
+  "[verzoek om lening voor bedrijfskapitaal op grond van de Tozo]": true,
+};
 
 class KvkForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      kvkNumber: "",
+      kvkApiError: false,
       kvkNumberEntered: false,
+      kvkNumber: "",
+      businessName: "",
       derivedFacts: null,
     };
   }
 
   async fetchFactsFromApi(event) {
     event.preventDefault();
-    const result = await fetch("/api/companies/" + this.state.kvkNumber);
-    const data = await result.json();
-    console.log(data);
+    let data,
+      result,
+      success = true;
 
-    const companyInfo = data.data.items[0];
-
-    const derivedFacts = {};
-    // Default facts
-    derivedFacts[
-      "[verzoek tegemoetkoming in de schade geleden door de maatregelen ter bestrijding van de verdere verspreiding van COVID-19]"
-    ] = true;
-
-    derivedFacts[
-      "[datum van inschrijving van onderneming in het KVK Handelsregister]"
-    ] = companyInfo.registrationDate;
-    derivedFacts["[datum van oprichting van onderneming]"] =
-      companyInfo.foundationDate;
-
-    derivedFacts[
-      "[aantal personen dat werkt bij onderneming blijkend uit de inschrijving in het handelsregister op 15 maart 2020]"
-    ] = companyInfo.employees;
-
-    // TODO: Check there is exactly one main activity SBI code
-    const mainSbi = companyInfo.businessActivities
-      .filter((activity) => activity.isMainSbi)
-      .map((activity) => activity.sbiCode);
-
-    // TODO: Remove hardcoded, because sample in API doesn't have right sbi code
-    if (mainSbi.length > 0) {
-      derivedFacts["[SBI-code hoofdactiviteit onderneming]"] = mainSbi[0];
+    try {
+      result = await fetch("/api/companies/" + this.state.kvkNumber);
+      data = await result.json();
+    } catch {
+      success = false;
     }
 
-    const locatedInTheNetherlands =
-      companyInfo.addresses.filter(
-        (address) =>
-          address.type === "vestigingsadres" && address.country === "Nederland"
-      ).length > 0;
+    if (!success || !result.ok) {
+      this.dontFetchFromApi();
+      this.setState({ kvkApiError: true });
+      return;
+    }
 
-    derivedFacts[
-      "[in Nederland gevestigde onderneming als bedoeld in artikel 5 van de Handelsregisterwet 2007]"
-    ] = locatedInTheNetherlands;
+    console.log(data);
+
+    const derivedFacts = {
+      ...INITIAL_FACTS,
+      "[datum van inschrijving van onderneming in het KVK Handelsregister]":
+        data.registrationDate,
+      "[datum van oprichting van onderneming]": data.foundationDate,
+      "[aantal personen dat werkt bij onderneming blijkend uit de inschrijving in het handelsregister op 15 maart 2020]":
+        data.employees,
+      "[SBI-code hoofdactiviteit onderneming]": data.mainSbi,
+      "[in Nederland gevestigde onderneming als bedoeld in artikel 5 van de Handelsregisterwet 2007]":
+        data.locatedInTheNetherlands,
+    };
 
     this.setState({
       kvkNumberEntered: true,
+      businessName: data.businessName,
       derivedFacts,
     });
   }
 
   dontFetchFromApi() {
-    const derivedFacts = {};
-    // Default facts
-    derivedFacts[
-      "[verzoek tegemoetkoming in de schade geleden door de maatregelen ter bestrijding van de verdere verspreiding van COVID-19]"
-    ] = true;
-
-    derivedFacts[
-      "[datum van inschrijving van onderneming in het KVK Handelsregister]"
-    ] = "";
-    derivedFacts["[datum van oprichting van onderneming]"] = "";
-
-    derivedFacts[
-      "[aantal personen dat werkt bij onderneming blijkend uit de inschrijving in het handelsregister op 15 maart 2020]"
-    ] = 0;
-
-    derivedFacts["[SBI-code hoofdactiviteit onderneming]"] = "";
-    derivedFacts[
-      "[in Nederland gevestigde onderneming als bedoeld in artikel 5 van de Handelsregisterwet 2007]"
-    ] = false;
+    const derivedFacts = {
+      ...INITIAL_FACTS,
+      "[datum van inschrijving van onderneming in het KVK Handelsregister]": "",
+      "[datum van oprichting van onderneming]": "",
+      "[aantal personen dat werkt bij onderneming blijkend uit de inschrijving in het handelsregister op 15 maart 2020]": 0,
+      "[SBI-code hoofdactiviteit onderneming]": "",
+      "[in Nederland gevestigde onderneming als bedoeld in artikel 5 van de Handelsregisterwet 2007]": false,
+    };
 
     this.setState({
       kvkNumberEntered: true,
@@ -119,6 +111,10 @@ class KvkForm extends Component {
     };
   }
 
+  handleBusinessNameUpdate(event) {
+    this.setState({ businessName: event.target.value });
+  }
+
   returnDerivedFacts(event) {
     event.preventDefault();
 
@@ -127,16 +123,44 @@ class KvkForm extends Component {
     }
   }
 
+  dismissNotice() {
+    this.setState({ kvkApiError: false });
+  }
+
+  renderNotice() {
+    if (this.state.kvkApiError) {
+      return (
+        <Alert
+          variant="warning"
+          onClose={this.dismissNotice.bind(this)}
+          dismissible
+        >
+          We kunnen de gegevens van uw bedrijf op dit moment niet ophalen. Vul
+          ze a.u.b. zelf in.
+        </Alert>
+      );
+    }
+  }
+
   render() {
     if (this.state.kvkNumberEntered) {
       return (
         <Container>
           <Form onSubmit={this.returnDerivedFacts.bind(this)}>
+            {this.renderNotice()}
             <h2>Controleer uw gegevens</h2>
             <p>
               We hebben de volgende gegevens voor uw bedrijf opgehaald.
-              Controleer ze goed en pas aan wat niet klopt.
+              Controleer ze goed en pas aan waar nodig.
             </p>
+            <Form.Group controlId="bedrijfsNaam">
+              <Form.Label>Naam van uw bedrijf</Form.Label>
+              <Form.Control
+                value={this.state.businessName}
+                onChange={this.handleBusinessNameUpdate.bind(this)}
+              ></Form.Control>
+            </Form.Group>
+
             <Form.Group controlId="datumOprichting">
               <Form.Label>Uw bedrijf is opgericht op</Form.Label>
               <DateControl
@@ -243,6 +267,7 @@ class KvkForm extends Component {
               placeholder="Vul uw KVK Nummer in"
               value={this.state.kvkNumber}
               onChange={this.handleChange.bind(this)}
+              required
             ></Form.Control>
           </Form.Group>
           <Button variant="primary" type="submit">

@@ -438,7 +438,8 @@ class ActorView extends Component {
         </p>
         <p>
           Om te bepalen of u daadwerkelijk gebruik kan maken van de
-          verschillende regelingen, moet u een aantal vragen beantwoorden.
+          verschillende regelingen, moet u een aantal vragen beantwoorden. Klik
+          op een van de regelingen om naar de vragenlijst te gaan.
         </p>
 
         <div className="mt-5 mb-5">
