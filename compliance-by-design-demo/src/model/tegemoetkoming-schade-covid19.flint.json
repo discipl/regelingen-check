@@ -72,9 +72,10 @@
         {
           "validFrom": "27-03-2020",
           "validTo": "01-01-2021",
-          "citation": "art. 2 lid 1 van de Beleidsregel tegemoetkoming ondernemers getroffen sectoren COVID-19",
           "juriconnect": "jci1.3:c:BWBR0043324&artikel=2&lid=1&z=2020-03-31&g=2020-03-31",
-          "text": "De minister verstrekt op aanvraag een tegemoetkoming aan een gedupeerde onderneming die verwacht in de periode van 16 maart 2020 tot en met 15 juni 2020:"
+          "citation": "art. 2 lid 1 van de Beleidsregel tegemoetkoming ondernemers getroffen sectoren COVID-19",
+          "text": "De minister verstrekt op aanvraag een tegemoetkoming aan een gedupeerde onderneming die verwacht in de periode van 16 maart 2020 tot en met 15 juni 2020:",
+          "explanation": ""
         }
       ],
       "explanation": "Deze act ondersteunt het indienen van een aanvraag die automatisch ingewilligd kan worden, de vraag is wat er moet gebeuren met aanvragen die onvolledig zijn of niet aan alle voorwaarden voldoen."
@@ -110,9 +111,10 @@
         {
           "validFrom": "27-03-2020",
           "validTo": "31-05-2020",
-          "citation": "Brief staatssecretaris SZW van 27 maart 2020: https://zoek.officielebekendmakingen.nl/kst-35420-11.html (voorlopige bron)",
           "juriconnect": "",
-          "text": "Ondersteuning op grond van de Tozo kan worden aangevraagd in de vorm van een bijstandsuitkering voor levensonderhoud én in de vorm van een lening voor bedrijfskapitaal."
+          "citation": "Brief staatssecretaris SZW van 27 maart 2020: https://zoek.officielebekendmakingen.nl/kst-35420-11.html (voorlopige bron)",
+          "text": "Ondersteuning op grond van de Tozo kan worden aangevraagd in de vorm van een bijstandsuitkering voor levensonderhoud én in de vorm van een lening voor bedrijfskapitaal.",
+          "explanation": ""
         }
       ],
       "explanation": ""
@@ -135,9 +137,10 @@
         {
           "validFrom": "27-03-2020",
           "validTo": "31-05-2020",
-          "citation": "Brief staatssecretaris SZW van 27 maart 2020: https://zoek.officielebekendmakingen.nl/kst-35420-11.html (voorlopige bron)",
           "juriconnect": "",
-          "text": "Ondersteuning op grond van de Tozo kan worden aangevraagd in de vorm van een bijstandsuitkering voor levensonderhoud én in de vorm van een lening voor bedrijfskapitaal."
+          "citation": "Brief staatssecretaris SZW van 27 maart 2020: https://zoek.officielebekendmakingen.nl/kst-35420-11.html (voorlopige bron)",
+          "text": "Ondersteuning op grond van de Tozo kan worden aangevraagd in de vorm van een bijstandsuitkering voor levensonderhoud én in de vorm van een lening voor bedrijfskapitaal.",
+          "explanation": ""
         }
       ],
       "explanation": "Deze act ondersteunt het indienen van een aanvraag die automatisch ingewilligd kan worden, de vraag is wat er moet gebeuren met aanvragen die onvolledig zijn of niet aan alle voorwaarden voldoen"
@@ -146,18 +149,19 @@
   "facts": [
     {
       "fact": "[verzoek tegemoetkoming in de schade geleden door de maatregelen ter bestrijding van de verdere verspreiding van COVID-19]",
+      "explanation": "",
       "function": "[]",
-      "sources": [],
-      "explanation": ""
+      "sources": []
     },
     {
       "fact": "[verzoek om aanvullende uitkering voor levensonderhoud op grond van de Tozo]",
+      "explanation": "",
       "function": "[]",
-      "sources": [],
-      "explanation": ""
+      "sources": []
     },
     {
       "fact": "[zelfstandige]",
+      "explanation": "",
       "function": {
         "expression": "OR",
         "operands": [
@@ -173,61 +177,62 @@
           }
         ]
       },
-      "sources": [],
-      "explanation": ""
+      "sources": []
     },
     {
       "fact": "[eenmansbedrijf]",
+      "explanation": "",
       "function": "[]",
-      "sources": [],
-      "explanation": ""
+      "sources": []
     },
     {
       "fact": "[directeur-grootaandeelhouder (DGA) van een besloten vennootschap]",
+      "explanation": "",
       "function": "[]",
-      "sources": [],
-      "explanation": ""
+      "sources": []
     },
     {
       "fact": "[er moet sprake zijn van volledige zeggenschap over de besloten vennootschap]",
+      "explanation": "",
       "function": "[]",
-      "sources": [],
-      "explanation": ""
+      "sources": []
     },
     {
       "fact": "[er moet sprake zijn van het van dragen van de financiële risico’s]",
+      "explanation": "",
       "function": "[]",
-      "sources": [],
-      "explanation": ""
+      "sources": []
     },
     {
       "fact": "[de DGA heeft naar waarheid verklaard en aannemelijk gemaakt dat zijn/haar B.V. nu geen salaris kan uitbetalen]",
+      "explanation": "",
       "function": "[]",
-      "sources": [],
-      "explanation": ""
+      "sources": []
     },
     {
       "fact": "[Minister van Economische Zaken en Klimaat]",
+      "explanation": "",
       "function": "[]",
-      "sources": [],
-      "explanation": ""
+      "sources": []
     },
     {
       "fact": "[gedupeerde onderneming]",
+      "explanation": "",
       "function": "[]",
       "sources": [
         {
           "validFrom": "27-03-2020",
           "validTo": "01-01-2021",
-          "citation": "art. 1 van de Beleidsregel tegemoetkoming ondernemers getroffen sectoren COVID-19",
           "juriconnect": "jci1.3:c:BWBR0043324&artikel=1&z=2020-03-31&g=2020-03-31",
-          "text": "gedupeerde onderneming: in Nederland gevestigde onderneming als bedoeld in artikel 5 van de Handelsregisterwet 2007, niet zijnde een overheidsbedrijf:"
+          "citation": "art. 1 van de Beleidsregel tegemoetkoming ondernemers getroffen sectoren COVID-19",
+          "text": "gedupeerde onderneming: in Nederland gevestigde onderneming als bedoeld in artikel 5 van de Handelsregisterwet 2007, niet zijnde een overheidsbedrijf:",
+          "explanation": ""
         }
-      ],
-      "explanation": ""
+      ]
     },
     {
       "fact": "[onderneming die op 15 maart 2020 in het handelsregister stond ingeschreven die op 15 maart 2020 in het handelsregister stond ingeschreven onder een hoofdactiviteit die in bijlage 1 is opgenomen, met de daarbij behorende code van de Standaard Bedrijfsindeling]",
+      "explanation": "",
       "function": {
         "expression": "AND",
         "operands": [
@@ -235,39 +240,41 @@
           "[ingeschreven onder een hoofdactiviteit die in bijlage 1 is opgenomen, met de daarbij behorende code van de Standaard Bedrijfsindeling]"
         ]
       },
-      "sources": [],
-      "explanation": ""
+      "sources": []
     },
     {
       "fact": "[gedupeerde onderneming verwacht in de periode van 16 maart 2020 tot en met 15 juni 2020 ten minste € 4000,- aan omzetverlies te lijden als gevolg van de maatregelen ter bestrijding van de verdere verspreiding van COVID-19]",
+      "explanation": "",
       "function": "[]",
       "sources": [
         {
           "validFrom": "27-03-2020",
           "validTo": "01-01-2021",
-          "citation": "art. 2 lid 1 aanhef en onder a, van de Beleidsregel tegemoetkoming ondernemers getroffen sectoren COVID-19",
           "juriconnect": "jci1.3:c:BWBR0043324&artikel=2&lid=1&z=2020-03-31&g=2020-03-31",
-          "text": "De minister verstrekt op aanvraag een tegemoetkoming aan een gedupeerde onderneming die verwacht in de periode van 16 maart 2020 tot en met 15 juni 2020: a.ten minste € 4000,– aan omzetverlies te lijden als gevolg van de maatregelen ter bestrijding van de verdere verspreiding van COVID-19;"
+          "citation": "art. 2 lid 1 aanhef en onder a, van de Beleidsregel tegemoetkoming ondernemers getroffen sectoren COVID-19",
+          "text": "De minister verstrekt op aanvraag een tegemoetkoming aan een gedupeerde onderneming die verwacht in de periode van 16 maart 2020 tot en met 15 juni 2020: a.ten minste € 4000,– aan omzetverlies te lijden als gevolg van de maatregelen ter bestrijding van de verdere verspreiding van COVID-19;",
+          "explanation": ""
         }
-      ],
-      "explanation": ""
+      ]
     },
     {
       "fact": "[gedupeerde onderneming verwacht ten minste € 4.000,- aan vaste lasten te hebben, ook na gebruik van andere door de overheid beschikbaar gestelde steunmaatregelen in het kader van de bestrijding van de verdere verspreiding van COVID-19]",
+      "explanation": "",
       "function": "[]",
       "sources": [
         {
           "validFrom": "27-03-2020",
           "validTo": "01-01-2021",
-          "citation": "art. 2 lid 1 aanhef en onder b, van de Beleidsregel tegemoetkoming ondernemers getroffen sectoren COVID-19",
           "juriconnect": "jci1.3:c:BWBR0043324&artikel=2&lid=1&z=2020-03-31&g=2020-03-31",
-          "text": "De minister verstrekt op aanvraag een tegemoetkoming aan een gedupeerde onderneming die verwacht in de periode van 16 maart 2020 tot en met 15 juni 2020: b.ten minste € 4000,– aan vaste lasten te hebben, ook na gebruik van andere door de overheid beschikbaar gestelde steunmaatregelen in het kader van de bestrijding van de verdere verspreiding van COVID-19."
+          "citation": "art. 2 lid 1 aanhef en onder b, van de Beleidsregel tegemoetkoming ondernemers getroffen sectoren COVID-19",
+          "text": "De minister verstrekt op aanvraag een tegemoetkoming aan een gedupeerde onderneming die verwacht in de periode van 16 maart 2020 tot en met 15 juni 2020: b.ten minste € 4000,– aan vaste lasten te hebben, ook na gebruik van andere door de overheid beschikbaar gestelde steunmaatregelen in het kader van de bestrijding van de verdere verspreiding van COVID-19.",
+          "explanation": ""
         }
-      ],
-      "explanation": ""
+      ]
     },
     {
       "fact": "[gedupeerde onderneming verkeert in staat van faillissement dan wel bij de rechtbank is een verzoek tot verlening van surseance van betaling aan de onderneming ingediend]",
+      "explanation": "",
       "function": {
         "expression": "OR",
         "operands": [
@@ -279,43 +286,46 @@
         {
           "validFrom": "27-03-2020",
           "validTo": "01-01-2021",
-          "citation": "art. 3 aanhef en onder b, van de Beleidsregel tegemoetkoming ondernemers getroffen sectoren COVID-19",
           "juriconnect": "jci1.3:c:BWBR0043324&artikel=3&z=2020-03-31&g=2020-03-31",
-          "text": "De minister beslist afwijzend op een aanvraag indien: b.de gedupeerde onderneming in staat van faillissement verkeert dan wel bij de rechtbank een verzoek tot verlening van surseance van betaling aan de onderneming is ingediend;"
+          "citation": "art. 3 aanhef en onder b, van de Beleidsregel tegemoetkoming ondernemers getroffen sectoren COVID-19",
+          "text": "De minister beslist afwijzend op een aanvraag indien: b.de gedupeerde onderneming in staat van faillissement verkeert dan wel bij de rechtbank een verzoek tot verlening van surseance van betaling aan de onderneming is ingediend;",
+          "explanation": ""
         }
-      ],
-      "explanation": ""
+      ]
     },
     {
       "fact": "[gedupeerde onderneming verkeert in staat van faillissement]",
+      "explanation": "",
       "function": "[]",
       "sources": [
         {
           "validFrom": "27-03-2020",
           "validTo": "01-01-2021",
-          "citation": "art. 3 aanhef en onder b, van de Beleidsregel tegemoetkoming ondernemers getroffen sectoren COVID-19",
           "juriconnect": "jci1.3:c:BWBR0043324&artikel=3&z=2020-03-31&g=2020-03-31",
-          "text": "De minister beslist afwijzend op een aanvraag indien: b.de gedupeerde onderneming in staat van faillissement verkeert dan wel bij de rechtbank een verzoek tot verlening van surseance van betaling aan de onderneming is ingediend;"
+          "citation": "art. 3 aanhef en onder b, van de Beleidsregel tegemoetkoming ondernemers getroffen sectoren COVID-19",
+          "text": "De minister beslist afwijzend op een aanvraag indien: b.de gedupeerde onderneming in staat van faillissement verkeert dan wel bij de rechtbank een verzoek tot verlening van surseance van betaling aan de onderneming is ingediend;",
+          "explanation": ""
         }
-      ],
-      "explanation": ""
+      ]
     },
     {
       "fact": "[bij de rechtbank is een verzoek tot verlening van surseance van betaling aan de gedupeerde onderneming ingediend]",
+      "explanation": "",
       "function": "[]",
       "sources": [
         {
           "validFrom": "27-03-2020",
           "validTo": "01-01-2021",
-          "citation": "art. 3 aanhef en onder b, van de Beleidsregel tegemoetkoming ondernemers getroffen sectoren COVID-19",
           "juriconnect": "jci1.3:c:BWBR0043324&artikel=3&z=2020-03-31&g=2020-03-31",
-          "text": "De minister beslist afwijzend op een aanvraag indien: b.de gedupeerde onderneming in staat van faillissement verkeert dan wel bij de rechtbank een verzoek tot verlening van surseance van betaling aan de onderneming is ingediend;"
+          "citation": "art. 3 aanhef en onder b, van de Beleidsregel tegemoetkoming ondernemers getroffen sectoren COVID-19",
+          "text": "De minister beslist afwijzend op een aanvraag indien: b.de gedupeerde onderneming in staat van faillissement verkeert dan wel bij de rechtbank een verzoek tot verlening van surseance van betaling aan de onderneming is ingediend;",
+          "explanation": ""
         }
-      ],
-      "explanation": ""
+      ]
     },
     {
       "fact": "[tegemoetkoming kan worden verstrekt op grond van de algemene de-minimisverordening]",
+      "explanation": "ISSUE: (1) De definitie van de 'verklaring de-minimissteun' impliceert dat de tegemoetkoming wel wordt verstrekt als het de-minimisplafond al overschreden was. In de FLINT interpretatie gebruiken we art. 3 lid 2 van de algemene de-minimisverordening als bron. Daar speelt dit probleem niet. (2) Hier wordt een voorwaarde gesteld in de lijst met definities.",
       "function": {
         "expression": "NOT",
         "operand": "[het totale bedrag aan de-minimissteun dat per lidstaat aan één onderneming wordt verleend, ligt hoger dan 200 000 EUR over een periode van drie belastingjaren]"
@@ -324,46 +334,46 @@
         {
           "validFrom": "27-03-2020",
           "validTo": "01-01-2021",
-          "citation": "art. 1 van de Beleidsregel tegemoetkoming ondernemers getroffen sectoren COVID-19",
           "juriconnect": "jci1.3:c:BWBR0043324&artikel=1&z=2020-03-31&g=2020-03-31",
-          "text": "verklaring de-minimissteun: verklaring van de gedupeerde onderneming waarin deze bevestigt dat de tegemoetkoming niet zal leiden tot een overschrijding van het de-minimisplafond, bedoeld in artikel 3, tweede lid, van de algemene de-minimisverordening;"
+          "citation": "art. 1 van de Beleidsregel tegemoetkoming ondernemers getroffen sectoren COVID-19",
+          "text": "verklaring de-minimissteun: verklaring van de gedupeerde onderneming waarin deze bevestigt dat de tegemoetkoming niet zal leiden tot een overschrijding van het de-minimisplafond, bedoeld in artikel 3, tweede lid, van de algemene de-minimisverordening;",
+          "explanation": ""
         }
-      ],
-      "explanation": "ISSUE: (1) De definitie van de 'verklaring de-minimissteun' impliceert dat de tegemoetkoming wel wordt verstrekt als het de-minimisplafond al overschreden was. In de FLINT interpretatie gebruiken we art. 3 lid 2 van de algemene de-minimisverordening als bron. Daar speelt dit probleem niet. (2) Hier wordt een voorwaarde gesteld in de lijst met definities."
+      ]
     },
     {
       "fact": "[het totale bedrag aan de-minimissteun dat per lidstaat aan één onderneming wordt verleend, ligt hoger dan 200 000 EUR over een periode van drie belastingjaren]",
+      "explanation": "ISSUE: Waarom wordt deze informatie aan de gedupeerde onderneming gevraagd? EZK moet de verleende staatssteun toch zelf registreren?",
       "function": "[]",
       "sources": [
         {
           "validFrom": "18-12-2013",
           "validTo": "31-12-9999",
-          "citation": "art 3, lid 2, van de Algemene de-minimisverordening",
           "juriconnect": "",
-          "text": "Het totale bedrag aan de-minimissteun dat per lidstaat aan één onderneming wordt verleend, ligt niet hoger dan 200 000 EUR over een periode van drie belastingjaren."
+          "citation": "art 3, lid 2, van de Algemene de-minimisverordening",
+          "text": "Het totale bedrag aan de-minimissteun dat per lidstaat aan één onderneming wordt verleend, ligt niet hoger dan 200 000 EUR over een periode van drie belastingjaren.",
+          "explanation": ""
         }
-      ],
-      "explanation": "ISSUE: Waarom wordt deze informatie aan de gedupeerde onderneming gevraagd? EZK moet de verleende staatssteun toch zelf registreren?"
+      ]
     },
     {
       "fact": "[aanvraag omvat het nummer waarmee de gedupeerde onderneming geregistreerd is bij de Kamer van Koophandel]",
-      "function": {
-        "expression": "AND",
-        "operands": []
-      },
+      "explanation": "",
+      "function": "[]",
       "sources": [
         {
           "validFrom": "27-03-2020",
           "validTo": "01-01-2021",
-          "citation": "art. 4 lid 2 aanhef en onder a, van de Beleidsregel tegemoetkoming ondernemers getroffen sectoren COVID-19",
           "juriconnect": "jci1.3:c:BWBR0043324&artikel=4&lid=2&z=2020-03-31&g=2020-03-31",
-          "text": "Een aanvraag omvat in ieder geval: gegevens over de gedupeerde onderneming, waaronder het nummer waarmee de gedupeerde onderneming geregistreerd is bij de Kamer van Koophandel, het post- en bezoekadres en het rekeningnummer dat op naam van de gedupeerde onderneming staat;"
+          "citation": "art. 4 lid 2 aanhef en onder a, van de Beleidsregel tegemoetkoming ondernemers getroffen sectoren COVID-19",
+          "text": "Een aanvraag omvat in ieder geval: gegevens over de gedupeerde onderneming, waaronder het nummer waarmee de gedupeerde onderneming geregistreerd is bij de Kamer van Koophandel, het post- en bezoekadres en het rekeningnummer dat op naam van de gedupeerde onderneming staat;",
+          "explanation": ""
         }
-      ],
-      "explanation": ""
+      ]
     },
     {
       "fact": "[aanvraag omvat het post- en bezoekadres en het rekeningnummer dat op naam van de gedupeerde onderneming staat]",
+      "explanation": "",
       "function": {
         "expression": "AND",
         "operands": [
@@ -376,57 +386,61 @@
         {
           "validFrom": "27-03-2020",
           "validTo": "01-01-2021",
-          "citation": "art. 4 lid 2 aanhef en onder a, van de Beleidsregel tegemoetkoming ondernemers getroffen sectoren COVID-19",
           "juriconnect": "jci1.3:c:BWBR0043324&artikel=4&lid=2&z=2020-03-31&g=2020-03-31",
-          "text": "Een aanvraag omvat in ieder geval: gegevens over de gedupeerde onderneming, waaronder het nummer waarmee de gedupeerde onderneming geregistreerd is bij de Kamer van Koophandel, het post- en bezoekadres en het rekeningnummer dat op naam van de gedupeerde onderneming staat;"
+          "citation": "art. 4 lid 2 aanhef en onder a, van de Beleidsregel tegemoetkoming ondernemers getroffen sectoren COVID-19",
+          "text": "Een aanvraag omvat in ieder geval: gegevens over de gedupeerde onderneming, waaronder het nummer waarmee de gedupeerde onderneming geregistreerd is bij de Kamer van Koophandel, het post- en bezoekadres en het rekeningnummer dat op naam van de gedupeerde onderneming staat;",
+          "explanation": ""
         }
-      ],
-      "explanation": ""
+      ]
     },
     {
       "fact": "[aanvraag omvat het postadres van de gedupeerde onderneming]",
+      "explanation": "",
       "function": "[]",
       "sources": [
         {
           "validFrom": "27-03-2020",
           "validTo": "01-01-2021",
-          "citation": "art. 4 lid 2 aanhef en onder a, van de Beleidsregel tegemoetkoming ondernemers getroffen sectoren COVID-19",
           "juriconnect": "jci1.3:c:BWBR0043324&artikel=4&lid=2&z=2020-03-31&g=2020-03-31",
-          "text": "Een aanvraag omvat in ieder geval: gegevens over de gedupeerde onderneming, waaronder het nummer waarmee de gedupeerde onderneming geregistreerd is bij de Kamer van Koophandel, het post- en bezoekadres en het rekeningnummer dat op naam van de gedupeerde onderneming staat;"
+          "citation": "art. 4 lid 2 aanhef en onder a, van de Beleidsregel tegemoetkoming ondernemers getroffen sectoren COVID-19",
+          "text": "Een aanvraag omvat in ieder geval: gegevens over de gedupeerde onderneming, waaronder het nummer waarmee de gedupeerde onderneming geregistreerd is bij de Kamer van Koophandel, het post- en bezoekadres en het rekeningnummer dat op naam van de gedupeerde onderneming staat;",
+          "explanation": ""
         }
-      ],
-      "explanation": ""
+      ]
     },
     {
       "fact": "[aanvraag omvat het bezoekadres van de gedupeerde onderneming]",
+      "explanation": "",
       "function": "[]",
       "sources": [
         {
           "validFrom": "27-03-2020",
           "validTo": "01-01-2021",
-          "citation": "art. 4 lid 2 aanhef en onder a, van de Beleidsregel tegemoetkoming ondernemers getroffen sectoren COVID-19",
           "juriconnect": "jci1.3:c:BWBR0043324&artikel=4&lid=2&z=2020-03-31&g=2020-03-31",
-          "text": "Een aanvraag omvat in ieder geval: gegevens over de gedupeerde onderneming, waaronder het nummer waarmee de gedupeerde onderneming geregistreerd is bij de Kamer van Koophandel, het post- en bezoekadres en het rekeningnummer dat op naam van de gedupeerde onderneming staat;"
+          "citation": "art. 4 lid 2 aanhef en onder a, van de Beleidsregel tegemoetkoming ondernemers getroffen sectoren COVID-19",
+          "text": "Een aanvraag omvat in ieder geval: gegevens over de gedupeerde onderneming, waaronder het nummer waarmee de gedupeerde onderneming geregistreerd is bij de Kamer van Koophandel, het post- en bezoekadres en het rekeningnummer dat op naam van de gedupeerde onderneming staat;",
+          "explanation": ""
         }
-      ],
-      "explanation": ""
+      ]
     },
     {
       "fact": "[aanvraag omvat het rekeningnummer dat op naam van de gedupeerde onderneming staat]",
+      "explanation": "",
       "function": "[]",
       "sources": [
         {
           "validFrom": "27-03-2020",
           "validTo": "01-01-2021",
-          "citation": "art. 4 lid 2 aanhef en onder a, van de Beleidsregel tegemoetkoming ondernemers getroffen sectoren COVID-19",
           "juriconnect": "jci1.3:c:BWBR0043324&artikel=4&lid=2&z=2020-03-31&g=2020-03-31",
-          "text": "Een aanvraag omvat in ieder geval: gegevens over de gedupeerde onderneming, waaronder het nummer waarmee de gedupeerde onderneming geregistreerd is bij de Kamer van Koophandel, het post- en bezoekadres en het rekeningnummer dat op naam van de gedupeerde onderneming staat;"
+          "citation": "art. 4 lid 2 aanhef en onder a, van de Beleidsregel tegemoetkoming ondernemers getroffen sectoren COVID-19",
+          "text": "Een aanvraag omvat in ieder geval: gegevens over de gedupeerde onderneming, waaronder het nummer waarmee de gedupeerde onderneming geregistreerd is bij de Kamer van Koophandel, het post- en bezoekadres en het rekeningnummer dat op naam van de gedupeerde onderneming staat;",
+          "explanation": ""
         }
-      ],
-      "explanation": ""
+      ]
     },
     {
       "fact": "[aanvraag omvat gegevens over de contactpersoon bij de gedupeerde onderneming]",
+      "explanation": "VRAAG: De uitwerking van deze voorwaarde is nu dat alleen de minimaal benodigde gegevens van de contactpersoon worden gevraagd. Is dit de bedoeling?",
       "function": {
         "expression": "AND",
         "operands": [
@@ -439,276 +453,202 @@
         {
           "validFrom": "27-03-2020",
           "validTo": "01-01-2021",
-          "citation": "art. 4 lid 2 aanhef en onder b, van de Beleidsregel tegemoetkoming ondernemers getroffen sectoren COVID-19",
           "juriconnect": "jci1.3:c:BWBR0043324&artikel=4&lid=2&z=2020-03-31&g=2020-03-31",
-          "text": "Een aanvraag omvat in ieder geval: gegevens over de contactpersoon bij de gedupeerde onderneming, waaronder de naam, het telefoonnummer en het e-mailadres;"
+          "citation": "art. 4 lid 2 aanhef en onder b, van de Beleidsregel tegemoetkoming ondernemers getroffen sectoren COVID-19",
+          "text": "Een aanvraag omvat in ieder geval: gegevens over de contactpersoon bij de gedupeerde onderneming, waaronder de naam, het telefoonnummer en het e-mailadres;",
+          "explanation": ""
         }
-      ],
-      "explanation": "VRAAG: De uitwerking van deze voorwaarde is nu dat alleen de minimaal benodigde gegevens van de contactpersoon worden gevraagd. Is dit de bedoeling?"
+      ]
     },
     {
       "fact": "[naam contactpersoon bij de gedupeerde onderneming]",
+      "explanation": "",
       "function": "[]",
       "sources": [
         {
           "validFrom": "27-03-2020",
           "validTo": "01-01-2021",
-          "citation": "art. 4 lid 2 aanhef en onder b, van de Beleidsregel tegemoetkoming ondernemers getroffen sectoren COVID-19",
           "juriconnect": "jci1.3:c:BWBR0043324&artikel=4&lid=2&z=2020-03-31&g=2020-03-31",
-          "text": "Een aanvraag omvat in ieder geval: gegevens over de contactpersoon bij de gedupeerde onderneming, waaronder de naam, het telefoonnummer en het e-mailadres;"
+          "citation": "art. 4 lid 2 aanhef en onder b, van de Beleidsregel tegemoetkoming ondernemers getroffen sectoren COVID-19",
+          "text": "Een aanvraag omvat in ieder geval: gegevens over de contactpersoon bij de gedupeerde onderneming, waaronder de naam, het telefoonnummer en het e-mailadres;",
+          "explanation": ""
         }
-      ],
-      "explanation": ""
+      ]
     },
     {
       "fact": "[telefoonnummer contactpersoon bij de gedupeerde onderneming]",
+      "explanation": "",
       "function": "[]",
       "sources": [
         {
           "validFrom": "27-03-2020",
           "validTo": "01-01-2021",
-          "citation": "art. 4 lid 2 aanhef en onder b, van de Beleidsregel tegemoetkoming ondernemers getroffen sectoren COVID-19",
           "juriconnect": "jci1.3:c:BWBR0043324&artikel=4&lid=2&z=2020-03-31&g=2020-03-31",
-          "text": "Een aanvraag omvat in ieder geval: gegevens over de contactpersoon bij de gedupeerde onderneming, waaronder de naam, het telefoonnummer en het e-mailadres;"
+          "citation": "art. 4 lid 2 aanhef en onder b, van de Beleidsregel tegemoetkoming ondernemers getroffen sectoren COVID-19",
+          "text": "Een aanvraag omvat in ieder geval: gegevens over de contactpersoon bij de gedupeerde onderneming, waaronder de naam, het telefoonnummer en het e-mailadres;",
+          "explanation": ""
         }
-      ],
-      "explanation": ""
+      ]
     },
     {
       "fact": "[e-mailadres contactpersoon bij de gedupeerde onderneming]",
+      "explanation": "",
       "function": "[]",
       "sources": [
         {
           "validFrom": "27-03-2020",
           "validTo": "01-01-2021",
-          "citation": "art. 4 lid 2 aanhef en onder b, van de Beleidsregel tegemoetkoming ondernemers getroffen sectoren COVID-19",
           "juriconnect": "jci1.3:c:BWBR0043324&artikel=4&lid=2&z=2020-03-31&g=2020-03-31",
-          "text": "Een aanvraag omvat in ieder geval: gegevens over de contactpersoon bij de gedupeerde onderneming, waaronder de naam, het telefoonnummer en het e-mailadres;"
+          "citation": "art. 4 lid 2 aanhef en onder b, van de Beleidsregel tegemoetkoming ondernemers getroffen sectoren COVID-19",
+          "text": "Een aanvraag omvat in ieder geval: gegevens over de contactpersoon bij de gedupeerde onderneming, waaronder de naam, het telefoonnummer en het e-mailadres;",
+          "explanation": ""
         }
-      ],
-      "explanation": ""
+      ]
     },
     {
       "fact": "[onderneming is een overheidsbedrijf]",
+      "explanation": "",
       "function": "[]",
       "sources": [
         {
           "validFrom": "27-03-2020",
           "validTo": "01-01-2021",
-          "citation": "art. 1 van de Beleidsregel tegemoetkoming ondernemers getroffen sectoren COVID-19",
           "juriconnect": "jci1.3:c:BWBR0043324&artikel=1&z=2020-03-31&g=2020-03-31",
-          "text": "gedupeerde onderneming: in Nederland gevestigde onderneming als bedoeld in artikel 5 van de Handelsregisterwet 2007, niet zijnde een overheidsbedrijf:"
+          "citation": "art. 1 van de Beleidsregel tegemoetkoming ondernemers getroffen sectoren COVID-19",
+          "text": "gedupeerde onderneming: in Nederland gevestigde onderneming als bedoeld in artikel 5 van de Handelsregisterwet 2007, niet zijnde een overheidsbedrijf:",
+          "explanation": ""
         }
-      ],
-      "explanation": ""
+      ]
     },
     {
       "fact": "[aanvraag aanvraag is ingediend in de periode van 27 maart 2020 tot en met 26 juni 2020]",
+      "explanation": "",
       "function": "[]",
       "sources": [
         {
           "validFrom": "27-03-2020",
           "validTo": "01-01-2021",
-          "citation": "art. 4 lid 3 van de Beleidsregel tegemoetkoming ondernemers getroffen sectoren COVID-19",
           "juriconnect": "jci1.3:c:BWBR0043324&artikel=4&lid=2&z=2020-03-31&g=2020-03-31",
-          "text": "Een aanvraag kan worden ingediend in de periode van 27 maart 2020 tot en met 26 juni 2020."
+          "citation": "art. 4 lid 3 van de Beleidsregel tegemoetkoming ondernemers getroffen sectoren COVID-19",
+          "text": "Een aanvraag kan worden ingediend in de periode van 27 maart 2020 tot en met 26 juni 2020.",
+          "explanation": ""
         }
-      ],
-      "explanation": ""
+      ]
     },
     {
       "fact": "[aanvraag tegemoetkoming in de schade geleden door de maatregelen ter bestrijding van de verdere verspreiding van COVID-19]",
-      "function": "<<>>",
+      "explanation": "",
+      "function": "[]",
       "sources": [
         {
           "validFrom": "27-03-2020",
           "validTo": "01-01-2021",
-          "citation": "art. 2 lid 1 van de Beleidsregel tegemoetkoming ondernemers getroffen sectoren COVID-19",
           "juriconnect": "jci1.3:c:BWBR0043324&artikel=2&lid=1&z=2020-03-31&g=2020-03-31",
-          "text": "De minister verstrekt op aanvraag een tegemoetkoming aan een gedupeerde onderneming die verwacht in de periode van 16 maart 2020 tot en met 15 juni 2020:"
+          "citation": "art. 2 lid 1 van de Beleidsregel tegemoetkoming ondernemers getroffen sectoren COVID-19",
+          "text": "De minister verstrekt op aanvraag een tegemoetkoming aan een gedupeerde onderneming die verwacht in de periode van 16 maart 2020 tot en met 15 juni 2020:",
+          "explanation": ""
         }
-      ],
-      "explanation": ""
-    },
-    {
-      "fact": "[onderneming was op peildatum 15 maart 2020 ingeschreven in het handelsregister]",
-      "function": "[]",
-      "sources": [],
-      "explanation": ""
+      ]
     },
     {
       "fact": "[zelfstandige moet in Nederland woonachtig zijn]",
+      "explanation": "",
       "function": "[]",
-      "sources": [],
-      "explanation": ""
+      "sources": []
     },
     {
       "fact": "[bedrijf van zelfstandige is in Nederland gevestigd]",
+      "explanation": "",
       "function": "[]",
-      "sources": [],
-      "explanation": ""
+      "sources": []
     },
     {
       "fact": "[de hoofdzakelijke werkzaamheden van zelfstandige vinden plaats in Nederland]",
+      "explanation": "",
       "function": "[]",
-      "sources": [],
-      "explanation": ""
+      "sources": []
     },
     {
       "fact": "[zelfstandige voldoet aan het urencriterium]",
+      "explanation": "",
       "function": "[]",
-      "sources": [],
-      "explanation": ""
+      "sources": []
     },
     {
       "fact": "[zelfstandige is bedrijfsmatig actief geweest, waaronder ingeschreven zijn bij de Kamer van Koophandel, voordat deze regeling is aangekondigd, dus voor 17 maart 2020]",
+      "explanation": "",
       "function": "[]",
-      "sources": [],
-      "explanation": ""
+      "sources": []
     },
     {
       "fact": "[zelfstandige heeft naar waarheid verklaard dat het inkomen naar verwachting in de periode van ondersteuning minder zal bedragen dan het toepasselijke sociaal minimum als gevolg van de coronacrisis]",
+      "explanation": "",
       "function": "[]",
-      "sources": [],
-      "explanation": ""
+      "sources": []
     },
     {
       "fact": "[aanvraag aanvullende uitkering voor levensonderhoud op grond van de Tozo]",
+      "explanation": "",
       "function": "[]",
-      "sources": [],
-      "explanation": ""
+      "sources": []
     },
     {
       "fact": "[verzoek om lening voor bedrijfskapitaal op grond van de Tozo]",
+      "explanation": "",
       "function": "[]",
-      "sources": [],
-      "explanation": ""
+      "sources": []
     },
     {
       "fact": "[zelfstandige heeft naar waarheid te verklaard en aannemelijk gemaakt dat er sprake is van liquiditeitsprobleem als gevolg van de coronacrisis]",
+      "explanation": "",
       "function": "[]",
-      "sources": [],
-      "explanation": ""
+      "sources": []
     },
     {
       "fact": "[aanvraag lening voor bedrijfskapitaal op grond van de Tozo]",
+      "explanation": "",
       "function": "[]",
-      "sources": [],
-      "explanation": ""
+      "sources": []
     },
     {
       "fact": "[in Nederland gevestigde onderneming als bedoeld in artikel 5 van de Handelsregisterwet 2007]",
+      "explanation": "",
       "function": "[]",
-      "sources": [],
-      "explanation": ""
+      "sources": []
     },
     {
       "fact": "[gedupeerde onderneming is een horecaonderneming]",
+      "explanation": "",
       "function": "[]",
-      "sources": [],
-      "explanation": ""
+      "sources": []
     },
     {
       "fact": "[gedupeerde onderneming heeft ten minste één vestiging met een ander adres dan het privéadres van de eigenaar van de onderneming]",
+      "explanation": "",
       "function": "[]",
-      "sources": [],
-      "explanation": ""
+      "sources": []
     },
     {
       "fact": "[gedupeerde onderneming heeft ten minste één vestiging met een ander adres dan het privéadres van de eigenaren van de onderneming]",
+      "explanation": "",
       "function": "[]",
-      "sources": [],
-      "explanation": ""
-    },
-    {
-      "fact": "[gedupeerde onderneming huurt ten minste één horecagelegenheid huurt, pacht of in eigendom heeft]",
-      "function": "[]",
-      "sources": [],
-      "explanation": ""
-    },
-    {
-      "fact": "[gedupeerde onderneming pacht ten minste één horecagelegenheid huurt, pacht of in eigendom heeft]",
-      "function": "[]",
-      "sources": [],
-      "explanation": ""
+      "sources": []
     },
     {
       "fact": "[gedupeerde onderneming heeft ten minste één horecagelegenheid in eigendom]",
+      "explanation": "",
       "function": "[]",
-      "sources": [],
-      "explanation": ""
-    },
-    {
-      "fact": "[horecaonderneming die ten minste één horecagelegenheid huurt, pacht of in eigendom heeft]",
-      "function": "[]",
-      "sources": [],
-      "explanation": ""
-    },
-    {
-      "fact": "[onderneming]",
-      "function": "[]",
-      "sources": [],
-      "explanation": ""
-    },
-    {
-      "fact": "[ondernemer]",
-      "function": "[]",
-      "sources": [],
-      "explanation": ""
+      "sources": []
     },
     {
       "fact": "[gemeente]",
+      "explanation": "",
       "function": "[]",
-      "sources": [],
-      "explanation": ""
-    },
-    {
-      "fact": "[verzoek]",
-      "function": "[]",
-      "sources": [],
-      "explanation": ""
-    },
-    {
-      "fact": "[RVO]",
-      "function": "[]",
-      "sources": [],
-      "explanation": ""
-    },
-    {
-      "fact": "[onderneming is voor 15 maart 2020 opgericht en ingeschreven in het KVK Handelsregister]",
-      "function": {
-        "expression": "AND",
-        "operands": [
-          "[onderneming is voor 15 maart 2020 opgericht]",
-          "[onderneming is voor 15 maart 2020 ingeschreven in het KVK Handelsregister]"
-        ]
-      },
-      "sources": [],
-      "explanation": ""
-    },
-    {
-      "fact": "[onderneming is voor 15 maart 2020 opgericht]",
-      "function": {
-        "expression": "LESS_THAN",
-        "operands": [
-          "[datum van oprichting van onderneming]",
-          {
-            "expression": "LITERAL",
-            "operand": 20200315
-          }
-        ]
-      },
-      "sources": [],
-      "explanation": ""
-    },
-    {
-      "fact": "[datum van oprichting van onderneming]",
-      "function": "[]",
-      "sources": [],
-      "explanation": ""
+      "sources": []
     },
     {
       "fact": "[onderneming is voor 15 maart 2020 ingeschreven in het KVK Handelsregister]",
+      "explanation": "",
       "function": {
         "expression": "LESS_THAN",
         "operands": [
@@ -719,17 +659,17 @@
           }
         ]
       },
-      "sources": [],
-      "explanation": ""
+      "sources": []
     },
     {
       "fact": "[datum van inschrijving van onderneming in het KVK Handelsregister]",
+      "explanation": "",
       "function": "[]",
-      "sources": [],
-      "explanation": ""
+      "sources": []
     },
     {
       "fact": "[onderneming waar ten hoogste 250 personen werkzaam zijn, blijkend uit de inschrijving in het handelsregister op 15 maart 2020]",
+      "explanation": "",
       "function": {
         "expression": "LESS_THAN",
         "operands": [
@@ -740,127 +680,23 @@
           }
         ]
       },
-      "sources": [],
-      "explanation": ""
+      "sources": []
     },
     {
       "fact": "[aantal personen dat werkt bij onderneming blijkend uit de inschrijving in het handelsregister op 15 maart 2020]",
+      "explanation": "",
       "function": "[]",
-      "sources": [],
-      "explanation": ""
+      "sources": []
     },
     {
       "fact": "[SBI-code hoofdactiviteit onderneming]",
+      "explanation": "",
       "function": "[]",
-      "sources": [],
-      "explanation": ""
-    },
-    {
-      "fact": "[onderneming heeft een fysieke vestiging in Nederland]",
-      "function": "[]",
-      "sources": [],
-      "explanation": ""
-    },
-    {
-      "fact": "[bankrekeningnummer op dat op naam van de onderneming staat]",
-      "function": "[]",
-      "sources": [],
-      "explanation": ""
-    },
-    {
-      "fact": "[onderneming is niet failliet]",
-      "function": "[]",
-      "sources": [],
-      "explanation": ""
-    },
-    {
-      "fact": "[onderneming heeft geen verzoek tot verlening van surseance van betaling ingediend bij de rechtbank]",
-      "function": "[]",
-      "sources": [],
-      "explanation": ""
-    },
-    {
-      "fact": "[verwacht omzetverlies in de periode van 16 maart 2020 t/m 15 juni 2020 van ten minste € 4.000]",
-      "function": "[]",
-      "sources": [],
-      "explanation": ""
-    },
-    {
-      "fact": "[verwachte vaste lasten na gebruik van andere door de overheid beschikbaar gestelde steunmaatregelen in de periode van 16 maart 2020 t/m 15 juni 2020 ten minste € 4.000]",
-      "function": "[]",
-      "sources": [],
-      "explanation": ""
-    },
-    {
-      "fact": "[ontvangen overheidssteun over het huidige en de afgelopen 2 belastingjaren is niet meer dan € 200.000 aan overheidssteun]",
-      "function": "[]",
-      "sources": [],
-      "explanation": ""
-    },
-    {
-      "fact": "[onderneming die op 15 maart 2020 stond ingeschreven in het handelsregister onder de code 56.10.1, 56.10.2 of 56.30 van de Standaard Bedrijfsindeling]",
-      "function": {
-        "expression": "OR",
-        "operands": [
-          {
-            "expression": "EQUAL",
-            "operands": [
-              "[SBI-code hoofdactiviteit onderneming]",
-              {
-                "expression": "LITERAL",
-                "operand": "56.10.1"
-              }
-            ]
-          },
-          {
-            "expression": "EQUAL",
-            "operands": [
-              "[SBI-code hoofdactiviteit onderneming]",
-              {
-                "expression": "LITERAL",
-                "operand": "56.10.2"
-              }
-            ]
-          },
-          {
-            "expression": "EQUAL",
-            "operands": [
-              "[SBI-code hoofdactiviteit onderneming]",
-              {
-                "expression": "LITERAL",
-                "operand": "56.21"
-              }
-            ]
-          },
-          {
-            "expression": "EQUAL",
-            "operands": [
-              "[SBI-code hoofdactiviteit onderneming]",
-              {
-                "expression": "LITERAL",
-                "operand": "56.30"
-              }
-            ]
-          }
-        ]
-      },
-      "sources": [],
-      "explanation": ""
-    },
-    {
-      "fact": "[onderneming huurt, pacht of heeft in eigendom in elk geval één horecagelegenheid]",
-      "function": "[]",
-      "sources": [],
-      "explanation": ""
-    },
-    {
-      "fact": "[onderneming heeft ten minste één vestiging met een ander adres te hebben dan het privéadres van de eigenaar/eigenaren]",
-      "function": "[]",
-      "sources": [],
-      "explanation": ""
+      "sources": []
     },
     {
       "fact": "[ingeschreven onder een hoofdactiviteit die in bijlage 1 is opgenomen, met de daarbij behorende code van de Standaard Bedrijfsindeling]",
+      "explanation": "",
       "function": {
         "expression": "OR",
         "operands": [
@@ -3979,12 +3815,31 @@
       "sources": [
         {
           "validFrom": "07-04-2020",
-          "citation": "https://www.rvo.nl/subsidie-en-financieringswijzer/tegemoetkoming-schade-covid-19/vastgestelde-sbi-codes-0",
+          "validTo": "31-12-9999",
           "juriconnect": "",
-          "text": ""
+          "citation": "https://www.rvo.nl/subsidie-en-financieringswijzer/tegemoetkoming-schade-covid-19/vastgestelde-sbi-codes-0",
+          "text": "",
+          "explanation": ""
         }
-      ],
-      "explanation": ""
+      ]
+    },
+    {
+      "fact": "[indienen]",
+      "explanation": "GENERATED: This fact was generated during the 'Import From Json Action'",
+      "function": "[]",
+      "sources": []
+    },
+    {
+      "fact": "[gedupeerde onderneming huurt ten minste één horecagelegenheid]",
+      "explanation": "GENERATED: This fact was generated during the 'Import From Json Action'",
+      "function": "[]",
+      "sources": []
+    },
+    {
+      "fact": "[gedupeerde onderneming pacht ten minste één horecagelegenheid]",
+      "explanation": "GENERATED: This fact was generated during the 'Import From Json Action'",
+      "function": "[]",
+      "sources": []
     }
   ],
   "duties": [
