@@ -14,7 +14,7 @@ class App extends Component {
       factFunctionSpec: {
         "[Minister van Economische Zaken en Klimaat]": "RVO",
         "[onderneming]": "onderneming",
-        "[gedupeerde onderneming]": "onderneming"
+        "[gedupeerde onderneming]": "onderneming",
       },
     };
 
