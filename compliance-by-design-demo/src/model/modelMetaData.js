@@ -288,7 +288,7 @@ export const FactData = {
     question: "Bent u in Nederland woonachtig?",
   },
   "[zelfstandige voldoet aan het urencriterium]": {
-    question: "Voldoet u aan het urencriterium?",
+    question: "Werkt u onder normale omstandigheden gemiddeld 23,5 uur per week in uw onderneming? (1225 uur op jaarbasis)",
   },
   "[zelfstandige]": { question: "U bent zelfstandige" },
 };
