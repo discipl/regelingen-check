@@ -11,6 +11,7 @@ import FactsView from "./FactsView";
 import ActButton, { STATUS_ICONS } from "./ActButton";
 import ActView from "./ActView";
 import Explanation from "./Explanation";
+import DisclaimerFooter from "./DisclaimerFooter";
 
 /**
  * ActView Component
@@ -467,6 +468,10 @@ class ActorView extends Component {
           verschillende regelingen, moet u een aantal vragen beantwoorden. Klik
           op een van de regelingen om naar de vragenlijst te gaan.
         </p>
+
+        <div className="m5-5 mb-5">
+          <DisclaimerFooter />
+        </div>
 
         <div className="mt-5 mb-5">
           {this.renderAvailableActs()}
