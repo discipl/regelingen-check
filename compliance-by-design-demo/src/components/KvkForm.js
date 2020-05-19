@@ -22,9 +22,8 @@ const INITIAL_FACTS = {
   "[telefoonnummer contactpersoon bij de gedupeerde onderneming]": true,
   "[e-mailadres contactpersoon bij de gedupeerde onderneming]": true,
   "[college van burgemeester en wethouders]": true,
-  "[aanvraag algemene bijstand op grond van de Tozo]": true
-
-
+  "[aanvraag algemene bijstand op grond van de Tozo]": true,
+  "[aanvraag bijstand ter voorziening in de behoefte aan bedrijfskapitaal op grond van de Tozo]": true,
 };
 
 class KvkForm extends Component {
@@ -64,17 +63,23 @@ class KvkForm extends Component {
       ...INITIAL_FACTS,
       "[datum van inschrijving van onderneming in het KVK Handelsregister]":
         data.registrationDate,
-      "[datum van inschrijving van onderneming in het handelsregister]": data.registrationDate,
+      "[datum van inschrijving van onderneming in het handelsregister]":
+        data.registrationDate,
       "[datum van oprichting van onderneming]": data.foundationDate,
       "[aantal personen dat werkt bij onderneming blijkend uit de inschrijving in het handelsregister op 15 maart 2020]":
         data.employees,
       "[SBI-code hoofdactiviteit onderneming]": data.mainSbi,
-      "[hoofdactiteit ondernemening is landbouw, jacht en dienstverlening voor de landbouw en jacht (SBI-code 01)]": data.mainSbi.startsWith("01"),
+      "[hoofdactiteit ondernemening is landbouw, jacht en dienstverlening voor de landbouw en jacht (SBI-code 01)]": data.mainSbi.startsWith(
+        "01"
+      ),
       "[in Nederland gevestigde onderneming als bedoeld in artikel 5 van de Handelsregisterwet 2007]":
         data.locatedInTheNetherlands,
-        "[gedupeerde onderneming is een in Nederland gevestigde onderneming als bedoeld in artikel 5 van de Handelsregisterwet 2007]": data.locatedInTheNetherlands,
-        "[aanvraag omvat het nummer waarmee de gedupeerde onderneming geregistreerd is bij de Kamer van Koophandel]": this.state.kvkNumber
-        
+      "[gedupeerde onderneming is een in Nederland gevestigde onderneming als bedoeld in artikel 5 van de Handelsregisterwet 2007]":
+        data.locatedInTheNetherlands,
+      "[aanvraag omvat het nummer waarmee de gedupeerde onderneming geregistreerd is bij de Kamer van Koophandel]": this
+        .state.kvkNumber,
+      "[zelfstandige stond op 17 maart 2020 ingeschreven in het handelsregister]":
+        data.registrationDate <= 20200317,
     };
 
     this.setState({
