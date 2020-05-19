@@ -8,7 +8,7 @@ import EphemeralConnector from "@discipl/core-ephemeral/dist/EphemeralConnector"
 
 import KvkForm from "./KvkForm";
 import Jumbo from "./Jumbo";
-
+import log from "loglevel";
 const timeoutPromise = (timeoutMillis) => {
   return new Promise(function (resolve, reject) {
     setTimeout(() => resolve(), timeoutMillis);
@@ -20,6 +20,7 @@ class ModelView extends Component {
     super(props);
 
     this.lawReg = new LawReg();
+    log.getLogger("disciplLawReg").setLevel("warn");
 
     this.state = {
       lb: this.props.model,
