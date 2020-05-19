@@ -1,18 +1,18 @@
 export const ActData = {
-  "<<indienen aanvraag tegemoetkoming in de schade geleden door de maatregelen ter bestrijding van de verdere verspreiding van COVID-19>>": {
-    date: new Date("2020-04-13"),
+  "<<inwilligen aanvraag tegemoetkoming in de schade geleden door de maatregelen ter bestrijding van de verdere verspreiding van COVID-19>>": {
+    date: new Date("2020-05-12"),
     title: "Tegemoetkoming geleden schade ten gevolge van de Coronamaatregelen",
     requestUrl:
       "https://www.rvo.nl/subsidie-en-financieringswijzer/tegemoetkoming-schade-covid-19/aanvraagproces/aanvraagprocedure",
   },
-  "<<indienen verzoek om aanvullende uitkering voor levensonderhoud op grond van de Tozo>>": {
-    date: new Date("2020-04-13"),
+  "<<inwilligen aanvraag algemene bijstand op grond van de Tozo>>": {
+    date: new Date("2020-05-15"),
     title: "Aanvullende uitkering voor levensonderhoud op grond van de Tozo",
     requestInfo:
       "De aanvullende uitkering kunt u aanvragen bij uw woongemeente. Kijk op de website van uw gemeente voor meer informatie over de Tozo.",
   },
-  "<<indienen verzoek om lening voor bedrijfskapitaal op grond van de Tozo>>": {
-    date: new Date("2020-04-13"),
+  "<<inwilligen aanvraag bijstand ter voorziening in de behoefte aan bedrijfskapitaal op grond van de Tozo>>": {
+    date: new Date("2020-05-15"),
     title: "Lening voor bedrijfskapitaal op grond van de Tozo",
     requestInfo:
       "De lening kunt u aanvragen bij uw woongemeente. Kijk op de website van uw gemeente voor meer informatie over de Tozo.",
@@ -74,8 +74,7 @@ export const FactData = {
   },
   "[aanvraag omvat het rekeningnummer dat op naam van de gedupeerde onderneming staat]": {
     question:
-      "Wat is het rekeningnummer, dat op naam van uw onderneming moet staan, waarop u de tegemoetkoming wilt ontvangen?",
-    type: "string",
+      "Heeft u een rekeningnummer, dat op naam van uw onderneming moet staan, waarop u de tegemoetkoming wilt ontvangen?",
   },
   "[aanvraag tegemoetkoming in de schade geleden door de maatregelen ter bestrijding van de verdere verspreiding van COVID-19]": {
     question:
@@ -291,5 +290,170 @@ export const FactData = {
     question:
       "Werkt u onder normale omstandigheden gemiddeld 23,5 uur per week in uw onderneming? (1225 uur op jaarbasis)",
   },
-  "[zelfstandige]": { question: "U bent zelfstandige" },
+  "[zelfstandige]": { question: "Bent u zelfstandige?" },
+  "[zelfstandige is een in Nederland woonachtige Nederlander die hier te lande in zodanige omstandigheden verkeert of dreigt te geraken dat hij niet over de middelen beschikt om in de noodzakelijke kosten van bestaan te voorzien]": {
+    question:
+      "Bent u een in Nederland woonachtige Nederlander die hier te lande in zodanige omstandigheden verkeert of dreigt te geraken dat hij niet over de middelen beschikt om in de noodzakelijke kosten van bestaan te voorzien?",
+  },
+  "[zelfstandige is een hier te lande woonachtige vreemdeling die rechtmatig in Nederland verblijf houdt in de zin van art. 8, onder a tot en met e en l, Vw]": {
+    question:
+      "Bent u een in Nederland woonachtige vreemdeling die rechtmatig in Nederland verblijf houdt?",
+  },
+  "[vreemdeling is gedurende de eerste drie maanden van verblijf in Nederland]": {
+    question: "Bent u korter dan drie maanden in Nederland?",
+  },
+  "[vreemdeling is een burger van de Unie die het grondgebied van het gastland is binnengekomen om werk te zoeken]": {
+    question:
+      "Bent u een EU-burger die in Nederland is gekomen om werk te zoeken?",
+  },
+  "[vreemdeling zoekt nog immer werk]": { question: "Zoekt u nog werk?" },
+  "[zelfstandige is achttien jaar of ouder]": {
+    question: "Bent u 18 jaar of ouder?",
+  },
+  "[zelfstandige heeft pensioengerechtigde leeftijd bereikt]": {
+    question: "Heeft u de pensioengerechtigde leeftijd bereikt?",
+  },
+  "[zelfstandige is voor de voorziening in het bestaan aangewezen op arbeid in eigen bedrijf of zelfstandig beroep hier te lande]": {
+    question:
+      "Bent u voor de voorziening in het bestaan aangewezen op arbeid in eigen bedrijf of zelfstandig beroep?",
+  },
+  "[zelfstandige voldoet aan de wettelijke vereisten voor de uitoefening van arbeid in eigen bedrijf of zelfstandig beroep]": {
+    question:
+      "Voldoet u aan de wettelijke vereisten voor de uitoefening van arbeid in eigen bedrijf of zelfstandig beroep?",
+  },
+  "[zelfstandige besteedt ten minste 1.225 uur per jaar aan werkzaamheden voor het bedrijf of zelfstandig beroep]": {
+    question:
+      "Besteedt u ten minste 1.225 uur per jaar aan werkzaamheden voor het bedrijf of zelfstandig beroep?",
+  },
+  "[zelfstandige heeft alleen of samen met degene met wie hij het bedrijf of zelfstandig beroep uitoefent de volledige zeggenschap]": {
+    question:
+      "Heeft u alleen of samen met degene met wie u het bedrijf of zelfstandig beroep uitoefent de volledige zeggenschap?",
+  },
+  "[zelfstandige draagt alleen of samen met degene met wie hij het bedrijf of zelfstandig beroep uitoefent de financiële risico’s]": {
+    question:
+      "Draagt u alleen of samen met degene met wie u het bedrijf of zelfstandig beroep uitoefent de financiële risico’s?",
+  },
+  "[zelfstandige ontvangt algemene bijstand op grond van het Besluit bijstandverlening zelfstandigen 2004]": {
+    question:
+      "Ontvangt u algemene bijstand op grond van het Besluit bijstandverlening zelfstandigen 2004?",
+  },
+  "[zelfstandige verklaart schriftelijk dat diens bedrijf of zelfstandig beroep financieel is geraakt als gevolg van de crisis in verband met COVID-19]": {
+    question:
+      "Verklaart u schriftelijk dat uw bedrijf of zelfstandig beroep financieel is geraakt als gevolg van de crisis in verband met COVID-19?",
+  },
+  "[aanvraag is ingediend voor 1 juni 2020]": {
+    question: "Dient u de aanvraag in voor 1 juni 2020?",
+  },
+  "[zelfstandige verwacht voor de kalendermaanden waarover algemene bijstand wordt aangevraagd, een in aanmerking te nemen inkomen te hebben dat lager is dan de bijstandsnorm]": {
+    question:
+      "Verwacht u voor de kalendermaanden waarover algemene bijstand wordt aangevraagd, een in aanmerking te nemen inkomen te hebben dat lager is dan de bijstandsnorm?",
+  },
+  "[zelfstandige verklaart schriftelijk dat hij als gevolg van de crisis in verband met COVID-19 over onvoldoende direct beschikbare geldmiddelen beschikt om aan de financiële verplichtingen verbonden aan diens bedrijf of zelfstandig beroep te kunnen voldoen]": {
+    question:
+      "Verklaart u dat u als gevolg van de crisis in verband met COVID-19 over onvoldoende direct beschikbare geldmiddelen beschikt om aan de financiële verplichtingen verbonden aan diens bedrijf of zelfstandig beroep te kunnen voldoen?",
+  },
+  "[zelfstandige maakt aannemelijk dat hij als gevolg van de crisis in verband met COVID-19 over onvoldoende direct beschikbare geldmiddelen beschikt om aan de financiële verplichtingen verbonden aan diens bedrijf of zelfstandig beroep te kunnen voldoen]": {
+    question:
+      "Beschikt u als gevolg van de crisis in verband met COVID-19 over onvoldoende direct beschikbare geldmiddelen om aan de financiële verplichtingen verbonden aan diens bedrijf of zelfstandig beroep te kunnen voldoen?",
+  },
+  "[bijstand ter voorziening in de behoefte aan bedrijfskapitaal leidt tot een overschrijding van het de-minimisplafond, bedoeld in art. 3 lid 2, van de algemene de-minimisverordening]": {
+    question:
+      " Zou bijstand ter voorziening in de behoefte aan bedrijfskapitaal leiden tot een overschrijding van het de-minimisplafond?",
+  },
+  "[zelfstandige die het bedrijf of zelfstandig beroep uitoefent in de vorm van een maatschap]": {
+    question:
+      "Oefent u het bedrijf of zelfstandig beroep in de vorm van een maatschap?",
+  },
+  "[zelfstandige die het bedrijf of zelfstandig beroep uitoefent in de vorm van een vennootschap onder firma]": {
+    question:
+      "Oefent u het bedrijf of zelfstandig beroep in de vorm van een vennootschap onder firma?",
+  },
+  "[zelfstandige die het bedrijf of zelfstandig beroep uitoefent in de vorm van een commanditaire vennootschap]": {
+    question:
+      "Oefent u het bedrijf of zelfstandig beroep in de vorm van een commanditaire vennootschap?",
+  },
+  "[zelfstandige die het bedrijf of zelfstandig beroep uitoefent in de vorm van een besloten vennootschap]": {
+    question:
+      "Oefent u het bedrijf of zelfstandig beroep in de vorm van een besloten vennootschap?",
+  },
+  "[zelfstandige die het bedrijf of zelfstandig beroep uitoefent in de vorm van een coöperatieve vereniging met wettelijke aansprakelijkheid]": {
+    question:
+      "Oefent u het bedrijf of zelfstandig beroep in de vorm van een coöperatieve vereniging met wettelijke aansprakelijkheid?",
+  },
+  "[hoofdelijke aansprakelijkheid voor de uit de bijstandsverlening voortvloeiende verplichtingen wordt aanvaard door alle vennoten of leden waarmee het bedrijf of zelfstandig beroep wordt uitgeoefend]": {
+    question:
+      "Wordt de hoofdelijke aansprakelijkheid voor de uit de bijstandsverlening voortvloeiende verplichtingen aanvaard door alle vennoten of leden waarmee het bedrijf of zelfstandig beroep wordt uitgeoefend?",
+  },
+  "[hoofdelijke aansprakelijkheid voor de uit de bijstandsverlening voortvloeiende verplichtingen wordt aanvaard door de besloten vennootschap en de coöperatieve vereniging met wettelijke aansprakelijkheid]": {
+    question:
+      "Wordt de hoofdelijke aansprakelijkheid voor de uit de bijstandsverlening voortvloeiende verplichtingen aanvaard door de besloten vennootschap en de coöperatieve vereniging met wettelijke aansprakelijkheid?",
+  },
+  "[hoofdelijke aansprakelijkheid voor de uit de bijstandsverlening voortvloeiende verplichtingen wordt aanvaard door de commanditaire vennoot wiens inbreng uitsluitend uit kapitaal bestaat]": {
+    question:
+      "Wordt de hoofdelijke aansprakelijkheid voor de uit de bijstandsverlening voortvloeiende verplichtingen aanvaard door de commanditaire vennoot wiens inbreng uitsluitend uit kapitaal bestaat?",
+  },
+  "[zelfstandige heeft een vennoot in een maatschap die daar alleen arbeid inbrengt]": {
+    question:
+      "Heeft u een vennoot in een maatschap die alleen arbeid inbrengt?",
+  },
+  "[hoofdelijke aansprakelijkheid voor de uit de bijstandsverlening voortvloeiende verplichtingen wordt aanvaard door vennoot in een maatschap die daar alleen arbeid inbrengt]": {
+    question:
+      "Wordt de hoofdelijke aansprakelijkheid voor de uit de bijstandsverlening voortvloeiende verplichtingen aanvaard door vennoot in een maatschap die daar alleen arbeid inbrengt?",
+  },
+  "[onderneming heeft een nevenactiviteit onder de code 55.20.1, 55.20.2, 55.30 of 93.29.9]": {
+    question:
+      "Heeft uw onderneming een nevenactiviteit onder de code 55.20.1, 55.20.2, 55.30 of 93.29.9?",
+  },
+  "[Alleen voor zover de onderneming een thuiszorgwinkel betreft]": {
+    question: "Betreft uw onderneming een thuiszorgwinkel?",
+  },
+  "[omzetverlies gedupeerde onderneming verwacht in de periode van 16 maart 2020 tot en met 15 juni 2020 heeft betrekking op zijn nevenactiviteit op zijn nevenactiviteit met de code 55.20.1, 55.20.2, 55.30 of 93.29.9 van de Standaard Bedrijfsindeling]": {
+    question:
+      "Heeft het verwachte omzetverlies betrekking op uw nevenactiviteit met de code 55.20.1, 55.20.2, 55.30 of 93.29.9 van de Standaard Bedrijfsindeling",
+  },
+  "[de onderneming is voor minimaal zeventig procent van zijn omzet afhankelijk is van direct gedupeerde ondernemingen]": {
+    question:
+      "Is uw onderneming voor minimaal zeventig procent van zijn omzet afhankelijk is van direct gedupeerde ondernemingen?",
+  },
+  "[de onderneming is voor minimaal zeventig procent van zijn omzet afhankelijk is van activiteiten die als gevolg van de overheidsmaatregelen ter bestrijding van de verdere verspreiding van COVID-19 verboden zijn of ontraden worden]": {
+    question:
+      "Is uw de onderneming voor minimaal zeventig procent van zijn omzet afhankelijk is van activiteiten die als gevolg van de overheidsmaatregelen ter bestrijding van de verdere verspreiding van COVID-19 verboden zijn of ontraden worden?",
+  },
+  "[gedupeerde zorgonderneming verwacht, ook na aftrek van de tegemoetkoming van zorginkopers ter compensatie van het omzetverlies als gevolg van de maatregelen ter bestrijding van COVID-19 ten minste € 4000,- aan omzetverlies te lijden]": {
+    question:
+      "Verwacht u ook na aftrek van de tegemoetkoming van zorginkopers ter compensatie van het omzetverlies als gevolg van de maatregelen ter bestrijding van COVID-19 ten minste € 4000,- aan omzetverlies te lijden?",
+  },
+  "[gedupeerde zorgonderneming verwacht, ook na aftrek van de tegemoetkoming van zorginkopers ter compensatie van het omzetverlies als gevolg van de maatregelen ter bestrijding van COVID-19 ten minste € 4.000,- aan vaste lasten te hebben]": {
+    question:
+      "Verwacht u ook na aftrek van de tegemoetkoming van zorginkopers ter compensatie van het omzetverlies als gevolg van de maatregelen ter bestrijding van COVID-19 ten minste € 4.000,- aan vaste lasten te hebben?",
+  },
+  "[gedupeerde onderneming betreft een eenmanszaak]": {
+    question: "Betreft uw onderneming een eenmanszaak?",
+  },
+  "[eenmanszaak heeft zakelijke rekening]": {
+    question: "Heeft uw onderneming een zakelijke rekening?",
+  },
+  "[aanvraag omvat het rekeningnummer van de eigenaar van de eenmanszaak]": {
+    question: "Wat is uw persoonlijke rekeningnummer?",
+    type: "string",
+  },
+  "[gedupeerde onderneming is een ambulante onderneming]": {
+    question: "Is uw onderneming een ambulante onderneming?",
+  },
+  "[aanvraag bevat kopie van een zakelijke huur- of koopovereenkomst van een vestiging van de gedupeerde onderneming]": {
+    question:
+      "Heeft u een kopie van een zakelijke huur- of koopovereenkomst van een vestiging van uw onderneming?",
+  },
+  "[aanvraag bevat een kopie van de belastingaangifte van het jaar 2019 of 2020 waaruit blijkt dat de vestiging van de gedupeerde onderneming een werkruimte is waarvan de vaste lasten en kosten fiscaal aftrekbaar zijn als bedoeld in artikel 3.16, eerste lid, van de Wet inkomstenbelasting 2001]": {
+    question:
+      "Heeft u een kopie van de belastingaangifte van het jaar 2019 of 2020 waaruit blijkt dat de vestiging van de gedupeerde onderneming een werkruimte is waarvan de vaste lasten en kosten fiscaal aftrekbaar zijn als bedoeld in artikel 3.16, eerste lid, van de Wet inkomstenbelasting 200?",
+  },
+
+  "[onderneming stond op 15 maart 2020 tevens in het handelsregister ingeschreven met een nevenactiviteit onder de SBI-code 55.20.1, 55.20.2, 55.30 of 93.29.9 (gedupeerde agrarische recreatieondernemingen)]": {
+    question:
+      "Stond uw onderneming op 15 maart 2020 tevens in het handelsregister ingeschreven met een nevenactiviteit onder de SBI-code 55.20.1, 55.20.2, 55.30 of 93.29.9 (gedupeerde agrarische recreatieondernemingen)?",
+  },
+  "[onderneming is een thuiszorgwinkel]": {
+    question: "Is uw onderneming een thuiszorgwinkel?",
+  },
 };
