@@ -207,7 +207,6 @@ class ActorView extends Component {
 
   async askFact(
     fact,
-    _flintItem,
     _listNames,
     _listIndices,
     possibleCreatingActions
