@@ -205,13 +205,7 @@ class ActorView extends Component {
     }
   }
 
-  async askFact(
-    fact,
-    _flintItem,
-    _listNames,
-    _listIndices,
-    possibleCreatingActions
-  ) {
+  async askFact(fact, _listNames, _listIndices, possibleCreatingActions) {
     console.log("in askFact");
     if (
       this.props.derivedFacts &&
