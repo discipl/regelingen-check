@@ -11,7 +11,7 @@
     "express": "^4.17.1",
     "http-proxy-agent": "^4.0.1",
     "https-proxy-agent": "^5.0.0",
-    "moment": "^2.24.0",
+    "moment": "^2.29.2",
     "node-fetch": "^2.6.0"
   }
 }
